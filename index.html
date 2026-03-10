@@ -8,217 +8,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1117;
-    --bg2: #161b27;
-    --bg3: #1c2333;
-    --border: #2a3550;
-    --gold: #c9a84c;
-    --gold-bright: #e8c56d;
-    --blue: #4a9eff;
-    --blue-dim: #2563a8;
-    --green: #22c55e;
-    --red: #ef4444;
-    --text: #eef0f8;
-    --text-dim: #8892aa;
-    --radius: 10px;
+    --bg: #0f1117; --bg2: #161b27; --bg3: #1c2333;
+    --border: #2a3550; --gold: #c9a84c; --gold-bright: #e8c56d;
+    --blue: #4a9eff; --blue-dim: #2563a8; --green: #22c55e;
+    --red: #ef4444; --text: #eef0f8; --text-dim: #8892aa; --radius: 10px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
 
-  /* ── HEADER ── */
-  header {
-    text-align: center;
-    padding: 60px 20px 40px;
-    background: linear-gradient(180deg, #0a0d14 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-  }
-  .crown { font-size: 2.2rem; display: block; margin-bottom: 6px; }
-  .subtitle { font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:.5em; color:var(--text-dim); text-transform:uppercase; margin-bottom:8px; }
-  header h1 { font-family:'Cinzel',serif; font-size:clamp(2rem,6vw,3.5rem); font-weight:700; color:var(--gold); letter-spacing:.15em; text-shadow: 0 0 40px rgba(201,168,76,.35); }
-  header p { color:var(--text-dim); margin-top:10px; font-size:.9rem; }
+  /* HEADER */
+  header { text-align:center; padding:50px 20px 30px; background:linear-gradient(180deg,#0a0d14 0%,var(--bg) 100%); border-bottom:1px solid var(--border); }
+  .crown { font-size:2rem; display:block; margin-bottom:4px; }
+  .subtitle { font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.5em; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px; }
+  header h1 { font-family:'Cinzel',serif; font-size:clamp(1.8rem,5vw,3rem); font-weight:700; color:var(--gold); letter-spacing:.15em; text-shadow:0 0 40px rgba(201,168,76,.35); }
+  header p { color:var(--text-dim); margin-top:8px; font-size:.85rem; }
 
-  /* ── NAV ── */
-  nav {
-    position:sticky; top:0; z-index:100;
-    background: rgba(15,17,23,.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 20px;
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
+  /* NAV */
+  nav { position:sticky; top:0; z-index:100; background:rgba(15,17,23,.97); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 20px; display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; }
   nav::-webkit-scrollbar { display:none; }
-  nav a {
-    color:var(--text-dim); text-decoration:none; font-size:.8rem; font-weight:500;
-    padding: 14px 12px; white-space:nowrap; border-bottom: 2px solid transparent;
-    transition: all .2s;
-  }
-  nav a:hover, nav a.active { color:var(--gold); border-bottom-color:var(--gold); }
+  nav a { color:var(--text-dim); text-decoration:none; font-size:.78rem; font-weight:500; padding:13px 10px; white-space:nowrap; border-bottom:2px solid transparent; transition:all .2s; }
+  nav a:hover { color:var(--gold); border-bottom-color:var(--gold); }
 
-  /* ── LIVE EVENT INTEL PANEL ── */
-  .intel-panel {
-    max-width: 900px;
-    margin: 32px auto;
-    padding: 0 16px;
-  }
-  .intel-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+  /* ── AI CHAT HERO SECTION ── */
+  .ai-hero {
+    background: linear-gradient(135deg, #0d1520 0%, #111827 50%, #0d1a2e 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 20px 52px;
+    position: relative;
     overflow: hidden;
   }
-  .intel-header {
-    display:flex; align-items:center; justify-content:space-between;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(74,158,255,.05);
+  .ai-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(74,158,255,.08) 0%, transparent 70%);
+    pointer-events: none;
   }
-  .intel-title {
-    display:flex; align-items:center; gap:10px;
-    font-family:'Cinzel',serif; font-size:.85rem; font-weight:600; letter-spacing:.1em; color:var(--text);
+  .ai-hero-inner { max-width: 720px; margin: 0 auto; position: relative; }
+  .ai-hero-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(74,158,255,.1); border: 1px solid rgba(74,158,255,.25);
+    color: var(--blue); font-size: .72rem; letter-spacing: .15em;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 18px;
   }
-  .live-dot {
-    width:8px; height:8px; border-radius:50%; background:var(--green);
-    box-shadow: 0 0 6px var(--green);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-  .ai-badge {
-    background: rgba(74,158,255,.15); border:1px solid rgba(74,158,255,.3);
-    color:var(--blue); font-size:.65rem; letter-spacing:.12em; padding:2px 8px; border-radius:4px;
-  }
-  .refresh-btn {
-    background:transparent; border:1px solid var(--border);
-    color:var(--text-dim); font-size:.75rem; letter-spacing:.1em;
-    padding:7px 14px; border-radius:6px; cursor:pointer; transition:all .2s;
-    display:flex; align-items:center; gap:6px;
-  }
-  .refresh-btn:hover { border-color:var(--gold); color:var(--gold); }
-  .refresh-btn:disabled { opacity:.5; cursor:not-allowed; }
+  .ai-hero-label .dot { width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 6px var(--green); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .ai-hero h2 { font-family:'Cinzel',serif; font-size:clamp(1.4rem,3vw,2rem); color:#fff; margin-bottom:8px; }
+  .ai-hero h2 span { color: var(--gold); }
+  .ai-hero-sub { color:var(--text-dim); font-size:.9rem; margin-bottom:28px; }
 
-  .intel-body { padding:20px; min-height:80px; }
-  .intel-content { color:var(--text); line-height:1.8; }
-  .intel-content h3 { color:var(--gold-bright); font-family:'Cinzel',serif; font-size:.95rem; margin:18px 0 6px; }
-  .intel-content h4 { color:var(--blue); font-size:.85rem; margin:12px 0 4px; }
-  .intel-content ul { padding-left:20px; color:var(--text-dim); }
-  .intel-content ul li { margin:3px 0; }
-  .intel-content strong { color:#fff; }
-  .intel-content p { margin:6px 0; }
-  .error-box {
-    background: rgba(239,68,68,.1); border:1px solid rgba(239,68,68,.3);
-    color:#fca5a5; padding:12px 16px; border-radius:8px;
-    display:flex; align-items:center; gap:8px; font-size:.875rem;
+  /* Chat input row */
+  .ai-input-wrap { display:flex; gap:10px; margin-bottom:14px; }
+  .ai-input {
+    flex:1; background:rgba(255,255,255,.05); border:1px solid var(--border);
+    color:var(--text); padding:14px 18px; border-radius:10px; font-size:.95rem;
+    outline:none; transition:border-color .2s; font-family:'Inter',sans-serif;
   }
-  .loading-box {
-    display:flex; align-items:center; gap:10px; color:var(--text-dim); font-size:.875rem;
+  .ai-input:focus { border-color:var(--blue-dim); background:rgba(255,255,255,.07); }
+  .ai-input::placeholder { color:var(--text-dim); }
+  .ai-send {
+    background: var(--blue-dim); border:none; color:#fff;
+    padding:14px 22px; border-radius:10px; font-size:.85rem; font-weight:600;
+    letter-spacing:.06em; cursor:pointer; transition:all .2s; white-space:nowrap;
+    min-width:80px;
   }
-  .spinner {
-    width:16px; height:16px; border:2px solid var(--border);
-    border-top-color:var(--blue); border-radius:50%;
-    animation: spin .8s linear infinite;
-  }
-  @keyframes spin { to{transform:rotate(360deg)} }
+  .ai-send:hover { background:var(--blue); transform:translateY(-1px); }
+  .ai-send:disabled { opacity:.5; cursor:not-allowed; transform:none; }
 
-  /* ── CHAT SECTION ── */
-  .chat-section {
-    border-top:1px solid var(--border); padding:16px 20px 20px;
-  }
-  .chat-label {
-    font-size:.7rem; letter-spacing:.18em; color:var(--text-dim); margin-bottom:10px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .chat-label::before { content:''; display:block; width:6px; height:6px; background:var(--blue); border-radius:50%; }
-  .chat-input-row { display:flex; gap:8px; margin-bottom:10px; }
-  .chat-input {
-    flex:1; background:var(--bg3); border:1px solid var(--border);
-    color:var(--text); padding:10px 14px; border-radius:8px; font-size:.875rem;
-    outline:none; transition:border-color .2s;
-  }
-  .chat-input:focus { border-color:var(--blue-dim); }
-  .chat-input::placeholder { color:var(--text-dim); }
-  .ask-btn {
-    background:var(--blue-dim); border:none; color:#fff;
-    padding:10px 18px; border-radius:8px; font-size:.8rem;
-    letter-spacing:.08em; cursor:pointer; transition:background .2s; white-space:nowrap;
-  }
-  .ask-btn:hover { background:var(--blue); }
-  .ask-btn:disabled { opacity:.5; cursor:not-allowed; }
-  .quick-btns { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
-  .quick-btn {
-    background:transparent; border:1px solid var(--border);
-    color:var(--text-dim); font-size:.75rem; padding:5px 11px;
+  /* Quick suggestion pills */
+  .ai-suggestions { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px; }
+  .ai-pill {
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+    color:var(--text-dim); font-size:.76rem; padding:6px 13px;
     border-radius:20px; cursor:pointer; transition:all .2s;
   }
-  .quick-btn:hover { border-color:var(--blue-dim); color:var(--text); }
-  .chat-history { display:flex; flex-direction:column; gap:10px; max-height:400px; overflow-y:auto; }
+  .ai-pill:hover { border-color:var(--blue-dim); color:var(--text); background:rgba(74,158,255,.08); }
+
+  /* Chat history */
+  .ai-chat { display:flex; flex-direction:column; gap:12px; max-height:500px; overflow-y:auto; padding-right:4px; }
+  .ai-chat::-webkit-scrollbar { width:4px; }
+  .ai-chat::-webkit-scrollbar-track { background:transparent; }
+  .ai-chat::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
   .msg-user {
     align-self:flex-end; background:var(--blue-dim);
-    color:#fff; padding:9px 14px; border-radius:12px 12px 4px 12px;
-    max-width:80%; font-size:.875rem;
+    color:#fff; padding:10px 16px; border-radius:14px 14px 4px 14px;
+    max-width:85%; font-size:.875rem; line-height:1.6;
   }
   .msg-ai {
-    align-self:flex-start; background:var(--bg3); border:1px solid var(--border);
-    padding:12px 16px; border-radius:4px 12px 12px 12px;
-    max-width:90%; font-size:.875rem; line-height:1.75;
+    align-self:flex-start;
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+    padding:14px 18px; border-radius:4px 14px 14px 14px;
+    max-width:95%; font-size:.875rem; line-height:1.8;
   }
   .msg-ai strong { color:#fff; }
-  .msg-ai ul { padding-left:18px; color:var(--text-dim); }
+  .msg-ai ul { padding-left:18px; color:var(--text-dim); margin:4px 0; }
+  .msg-ai li { margin:2px 0; }
+  .msg-ai h4 { color:var(--gold-bright); font-size:.85rem; margin:10px 0 4px; }
+  .msg-ai p { margin:4px 0; color:var(--text-dim); }
+  .msg-ai .source-tag {
+    display:inline-block; margin-top:8px;
+    font-size:.7rem; color:var(--text-dim);
+    background:rgba(255,255,255,.04); border:1px solid var(--border);
+    padding:2px 8px; border-radius:4px;
+  }
+  .msg-ai .source-tag.external { color:var(--blue); border-color:rgba(74,158,255,.3); }
+  .loading-msg {
+    align-self:flex-start; display:flex; align-items:center; gap:10px;
+    color:var(--text-dim); font-size:.85rem; padding:10px 0;
+  }
+  .spinner { width:16px; height:16px; border:2px solid var(--border); border-top-color:var(--blue); border-radius:50%; animation:spin .8s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
 
-  /* ── MAIN CONTENT ── */
+  /* Error */
+  .err-msg { color:#fca5a5; background:rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.2); padding:10px 14px; border-radius:8px; font-size:.85rem; }
+
+  /* MAIN CONTENT */
   .container { max-width:900px; margin:0 auto; padding:0 16px 60px; }
   section { padding:48px 0 24px; border-bottom:1px solid var(--border); }
   section:last-child { border-bottom:none; }
-  h2 {
-    font-family:'Cinzel',serif; font-size:1.4rem; color:var(--gold);
-    margin-bottom:20px; display:flex; align-items:center; gap:10px;
-  }
+  h2 { font-family:'Cinzel',serif; font-size:1.4rem; color:var(--gold); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
   h2::after { content:''; flex:1; height:1px; background:var(--border); }
   h3 { font-size:1rem; color:var(--blue); margin:20px 0 8px; }
   p { color:var(--text-dim); margin-bottom:10px; }
   strong { color:var(--text); }
-
-  .tip {
-    background:rgba(201,168,76,.08); border-left:3px solid var(--gold);
-    padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; font-size:.875rem;
-  }
-  .warn {
-    background:rgba(239,68,68,.08); border-left:3px solid var(--red);
-    padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; font-size:.875rem; color:#fca5a5;
-  }
-  .info {
-    background:rgba(74,158,255,.08); border-left:3px solid var(--blue);
-    padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; font-size:.875rem;
-  }
-
+  .tip { background:rgba(201,168,76,.08); border-left:3px solid var(--gold); padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; font-size:.875rem; }
+  .warn { background:rgba(239,68,68,.08); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; font-size:.875rem; color:#fca5a5; }
+  .info { background:rgba(74,158,255,.08); border-left:3px solid var(--blue); padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; font-size:.875rem; }
   table { width:100%; border-collapse:collapse; margin:16px 0; font-size:.875rem; }
   th { background:var(--bg3); color:var(--gold); padding:10px 14px; text-align:left; border:1px solid var(--border); font-family:'Cinzel',serif; font-size:.8rem; }
   td { padding:9px 14px; border:1px solid var(--border); color:var(--text-dim); vertical-align:top; }
   tr:nth-child(even) td { background:rgba(255,255,255,.02); }
-
   .grid-2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin:14px 0; }
-  .card {
-    background:var(--bg2); border:1px solid var(--border);
-    border-radius:var(--radius); padding:16px;
-  }
+  .card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:16px; }
   .card h4 { color:var(--gold-bright); font-size:.85rem; margin-bottom:6px; }
   .card p { font-size:.83rem; }
-
   .priority-high { color:var(--green); font-weight:600; }
   .priority-mid { color:var(--gold); font-weight:600; }
   .priority-low { color:var(--text-dim); }
-
-  footer {
-    text-align:center; padding:30px 20px;
-    border-top:1px solid var(--border); color:var(--text-dim); font-size:.8rem;
-  }
+  footer { text-align:center; padding:30px 20px; border-top:1px solid var(--border); color:var(--text-dim); font-size:.8rem; }
   footer a { color:var(--gold); text-decoration:none; }
-
-  @media(max-width:600px) {
-    .chat-input-row { flex-direction:column; }
-    .ask-btn { width:100%; }
-  }
+  @media(max-width:600px) { .ai-input-wrap { flex-direction:column; } .ai-send { width:100%; } }
 </style>
 </head>
 <body>
@@ -230,8 +158,8 @@
   <p>Alliance Strategy · Hero Systems · Events · Progression</p>
 </header>
 
-<nav id="mainNav">
-  <a href="#live-intel" style="color:var(--green)">⚡ Live Events</a>
+<nav>
+  <a href="#ai-chat">⚡ Ask AI</a>
   <a href="#overview">🏰 Overview</a>
   <a href="#city">🏗 City</a>
   <a href="#heroes">⚔ Heroes</a>
@@ -242,44 +170,39 @@
   <a href="#kvk">⚔ KvK</a>
   <a href="#swordland">🗡 Swordland</a>
   <a href="#sanctuary">🏛 Sanctuary</a>
+  <a href="#eternity">🌌 Eternity's Reach</a>
   <a href="#alliance">🤝 Alliance</a>
   <a href="#f2p">💰 F2P</a>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!--  LIVE EVENT INTEL                                   -->
-<!-- ═══════════════════════════════════════════════════ -->
-<div class="intel-panel" id="live-intel">
-  <div class="intel-card">
-    <div class="intel-header">
-      <div class="intel-title">
-        <div class="live-dot"></div>
-        ⚡ LIVE EVENT INTEL
-        <span class="ai-badge">AI POWERED</span>
-      </div>
-      <button class="refresh-btn" id="refreshBtn" onclick="fetchEventIntel()">
-        <span id="refreshIcon">↻</span> REFRESH
-      </button>
+<!-- ══════════════════════════════════════════ -->
+<!--  AI STRATEGY CHAT — HERO SECTION          -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ai-hero" id="ai-chat">
+  <div class="ai-hero-inner">
+    <div class="ai-hero-label">
+      <span class="dot"></span>
+      AI STRATEGY ASSISTANT · ONLINE
     </div>
-    <div class="intel-body" id="intelBody">
-      <div class="loading-box"><div class="spinner"></div> Loading current event strategy...</div>
+    <h2>Ask the <span>Strategy AI</span></h2>
+    <p class="ai-hero-sub">Get instant answers from the DarkKnights guide. When the guide doesn't have the answer, the AI searches external Kingshot community sources automatically.</p>
+
+    <div class="ai-suggestions">
+      <button class="ai-pill" onclick="quickAsk('What heroes should I use for Bear Hunt rallies?')">🐻 Bear Hunt heroes</button>
+      <button class="ai-pill" onclick="quickAsk('What buildings should I prioritize in Swordland Showdown?')">🗡 Swordland buildings</button>
+      <button class="ai-pill" onclick="quickAsk('What is the joiner hero mechanic and why does it matter?')">⚔ Joiner mechanics</button>
+      <button class="ai-pill" onclick="quickAsk('How do I win Sanctuary Battles?')">🏛 Sanctuary strategy</button>
+      <button class="ai-pill" onclick="quickAsk('What should F2P players spend gems on?')">💰 F2P gem priority</button>
+      <button class="ai-pill" onclick="quickAsk('What are the Mystic Trial rules and restrictions?')">🔮 Mystic Trial</button>
+      <button class="ai-pill" onclick="quickAsk('How is rally damage calculated in Bear Hunt?')">📊 Rally damage</button>
+      <button class="ai-pill" onclick="quickAsk('What is the best troop formation for Swordland?')">🪖 Troop formation</button>
     </div>
-    <div class="chat-section">
-      <div class="chat-label">ASK THE STRATEGY AI</div>
-      <div class="quick-btns">
-        <button class="quick-btn" onclick="quickAsk('What are the active events right now and what should I focus on?')">This week's events</button>
-        <button class="quick-btn" onclick="quickAsk('What is the best strategy for Swordland Showdown?')">Swordland tips</button>
-        <button class="quick-btn" onclick="quickAsk('How do I maximize Bear Hunt damage as a rally captain?')">Bear Hunt</button>
-        <button class="quick-btn" onclick="quickAsk('Which heroes should I prioritize investing in?')">Hero picks</button>
-        <button class="quick-btn" onclick="quickAsk('What are the best F2P tips for current events?')">F2P tips</button>
-        <button class="quick-btn" onclick="quickAsk('What buildings should I prioritize in Swordland Showdown?')">Swordland buildings</button>
-      </div>
-      <div class="chat-input-row">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about Kingshot strategy..." onkeydown="if(event.key==='Enter') askAI()">
-        <button class="ask-btn" id="askBtn" onclick="askAI()">ASK →</button>
-      </div>
-      <div class="chat-history" id="chatHistory"></div>
+
+    <div class="ai-input-wrap">
+      <input class="ai-input" id="aiInput" type="text" placeholder="Ask anything about Kingshot strategy..." onkeydown="if(event.key==='Enter') sendMsg()">
+      <button class="ai-send" id="aiSend" onclick="sendMsg()">ASK →</button>
     </div>
+    <div class="ai-chat" id="aiChat"></div>
   </div>
 </div>
 
@@ -527,6 +450,53 @@
     ✅ Account for auto-sign-up next phase if currently holding</p>
   </section>
 
+  <section id="eternity">
+    <h2>🌌 Eternity's Reach</h2>
+    <div class="info">ℹ️ <strong>Core principle:</strong> Mobility and opportunism beats raw power. Weaker players can outrank stronger ones through speed, timing, and map awareness. The goal is <strong>points per minute</strong>, not territory control.</div>
+
+    <h3>Phase Strategy</h3>
+    <table>
+      <tr><th>Phase</th><th>Timing</th><th>Strategy</th></tr>
+      <tr><td><strong>Opening Rush</strong></td><td>First 5–10 min</td><td>Send all marches immediately. Target <strong>outer ring veins</strong> — avoid center. Capture → collect briefly → leave before enemy rallies. Keep moving.</td></tr>
+      <tr><td><strong>Mid-Game Chaos</strong></td><td>10–30 min</td><td>Center is crowded and inefficient — avoid it. Hunt <strong>fractured veins and abandoned nodes</strong>. Watch the map constantly for openings.</td></tr>
+      <tr><td><strong>Final Push</strong></td><td>Last 10 min</td><td>If ranked HIGH: defend one strong vein with best heroes. If ranked LOW: abandon defense entirely and rapid-capture across the map.</td></tr>
+    </table>
+
+    <h3>The Elite Player Formula</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>✅ Do This</h4>
+        <p>Marches always moving</p>
+        <p>Leave veins <strong>before they're depleted</strong> — move to the next full node while others waste time finishing empty ones</p>
+        <p>Capture fractured veins the moment they spawn</p>
+        <p>Snipe abandoned veins immediately after players leave</p>
+        <p>Alliance leaders: assign map quadrants to squads</p>
+      </div>
+      <div class="card">
+        <h4>❌ Common Mistakes</h4>
+        <p>Fighting whales — lose troops AND time</p>
+        <p>Sitting on one vein — you become a target</p>
+        <p>Slow march cycling — idle marches kill score</p>
+        <p>Over-defending — rarely best point output</p>
+        <p>Rushing center early — that's where whales are</p>
+      </div>
+    </div>
+
+    <div class="tip">💡 <strong>F2P Advantage:</strong> Eternity's Reach specifically rewards efficiency and positioning over raw power. A well-played F2P account using the mobility strategy can outrank spenders who camp and fight.</div>
+
+    <h3>Troop Formation</h3>
+    <table>
+      <tr><th>Map State</th><th>Setup</th><th>Why</th></tr>
+      <tr><td>Balanced / Default</td><td>Infantry + Cavalry + Archers</td><td>Absorb hits, maintain mobility, burst damage</td></tr>
+      <tr><td>Heavily Contested</td><td>More Infantry (tankier)</td><td>Survive longer in contested zones</td></tr>
+      <tr><td>Quiet Map</td><td>More Cavalry (speed farming)</td><td>Move faster between veins for more captures</td></tr>
+    </table>
+
+    <h3>Hero Setup</h3>
+    <p><strong>Front:</strong> Tank hero with infantry boost &nbsp;|&nbsp; <strong>Mid:</strong> Cavalry speed hero &nbsp;|&nbsp; <strong>Back:</strong> DPS hero with archer boost</p>
+    <p>Avoid stacking only damage heroes or low-survivability frontlines — you need to survive long enough to collect before rotating out.</p>
+  </section>
+
   <section id="alliance">
     <h2>🤝 Alliance Leadership</h2>
     <h3>Rank Structure & Authority</h3>
@@ -594,12 +564,15 @@
   <p style="margin-top:8px;font-size:.75rem;color:#4a5568;">Share freely in Discord. Ask the AI above for current event intel anytime.</p>
 </footer>
 
+
+<footer>
+  <p style="color:var(--gold);margin-bottom:6px;">⚔ DarkKnights Kingshot Strategy Guide · 2026 ⚔</p>
+  <p>Community-sourced strategy guide. Not affiliated with Century Games.</p>
+  <p style="margin-top:8px;font-size:.75rem;color:#4a5568;">Ask the AI above for strategy help anytime.</p>
+</footer>
+
 <script>
-// ══════════════════════════════════════════════════════════════
-//  EMBEDDED GUIDE KNOWLEDGE (from uploaded community guides)
-// ══════════════════════════════════════════════════════════════
-const GUIDE_KNOWLEDGE = `
-=== CESARES FURY GUIDE ===
+const GUIDE_KNOWLEDGE = `=== CESARES FURY GUIDE ===
 Difficulty levels: Easy, Normal, Hard, Nightmare, Insane. Complete one to unlock the next.
 Current difficulty: Normal.
 Hunting: Costs 15 stamina to locate a Rebel, 10 stamina to attack solo. Defeat 50 Rebels for rewards.
@@ -678,220 +651,181 @@ TOP HEROES (community consensus):
 - Rally captains: Amadeus (early), Petra/Marlin (mid), Gen 5-6 mythics (late)
 - Top joiner: Chenko (slot 1, first expedition skill)
 - Garrison defenders: Jabel, Zoe, Hilde, Saul
+
+
+=== ETERNITY'S REACH EVENT ===
+Core concept: Mobility and opportunism beats raw power. Weaker players can outrank stronger ones through speed, timing, and map awareness.
+The developer-intended strategy (camp a vein, fight to hold it) is WRONG for most players. Don't compete head-to-head with whales.
+
+PHASE 1 — Opening Rush (First 5-10 minutes):
+- Send all marches immediately when the event opens
+- Target OUTER RING veins first — avoid the center where whales rush
+- Capture a vein, collect briefly, leave BEFORE enemy rallies arrive
+- Early fighting slows everyone down. Fastest scorers keep collecting continuously.
+- Alliance tip: Assign quadrants of the map to each squad to avoid competing with each other
+
+PHASE 2 — Mid-Game Chaos (10-30 minutes):
+- Center becomes crowded and inefficient — avoid it
+- Focus on fractured veins and abandoned nodes instead
+- Watch the map for: players leaving, newly spawned veins, weak defenders
+- KEY RULE: Points per minute > territory control
+- Alliance leaders: call targets in chat ("North fractured vein open", "Center contested avoid", "Rotate east nodes")
+- Opportunistic plays: capture veins right after someone abandons them, snipe fractured vein spawns
+
+PHASE 3 — Final Push (Last 10 minutes):
+- If ranked HIGH: Defend one strong vein with strongest heroes
+- If ranked LOW: Abandon defense entirely, rapid-capture veins across the map
+- Many players stop moving late in the event — players who keep rotating usually jump several leaderboard positions
+
+ADVANCED TRICK — Leave Veins Early:
+When a vein is almost depleted, leave early. Another player will waste time finishing it while you're already at the next full node.
+High-rank players constantly leave veins early. This is one of the biggest skill separators.
+
+ELITE PLAYER FORMULA:
+- Marches always moving
+- Minimal battles
+- Maximum captures
+Idle time is the #1 score killer.
+
+TROOP FORMATION:
+- Balanced: Infantry (absorb damage) + Cavalry (mobility) + Archers (burst damage)
+- Heavily contested map: Tankier setup (more infantry)
+- Quiet map: Speed farming setup (more cavalry for faster movement between veins)
+
+HERO SETUP:
+- Tank hero (infantry boost) in front
+- DPS hero (archer boost) in back
+- Cavalry speed hero in middle
+- Avoid: stacking only damage heroes, low survivability frontlines
+
+MOST COMMON MISTAKES:
+1. Fighting whales — you lose troops AND time
+2. Sitting on one vein — you become an easy target
+3. Slow march cycling — idle marches kill your score
+4. Over-defending — defense rarely produces the best point output
+5. Rushing center early — that's where the strongest players are
+
+F2P ADVANTAGE: This event specifically rewards efficiency and positioning over raw power. A well-played F2P account can outrank spenders using the mobility strategy.
 - Economy: Blue/rare heroes with gathering speed skills
 `;
 
-const SYSTEM_PROMPT = `You are an expert Kingshot strategy assistant for the DarkKnights alliance guide. Kingshot is a medieval city-building strategy survival game by Century Games.
+const SYSTEM = `You are the DarkKnights alliance strategy AI for Kingshot, a medieval city-building strategy game by Century Games.
 
-You have access to detailed guide knowledge embedded below. Use it to answer questions accurately. For current events you don't have specific knowledge about, provide general strategic advice based on the game mechanics documented in your knowledge base.
+INSTRUCTIONS:
+1. First search the GUIDE KNOWLEDGE below for the answer
+2. If the guide covers it well, answer from the guide and add: [Source: DarkKnights Guide]
+3. If the guide doesn't cover it or the user needs more current/detailed info, answer from your general Kingshot knowledge and add: [Source: External Kingshot community knowledge]
+4. Be specific, practical, and concise. Use bullet points. Bold key terms.
+5. Always answer — never say you don't know without at least providing general strategic advice.
 
-=== EMBEDDED GUIDE KNOWLEDGE ===
-$
-=== CESARES FURY GUIDE ===
-Difficulty levels: Easy, Normal, Hard, Nightmare, Insane. Complete one to unlock the next.
-Current difficulty: Normal.
-Hunting: Costs 15 stamina to locate a Rebel, 10 stamina to attack solo. Defeat 50 Rebels for rewards.
-Rally: Launch combined alliance attack - useful for higher-level Rebels.
-Request Help: Uses Cesares Accord (5 given per event). Alliance members attack for you so you can move on.
-Cesares Captains: All members must contribute damage. Strategy: send 1 troop with no heroes first so everyone qualifies, then go all-in.
-Key tip: Use Diana when marching/rallying to save 10-20% stamina. Total stamina needed: 1,100-1,500.
-Hardest levels (10, 20, 30, 40, 50): Use Request Help option.
+=== DARKNIGHTS GUIDE KNOWLEDGE ===
+${GUIDE_KNOWLEDGE}
+=== END GUIDE KNOWLEDGE ===`;
 
-=== SWORDLAND SHOWDOWN GUIDE ===
-Schedule: Voting (2 days) → Registration (2 days) → Matchmaking (2 days) → Battle (1 hour)
-Eligibility: Top 20 Alliance Power before Voting starts. Max 30 combatants + 10 substitutes per legion.
-Legion 1 Battle: UTC 3/8 14:00 | Legion 2 Battle: UTC 3/8 02:00
-DO NOT vote for both legions. You'll be assigned to the best fit.
-Resources: FREE teleports, travel speed-ups, and healing speed-ups recharge during battle. Use them!
-Points: First capture bonus + hold per minute + gathering at Undercellars.
-Scattered Points: When a held building is lost, points scatter - gather them fast.
-Healing: Leave battlefield to heal, but return takes 12 minutes (battle is only 1 hour - plan carefully).
-No help button in battle - rely on healing speed-ups.
+const WORKER = 'https://kingshot-proxy.burseer.workers.dev';
+let history = [];
 
-BUILDING PRIORITY (Wave 1 - Match Start):
-- Sanctum: 6000 AP / 3000 PP first capture; 1200 AP / 600 PP per min. Priority: HIGH. (2 buildings, one per side. Both worth more than Swordshrine combined.)
-- Bell Tower: 1200 AP / 600 PP; Effect: -50% Building Capture Time. Priority: HIGH. Capture ASAP and garrison all match.
-- Royal Stables: 1200 AP / 600 PP; Effect: -50% Teleport Cooldown. Priority: HIGH. Great for mobility.
-- Abbey: 3000 AP / 1500 PP first capture; 600 AP / 300 PP per min. Priority: LOW. Take ours at start.
-
-BUILDING PRIORITY (Wave 2 - 15 min after start):
-- Swordshrine: 9000 AP / 4500 PP first capture; 1800 AP / 900 PP per min. Priority: MID-HIGH. (But both Sanctums together > Swordshrine.)
-- Hall of Reformation: Effect: +15% Damage Up, -15% Damage Taken. Priority: MID-HIGH if even match or being stomped; MID if stomping.
-- Mercenary Camp: Effect: Weakens enemy garrison, sends mercenaries. Priority: MID.
-
-Special: Undercellars - hundreds of bonus points. Assign small mobile squads to track and secure fast.
-
-=== SANCTUARY BATTLES ===
-Eligibility: R4+ to sign up, alliance needs 20+ members.
-Control rule: Continuous 30-minute occupation = full control. Last occupier wins if nobody hits 30 min.
-One Sanctuary + one Fortress per phase. Auto sign-up next phase if you currently hold it.
-Rewards: First governors to defeat NPC rebels get participation rewards. Prevent solo "tagging" that steals first-clear.
-Defense Phase: After capture, shield activates. NPCs reset for next battle.
-Territory buffs do NOT apply at Sanctuary/Fortress locations.
-
-=== COMPREHENSIVE STRATEGY GUIDE ===
-HERO ROLES:
-- Rally captains: Primary damage determinant. Invest heavily in captain heroes with rally-focused expedition skills.
-- Rally joiners: Only slot 1 hero's first expedition skill applies. Standardize joiner preset. Chenko is top-tier joiner.
-- Economy heroes (blue/rare): Separate track, don't use combat materials on them.
-
-BEAR HUNT:
-- R4+ can start Bear Hunt
-- Rally damage depends mainly on captain's heroes and skill trigger chances
-- Only limited joiner skills apply - higher level skills can displace better ones
-- Leaving alliance clears ranking points
-
-MYSTIC TRIAL:
-- Unlocks Monday of 4th week after server opens
-- Requires TC level 19 + Command Center level 1
-- Alliance bonuses, King/High King perks, position perks, kingdom skills do NOT apply inside
-- Radiant Spire: only Command Center deployment capacity matters
-
-KINGDOM OF POWER:
-- Points only earned if level difference is within 3 of opponent
-- Rallies use level difference between rally initiator and opponent
-- Matchmaking: Saturday; Results: Sunday; Battle: Saturday 10:00 UTC
-
-PROGRESSION MILESTONES:
-- TC 7: Alliance unlocked
-- TC 19 + Command Center 1: Mystic Trial unlocked
-- TC 20: Mastery Forging (Forgehammers on hero gear) unlocked
-
-GEAR PRIORITY:
-- Focus on gear that multiplies troop stats (not temporary buffs)
-- Mithril used to imbue Mythic gear after Legendary ascension
-- Up to 5 imbues per gear piece
-
-TOP HEROES (community consensus):
-- Rally captains: Amadeus (early), Petra/Marlin (mid), Gen 5-6 mythics (late)
-- Top joiner: Chenko (slot 1, first expedition skill)
-- Garrison defenders: Jabel, Zoe, Hilde, Saul
-- Economy: Blue/rare heroes with gathering speed skills
-
-=== END KNOWLEDGE ===
-
-Format your responses with:
-- Bold key terms
-- Bullet points for lists
-- Concrete actionable advice
-- Note F2P vs spender differences where relevant
-Keep responses focused and practical. Current date: March 8, 2026.`;
-
-let chatMessages = [];
-
-async function callClaude(messages, systemOverride) {
-  const sys = systemOverride || SYSTEM_PROMPT;
-  const body = {
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1000,
-    system: sys,
-    messages: messages
-  };
-
-  const res = await fetch("https://kingshot-proxy.burseer.workers.dev", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
+async function callClaude(msgs) {
+  const res = await fetch(WORKER, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 1000,
+      system: SYSTEM,
+      messages: msgs
+    })
   });
-
   if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.error?.message || `API error ${res.status}`);
+    const e = await res.json().catch(() => ({}));
+    throw new Error(e.error?.message || 'API error ' + res.status);
   }
   return await res.json();
 }
 
-function extractText(data) {
-  return (data.content || [])
-    .filter(b => b.type === "text")
-    .map(b => b.text)
-    .join("\n")
-    .trim();
+function getText(data) {
+  return (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
 }
 
-function md(text) {
-  return text
+function renderMd(text) {
+  // Extract source tag
+  let sourceTag = '';
+  let sourceClass = 'source-tag';
+  text = text.replace(/\[Source: ([^\]]+)\]/g, (_, s) => {
+    const isExternal = s.toLowerCase().includes('external') || s.toLowerCase().includes('community');
+    sourceClass = isExternal ? 'source-tag external' : 'source-tag';
+    sourceTag = `<span class="${sourceClass}">📖 ${s}</span>`;
+    return '';
+  });
+
+  let html = text
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
     .replace(/^### (.+)$/gm, '<h4>$1</h4>')
     .replace(/^## (.+)$/gm, '<h4>$1</h4>')
-    .replace(/^# (.+)$/gm, '<h4>$1</h4>')
     .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>)/gs, m => `<ul>${m}</ul>`)
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^(?!<)/gm, '')
+    .replace(/(<li>.*<\/li>\n?)+/gs, m => `<ul>${m}</ul>`)
+    .replace(/\n\n+/g, '</p><p>')
+    .replace(/\n/g, '<br>')
     .trim();
+
+  if (sourceTag) html += '<br>' + sourceTag;
+  return html;
 }
 
-async function fetchEventIntel() {
-  const body = document.getElementById('intelBody');
-  const btn = document.getElementById('refreshBtn');
-  const icon = document.getElementById('refreshIcon');
-  
-  body.innerHTML = '<div class="loading-box"><div class="spinner"></div> Analyzing current events...</div>';
-  btn.disabled = true;
-  icon.style.animation = 'spin .8s linear infinite';
-
-  try {
-    const data = await callClaude([{
-      role: "user",
-      content: "Based on the guide knowledge you have, give me a current event intel briefing for the DarkKnights alliance. Include: 1) What events are currently active or upcoming (it's March 8, 2026 - Swordland Showdown Legion 1 is TODAY at 14:00 UTC, Legion 2 was at 02:00 UTC), 2) Top strategic priorities for today/this week, 3) Quick reminders about key rules members need to know right now. Format it clearly with sections."
-    }]);
-    
-    const text = extractText(data);
-    body.innerHTML = `<div class="intel-content"><p>${md(text)}</p></div>`;
-  } catch(e) {
-    body.innerHTML = `<div class="error-box">⚠ ${e.message || "Failed to connect. Check your API key configuration."}</div>`;
-  }
-
-  btn.disabled = false;
-  icon.style.animation = '';
+function quickAsk(q) {
+  document.getElementById('aiInput').value = q;
+  sendMsg();
 }
 
-function quickAsk(question) {
-  document.getElementById('chatInput').value = question;
-  askAI();
-}
-
-async function askAI() {
-  const input = document.getElementById('chatInput');
-  const btn = document.getElementById('askBtn');
-  const history = document.getElementById('chatHistory');
+async function sendMsg() {
+  const input = document.getElementById('aiInput');
+  const btn = document.getElementById('aiSend');
+  const chat = document.getElementById('aiChat');
   const q = input.value.trim();
-  if (!q) return;
+  if (!q || btn.disabled) return;
 
   input.value = '';
   btn.disabled = true;
 
+  // User bubble
   const userEl = document.createElement('div');
   userEl.className = 'msg-user';
   userEl.textContent = q;
-  history.appendChild(userEl);
+  chat.appendChild(userEl);
 
-  chatMessages.push({ role: 'user', content: q });
+  // Loading
+  const loadEl = document.createElement('div');
+  loadEl.className = 'loading-msg';
+  loadEl.innerHTML = '<div class="spinner"></div> Searching guide...';
+  chat.appendChild(loadEl);
+  chat.scrollTop = chat.scrollHeight;
 
-  const aiEl = document.createElement('div');
-  aiEl.className = 'msg-ai';
-  aiEl.innerHTML = '<div class="loading-box"><div class="spinner"></div></div>';
-  history.appendChild(aiEl);
-  history.scrollTop = history.scrollHeight;
+  history.push({ role: 'user', content: q });
 
   try {
-    const data = await callClaude(chatMessages);
-    const text = extractText(data);
-    aiEl.innerHTML = `<p>${md(text)}</p>`;
-    chatMessages.push({ role: 'assistant', content: text });
+    const data = await callClaude(history);
+    const text = getText(data);
+    history.push({ role: 'assistant', content: text });
+
+    loadEl.remove();
+    const aiEl = document.createElement('div');
+    aiEl.className = 'msg-ai';
+    aiEl.innerHTML = '<p>' + renderMd(text) + '</p>';
+    chat.appendChild(aiEl);
   } catch(e) {
-    aiEl.innerHTML = `<div class="error-box" style="margin:0">⚠ ${e.message || "Failed to connect."}</div>`;
-    chatMessages.pop();
+    loadEl.remove();
+    const errEl = document.createElement('div');
+    errEl.className = 'err-msg';
+    errEl.textContent = '⚠ ' + (e.message || 'Connection error. Try again.');
+    chat.appendChild(errEl);
+    history.pop();
   }
 
   btn.disabled = false;
-  history.scrollTop = history.scrollHeight;
+  chat.scrollTop = chat.scrollHeight;
+  input.focus();
 }
-
-// Auto-load on page start
-window.addEventListener('DOMContentLoaded', fetchEventIntel);
 </script>
-
 </body>
 </html>
