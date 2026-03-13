@@ -554,6 +554,11 @@
     <a href="#research">&#x1F52C; Research</a>
     <a href="#events">&#x1F4C5; Events</a>
     <a href="#bear-hunt">&#x1F43B; Bear Hunt</a>
+    <a href="#viking">&#x1F6E1; Viking</a>
+    <a href="#alliance-champ">&#x1F3C6; Alliance Champ</a>
+    <a href="#hog">&#x1F451; Hall of Gov</a>
+    <a href="#all-out">&#x2694; All Out</a>
+    <a href="#moonlit">&#x1F319; Moonlit Promise</a>
     <a href="#kvk">&#x2694; KvK</a>
     <a href="#er">&#x2728; Eternity's Reach</a>
     <a href="#f2p">&#x1F4B0; F2P</a>
@@ -579,6 +584,11 @@
       <button class="ai-quick-btn" onclick="quickAsk('What rewards can I earn in the current Kingshot events?')">&#x1F381; Event rewards</button>
       <button class="ai-quick-btn" onclick="quickAsk('Any tips for F2P players in Kingshot right now?')">&#x1F4B0; F2P tips</button>
       <button class="ai-quick-btn" onclick="quickAsk('What is the optimal Bear Hunt rally formation in Kingshot?')">&#x1F43B; Bear Hunt setup</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How does Viking Vengeance work and what should my alliance do?')">&#x1F6E1; Viking Vengeance</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How do we win Alliance Championship in Kingshot?')">&#x1F3C6; Alliance Champ</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What is the best Hall of Governors strategy for our alliance?')">&#x1F451; Hall of Governors</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How do I score in All Out without losing my troops?')">&#x2694; All Out tips</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How does Moonlit Promise work and what should I buy in the shop?')">&#x1F319; Moonlit Promise</button>
     </div>
     <div class="ai-chat-history" id="chatHistory"></div>
   </div>
@@ -776,23 +786,26 @@
 <section id="events">
   <div class="section-header">
     <span class="section-icon">&#x1F4C5;</span>
-    <h2>Weekly Events Overview</h2>
+    <h2>Events Overview</h2>
   </div>
   <div class="card card-gold">
-    <p>Events are the fastest way to earn premium resources. Plan your upgrades, training, and research to align with event requirements &mdash; doing needed actions <em>during</em> events doubles their value.</p>
+    <p>Events are the fastest way to earn premium resources. Plan your upgrades, training, and research to align with event requirements &mdash; doing needed actions <em>during</em> events doubles their value. Event timing can vary by server age and creation date &mdash; always cross-reference with the in-game event panel.</p>
   </div>
-  <h3>Key Recurring Events</h3>
+  <h3>Core Recurring Events</h3>
   <ul class="tips">
-    <li><strong>Cesares Fury:</strong> Score points by performing specific actions (building, researching, training). Plan ahead &mdash; activate large upgrades at the start of each fury phase.</li>
-    <li><strong>Swordland Showdown:</strong> Alliance vs Alliance territorial event. Coordinate rally timing with R4/R5 leaders. Prioritize resource tiles near alliance territory.</li>
+    <li><strong>Cesares Fury:</strong> Score points each phase via building upgrades, research, troop training, and gear crafting. Queue your longest upgrades to complete <em>during</em> each fury phase &mdash; save speed-ups to double the value.</li>
+    <li><strong>Swordland Showdown:</strong> Alliance vs Alliance territorial event. Coordinate rally timing with R4/R5 leaders. Prioritize resource tiles near alliance territory. Discord communication is critical.</li>
     <li><strong>Growth Missions:</strong> Daily and weekly task lists. Complete them for significant free rewards &mdash; tasks align with normal gameplay.</li>
-    <li><strong>Alliance Championships:</strong> High-value alliance-wide battle events. Attendance matters &mdash; show up and follow leadership calls.</li>
     <li><strong>Gear Events:</strong> Craft and upgrade gear during these windows for bonus rewards. Stock materials in advance.</li>
     <li><strong>Kingdom Events:</strong> Server-wide competitions. Focus on your contribution to alliance leaderboard placement.</li>
   </ul>
   <div class="callout callout-warn">
     <span class="callout-label">&#x26A0; F2P Event Rule</span>
     Never spend gems on event point purchases unless you can reach a reward tier that pays back more gems than you spent. Calculate first, spend second.
+  </div>
+  <div class="callout callout-tip">
+    <span class="callout-label">&#x2714; Universal Principle</span>
+    Save speed-ups, roulette tokens, hero shards, and upgrade materials for the correct event stage window &mdash; spending them outside events loses most of their strategic value.
   </div>
 </section>
 
@@ -827,6 +840,199 @@
     <p>Poll members for best time slots and trigger both traps at different times to maximize participation. To prevent instant-fill and distribute damage fairly:</p>
     <p style="margin-top:8px;"><strong>Joiner Cap Formula:</strong> Take Rally Capacity &rarr; Subtract Leader's Squad Capacity &rarr; Divide by expected joiners &rarr; Set that as the joiner troop limit.</p>
   </div>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- VIKING VENGEANCE -->
+<section id="viking">
+  <div class="section-header">
+    <span class="section-icon">&#x1F6E1;</span>
+    <h2>Viking Vengeance</h2>
+  </div>
+  <div class="card card-blue">
+    <p>Biweekly alliance defense event &mdash; 20 waves of Viking attackers over ~40 minutes. Win by coordinating reinforcements and kill distribution across all active members, not just surviving individually.</p>
+  </div>
+  <h3>Wave Targeting Rules</h3>
+  <ul class="tips">
+    <li>Waves <strong>10 and 20</strong> hit the Alliance HQ &mdash; defend these with your strongest heroes and defensive marches</li>
+    <li>Waves <strong>7, 14, and 17</strong> target online members only &mdash; maximize login attendance for these windows</li>
+    <li>If your city burns <strong>twice</strong>, you are out of targeting but can still score by reinforcing others</li>
+    <li>To successfully defend a wave, you must kill at least <strong>50% of the attackers</strong></li>
+    <li><strong>Shields do NOT work</strong> against Viking attacks &mdash; do not waste them</li>
+  </ul>
+  <h3>The Three Non-Negotiables (High Score Meta)</h3>
+  <div class="card card-gold">
+    <ul class="tips" style="margin:0;">
+      <li><strong>Empty your city</strong> before the event and send your troops to reinforce others &mdash; a full home city steals kills from reinforcements</li>
+      <li><strong>Do not heal mid-event</strong> unless you immediately send healed troops back out &mdash; healing returns troops home and disrupts distribution</li>
+      <li><strong>Do not extinguish fires mid-event</strong> &mdash; this disrupts allied scoring flow</li>
+    </ul>
+  </div>
+  <h3>Leader Execution Plan</h3>
+  <ul class="tips">
+    <li>Schedule start time when the maximum number of members can be online (for waves 7, 14, 17)</li>
+    <li>Create reinforcement pairs or triads before the event so every city has incoming troop support</li>
+    <li>Reserve strongest heroes for HQ defense &mdash; recall key marches around waves 9 and 19 so they are ready for waves 10 and 20</li>
+    <li>Create a Discord listing of rally leaders and reinforcement assignments before event start</li>
+    <li>Run continuous rally chains: Leader 1 engages, Leader 2 prepares, Leader 3 prepares next &mdash; no gaps</li>
+  </ul>
+  <h3>Stamina Preparation</h3>
+  <ul class="tips">
+    <li><strong>24&ndash;48 hours before event:</strong> do NOT hunt world monsters or spend stamina on small events</li>
+    <li>Save all stamina and stamina potions; efficient players bring 3,000&ndash;6,000 stamina into the event</li>
+    <li>Claim alliance gifts during the event window to supplement stamina</li>
+    <li>Pre-build march presets so members can join rallies instantly when timers open</li>
+  </ul>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- ALLIANCE CHAMPIONSHIP -->
+<section id="alliance-champ">
+  <div class="section-header">
+    <span class="section-icon">&#x1F3C6;</span>
+    <h2>Alliance Championship</h2>
+  </div>
+  <div class="card card-gold">
+    <p>Weekly alliance event &mdash; six alliances compete across <strong>five rounds</strong>. Members register into one of three lanes; the alliance that wins two of three lanes each round wins the round. R4/R5 can reshuffle lanes between rounds based on opponent history.</p>
+  </div>
+  <h3>The Two-Lane Win Strategy</h3>
+  <div class="card card-blue">
+    <p><strong>Build two strong lanes and one sacrifice lane.</strong> Do not try to max all three equally &mdash; you win by taking 2 of 3, not 3 of 3. Deliberately place your weakest lane against their strongest (accept the loss) and align your two stronger lanes against their weaker ones.</p>
+    <p style="margin-top:8px;">Only the power of the <strong>first 20 strongest members</strong> in each lane counts for the power score. A single participant can only score a limited number of KOs per round, so one whale cannot carry alone.</p>
+  </div>
+  <h3>Lane Management</h3>
+  <ul class="tips">
+    <li>Treat round one as incomplete information &mdash; use visible opponent history from rounds 1&ndash;2 to counter-stack lanes in rounds 3&ndash;5</li>
+    <li>Assign a single <strong>lane planner</strong> for the whole event &mdash; multiple officers reshuffling without coordination loses even strong alliances</li>
+    <li>Default troop formation for Championship: <strong>50% Infantry / 20% Lancers / 30% Marksman</strong> &mdash; adjust per lane captain instructions</li>
+    <li>Standard lane distribution: alternate top-power members across Lanes 1 and 2; remaining members fill Lane 3</li>
+  </ul>
+  <h3>Registration Buff Policy</h3>
+  <div class="callout callout-warn">
+    <span class="callout-label">&#x26A0; Alliance Decision Required</span>
+    Sources disagree on registration buffs. Some say buffs lock in at registration and should be active for max fight strength. Others report registering fully buffed inflates matchmaking power and puts you in harder brackets. <strong>Pick ONE policy for your alliance and stick to it for a full cycle</strong> &mdash; inconsistency within the alliance is worse than a slightly suboptimal policy.
+  </div>
+  <ul class="tips">
+    <li>If you are winning your tier comfortably &rarr; register with buffs active</li>
+    <li>If you are consistently matched against alliances far above your power &rarr; trial registering without temporary buffs</li>
+  </ul>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- HALL OF GOVERNORS -->
+<section id="hog">
+  <div class="section-header">
+    <span class="section-icon">&#x1F451;</span>
+    <h2>Hall of Governors</h2>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-label">&#x2139; Note</span>
+    Hall of Governors is primarily a first- and second-generation kingdom event. Later kingdoms may see it replaced by <strong>Strongest Governor</strong> (a cross-kingdom leaderboard format). Stage structures differ across the 1st, 2nd, 3rd, and later iterations.
+  </div>
+  <h3>Win Conditions</h3>
+  <ul class="tips">
+    <li><strong>Milestone wins</strong> (realistic default): efficiently time resource spending to the correct stage days</li>
+    <li><strong>Leaderboard wins</strong> (season hero): finishing in the top ranks &mdash; approximately top 10 required for the season hero unlock in early Hall of Governors</li>
+  </ul>
+  <h3>Top Score Drivers</h3>
+  <div class="card card-gold">
+    <p><strong>Hero Roulette spins</strong> are the largest single point spike &mdash; each spin awards ~90,000 points. Save all roulette tokens for the Hero Development stage.</p>
+    <p style="margin-top:8px;"><strong>Troop training</strong> scales heavily by tier &mdash; high-tier troops earn dramatically more points per unit. Train during the Train Troops stage only.</p>
+  </div>
+  <h3>Alliance Operating Modes</h3>
+  <div class="priority-grid">
+    <div class="priority-item p2">
+      <div class="priority-label">Mode A</div>
+      <div class="priority-title">Milestone-First</div>
+      <div class="priority-desc">Everyone clears best milestones without draining long-term stockpiles. Best for most members each cycle.</div>
+    </div>
+    <div class="priority-item p1">
+      <div class="priority-label">Mode B</div>
+      <div class="priority-title">Planned Leaderboard Push</div>
+      <div class="priority-desc">1&ndash;3 designated pushers spike on troop day and roulette day. Rest of alliance does milestones only &mdash; avoid competing with your own pushers.</div>
+    </div>
+  </div>
+  <h3>Stage-by-Stage Leader Checklist</h3>
+  <ul class="tips">
+    <li><strong>Construction &amp; Research stages:</strong> Queue long upgrades to complete during the stage; maximize alliance help usage to reduce time cost</li>
+    <li><strong>Hero Development stage:</strong> Hold roulette tokens and hero shard ascensions &mdash; this is when they are worth the most points</li>
+    <li><strong>Train Troops stage:</strong> Pre-plan training capacity so queues finish during the stage; higher tiers are disproportionately valuable</li>
+    <li><strong>Beast Slay / Gather stages:</strong> Coordinate rally schedules and stamina usage as a group</li>
+    <li><strong>Gear &amp; Charm stages:</strong> Stockpile upgrade materials and only spend them on-stage for maximum score</li>
+  </ul>
+  <div class="callout callout-tip">
+    <span class="callout-label">&#x2714; F2P Leader Note</span>
+    Pushing for the season hero is only justified early-server when it meaningfully changes rally strength. Mid-server, milestone-first is usually more rational &mdash; top-rank rewards are shard-gated and the shard types aren't always interchangeable.
+  </div>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- ALL OUT -->
+<section id="all-out">
+  <div class="section-header">
+    <span class="section-icon">&#x2694;</span>
+    <h2>All Out (Kill Event)</h2>
+  </div>
+  <div class="card card-blue">
+    <p>Two-day PvP event running every few weeks. Points are earned by defeating or severely wounding enemy troops via city attacks, tile hits, or defending attacks. Points scale by troop tier &mdash; higher-tier enemies are worth more per kill.</p>
+  </div>
+  <h3>Safe Scoring Strategy (Recommended for F2P)</h3>
+  <div class="callout callout-tip">
+    <span class="callout-label">&#x2714; Low-Risk Method</span>
+    Attack <strong>resource gathering tiles</strong> instead of cities. Tile hits generate points without risking direct troop deaths. City attacks can cause permanent troop deaths &mdash; only do them if you are prepared to absorb losses.
+  </div>
+  <ul class="tips">
+    <li>Keep a <strong>shield active</strong> whenever you are offline or not actively fighting &mdash; non-negotiable during peak hours</li>
+    <li><strong>Garrison troops</strong> in alliance structures when idle rather than leaving them in your city</li>
+    <li>Scout enemy cities before attacking &mdash; check hospital capacity to estimate risk</li>
+    <li>Respect your server's community-enforced rules (NAPs, territory restrictions, rally bans) &mdash; violating them invites large-scale retaliation</li>
+  </ul>
+  <h3>Leader Pre-Event Warnings</h3>
+  <ul class="tips">
+    <li>Require all members to read your alliance's current All Out rules <em>before</em> the event starts</li>
+    <li>Warn newer members: city attacks can permanently kill troops in ways that surprise players used to PvE</li>
+    <li>Post your server's political rules (NAPs etc.) in Discord ahead of the event</li>
+  </ul>
+  <h3>Recovery After Losses</h3>
+  <div class="card card-gold">
+    <p><strong>Batch healing:</strong> Heal in smaller increments so alliance help can reduce timers efficiently, rather than burning speed-ups and gems on large single heal blocks. This is often the difference between stabilizing an account and quitting after a bad All Out.</p>
+  </div>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- MOONLIT PROMISE -->
+<section id="moonlit">
+  <div class="section-header">
+    <span class="section-icon">&#x1F319;</span>
+    <h2>Moonlit Promise</h2>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-label">&#x2139; Note</span>
+    Moonlit Promise is a month-long Ramadan special event. Do not confuse it with "Moonlit Celebration," which is a separate festival-style event with different mechanics and timing.
+  </div>
+  <h3>How It Works</h3>
+  <ul class="tips">
+    <li><strong>Radiant Wishes:</strong> Use Crescent Seekers to light lanterns and earn Crescent Emblems with multipliers (1x 60% / 2x 20% / 3x 10% / 5x 6% / 10x 4%)</li>
+    <li><strong>Ally Blessings:</strong> After lighting 30 lanterns, receive 1 Mythic Hero Shard and share 2 Crescent Emblems with members &mdash; up to 20 blessing receives per day (resets daily)</li>
+    <li><strong>Crescent Bazaar:</strong> Spend Crescent Emblems on Mythic/Lucky gear, Governor Gear Chests, Forge Hammers, Charm Designs, speed-ups, and emotes</li>
+    <li><strong>End-of-event:</strong> Unused Crescent Emblems and Seekers convert to food resources &mdash; spend down before the event ends</li>
+  </ul>
+  <h3>Shop Priority (F2P)</h3>
+  <div class="card card-gold">
+    <p>The shop does not reset daily, so plan your full-event purchase order rather than optimizing day-by-day. Community consensus: <strong>Forge Hammers</strong> are the highest-value F2P buy. Gear and charm-related items come next, especially if Hall of Governors is upcoming &mdash; buy now, but delay the actual upgrade until the correct HoG stage.</p>
+  </div>
+  <h3>Alliance Coordination Protocol</h3>
+  <ul class="tips">
+    <li>Set a daily <strong>"Blessings open"</strong> posting rule &mdash; members post in Discord after hitting the 30-lantern threshold so others can claim ally blessings before the daily cap</li>
+    <li>Blessing limits reset daily &mdash; coordinate timing so members claim from as many active blessers as possible each day</li>
+    <li>Set a daily target for mission completion &mdash; consistent daily play is the main limiter, not spending</li>
+    <li>Post an end-of-event reminder to spend remaining currency before it converts to bread</li>
+  </ul>
 </section>
 
 <div class="divider">&#x2756; &#x2756; &#x2756;</div>
@@ -991,7 +1197,7 @@
 
 <!-- AI CHAT SCRIPT -->
 <script>
-const WORKER_URL = 'https://kingshot-proxy.burseer.workers.dev';
+const WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
 
 const GUIDE_KNOWLEDGE = `
 === DARKKNIGHT ALLIANCE GUIDE KNOWLEDGE ===
@@ -1004,6 +1210,16 @@ ETERNITY'S REACH: Stage-based event awarding Charm Items. Hero recommendations: 
 
 BEAR HUNT: Never miss Bear Hunt - Forge Hammers have no other source. Formation: 1/10/89 (Infantry/Cavalry/Archer). Rally leader must be fully geared. Chenko secondary march boosts Lethality. R4/R5 joiner cap formula: (Rally Capacity - Leader Squad) divided by Expected Joiners.
 
+VIKING VENGEANCE: Biweekly alliance defense event - 20 waves over ~40 minutes. Waves 10 and 20 hit the Alliance HQ. Waves 7, 14, and 17 hit online members only. Shields do NOT work against Viking attacks. The three non-negotiables: (1) Empty your city before the event and send troops to reinforce others. (2) Do not heal mid-event unless you immediately send healed troops back out. (3) Do not extinguish fires mid-event. Save 3,000-6,000 stamina before event. Run continuous rally chains: Leader 1 engages, Leader 2 prepares, Leader 3 prepares next.
+
+ALLIANCE CHAMPIONSHIP: Weekly event - six alliances compete across five rounds. Members register into one of three lanes. Win condition: take 2 of 3 lanes each round. Strategy: deliberately build two strong lanes and one sacrifice lane. Only first 20 strongest members per lane count toward power score. Default troop formation: 50% Infantry / 20% Lancers / 30% Marksman. Assign a single lane planner for the whole event. Registration buff policy: pick ONE policy and stick to it - some guides say buff up before registering; others say buffing inflates matchmaking power into harder brackets.
+
+HALL OF GOVERNORS: Biweekly multi-stage scoring event, primarily in first and second generations of a kingdom. Later kingdoms may see Strongest Governor instead. Biggest score drivers: Hero Roulette spins (~90,000 points each - save all roulette tokens for Hero Development stage), high-tier troop training. Two alliance modes: Mode A = milestone-first (everyone clears milestones without draining stockpiles); Mode B = planned leaderboard push (1-3 designated pushers spike on troop day and roulette day while rest do milestones only). Stage-by-stage rule: only spend upgrade materials, roulette tokens, and shards during their corresponding stage windows.
+
+ALL OUT: Two-day PvP kill event every few weeks. Points scale by troop tier. Safe F2P scoring: attack resource gathering tiles instead of cities - tile hits generate points without risking permanent troop deaths. City attacks can permanently kill troops. Keep shield active when offline. Garrison troops in alliance structures when idle. Recovery after losses: batch heal in small increments so alliance help can reduce timers rather than burning speed-ups on large heal blocks. Always read and enforce server NAP/political rules before the event.
+
+MOONLIT PROMISE: Month-long Ramadan special event (NOT the same as Moonlit Celebration). Two components: Radiant Wishes (light lanterns with Crescent Seekers to earn Crescent Emblems with multipliers) and Crescent Bazaar (spend emblems on gear, Forge Hammers, charms, speed-ups). Ally blessings: after 30 lanterns, share 2 emblems with members, up to 20 blessing receives per day (resets daily). Shop priority: Forge Hammers first (best F2P value), then gear/charm items. End of event: unused currency converts to food - spend down before event ends. Alliance protocol: members post "Blessings open" in Discord after hitting 30-lantern threshold so others can claim daily blessings.
+
 HERO TIER LIST: S-Tier: Prince William (rally leader), Quinn (archer support), Chenko (lethality). A-Tier: Helga, Amadeus, Diana. B-Tier: Rosa, Jaeger. Focus resources on one primary hero first.
 
 F2P PRIORITY: VIP Level first, then Speed-ups during events, then Hero shards on William/Chenko/Quinn rotation. Never spend gems on resource packs or random chests.
@@ -1015,7 +1231,7 @@ ${GUIDE_KNOWLEDGE}
 
 When answering questions:
 1. First check if the embedded guide knowledge above answers the question
-2. For current events, search community sources like kingshotguides.com, kingshotmastery.com, kingshotdata.com, reddit, YouTube
+2. For current events, search community sources like kingshotguides.com, kingshotmastery.com, kingshotdata.com
 3. Always be specific and actionable
 4. Format responses with clear sections using **bold** for key terms
 5. Keep responses focused - 3-5 bullet points or paragraphs max unless more is needed
