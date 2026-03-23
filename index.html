@@ -1501,36 +1501,28 @@ async function callWorker(messages) {
   const response = await fetch(WORKER_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
-      system: SYSTEM_PROMPT,
-      messages: messages,
-      tools: [{ type: 'web_search_20250305', name: 'web_search' }]
-    })
+    body: JSON.stringify({ messages })
   });
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
-    throw new Error(err.error?.message || 'Worker error ' + response.status);
+    throw new Error(err.error || 'Worker error ' + response.status);
   }
   return await response.json();
 }
 
 function extractText(data) {
-  return (data.content || [])
-    .filter(b => b.type === 'text')
-    .map(b => b.text)
-    .join('\n')
-    .trim();
+  return data?.choices?.[0]?.message?.content?.trim() || '';
 }
 
 function formatMarkdown(text) {
   return text
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^# (.+)$/gm, '<h3>$1</h3>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/^[-\u2022] (.+)$/gm, '<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
     .replace(/(<li>[\s\S]*?<\/li>\n?)+/g, function(m){ return '<ul>' + m + '</ul>'; })
     .replace(/\n\n/g, '</p><p>')
     .replace(/^(?!<[hul])(.+)$/gm, '<p>$1</p>')
@@ -1565,6 +1557,7 @@ async function askAI() {
   try {
     const data = await callWorker(chatMessages);
     const text = extractText(data);
+    if (!text) throw new Error('Empty response from AI.');
     loadingBubble.className = 'chat-bubble assistant';
     loadingBubble.innerHTML = formatMarkdown(text) +
       '<div class="source-tag">&#x1F4D6; DarkKnights Guide + Community Knowledge</div>';
