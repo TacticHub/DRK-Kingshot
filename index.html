@@ -1497,23 +1497,6 @@ Today's date: ${new Date().toLocaleDateString('en-US', {weekday:'long', year:'nu
 
 let chatMessages = [];
 
-async function callWorker(messages) {
-  const response = await fetch(WORKER_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages })
-  });
-  if (!response.ok) {
-    const err = await response.json().catch(() => ({}));
-    throw new Error(err.error || 'Worker error ' + response.status);
-  }
-  return await response.json();
-}
-
-function extractText(data) {
-  return data?.choices?.[0]?.message?.content?.trim() || '';
-}
-
 function formatMarkdown(text) {
   return text
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
@@ -1552,19 +1535,65 @@ async function askAI() {
   addBubble('user', question, false);
   chatMessages.push({ role: 'user', content: question });
 
-  const loadingBubble = addBubble('assistant', '&#x2694; Consulting the alliance archives\u2026', true);
+  const hist = document.getElementById('chatHistory');
+  const responseBubble = addBubble('assistant', '&#x2694; Consulting the alliance archives\u2026', true);
+  let fullText = '';
 
   try {
-    const data = await callWorker(chatMessages);
-    const text = extractText(data);
-    if (!text) throw new Error('Empty response from AI.');
-    loadingBubble.className = 'chat-bubble assistant';
-    loadingBubble.innerHTML = formatMarkdown(text) +
-      '<div class="source-tag">&#x1F4D6; DarkKnights Guide + Community Knowledge</div>';
-    chatMessages.push({ role: 'assistant', content: text });
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatMessages })
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.error || 'Worker error ' + response.status);
+    }
+
+    // Parse OpenAI SSE stream
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    responseBubble.className = 'chat-bubble assistant';
+    responseBubble.innerHTML = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop(); // keep incomplete trailing line
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const data = line.slice(6).trim();
+        if (data === '[DONE]') break;
+        try {
+          const json = JSON.parse(data);
+          const delta = json.choices?.[0]?.delta?.content;
+          if (delta) {
+            fullText += delta;
+            responseBubble.innerHTML = formatMarkdown(fullText);
+            hist.scrollTop = hist.scrollHeight;
+          }
+        } catch(e) { /* incomplete chunk, skip */ }
+      }
+    }
+
+    if (fullText) {
+      responseBubble.innerHTML = formatMarkdown(fullText) +
+        '<div class="source-tag">&#x1F4D6; DarkKnights Guide + Community Knowledge</div>';
+      chatMessages.push({ role: 'assistant', content: fullText });
+    } else {
+      throw new Error('No response received from the AI.');
+    }
+
   } catch (err) {
-    loadingBubble.className = 'chat-bubble assistant';
-    loadingBubble.innerHTML = '<strong>Error:</strong> ' + err.message +
+    responseBubble.className = 'chat-bubble assistant';
+    responseBubble.innerHTML = '<strong>Error:</strong> ' + err.message +
       '<br><small>Check that your Cloudflare Worker URL is configured correctly.</small>';
   }
 
