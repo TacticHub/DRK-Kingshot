@@ -236,239 +236,6 @@
     margin-top: 10px;
   }
 
-  /* ── GIFT CODES BANNER ── */
-  .gift-banner {
-    background: linear-gradient(90deg, rgba(201,168,76,0.08) 0%, rgba(139,26,26,0.08) 100%);
-    border-bottom: 1px solid rgba(201,168,76,0.25);
-    position: relative;
-    overflow: hidden;
-  }
-  .gift-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 120px,
-      rgba(201,168,76,0.03) 120px,
-      rgba(201,168,76,0.03) 121px
-    );
-    pointer-events: none;
-  }
-  .gift-banner-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .gift-banner-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 0 8px;
-  }
-  .gift-banner-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Cinzel', serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .gift-banner-label span { font-size: 1rem; }
-  .gift-codes-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-    flex: 1;
-  }
-  .gift-no-codes {
-    font-family: 'Crimson Pro', serif;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-  .gift-code-pill {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 5px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-    cursor: pointer;
-  }
-  .gift-code-pill:hover { border-color: var(--gold); }
-  .gift-code-text {
-    font-family: 'Cinzel', serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    color: var(--gold-light);
-    padding: 5px 10px;
-    font-weight: 600;
-  }
-  .gift-code-copy {
-    background: rgba(201,168,76,0.15);
-    border: none;
-    border-left: 1px solid rgba(201,168,76,0.2);
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 0.7rem;
-    padding: 5px 8px;
-    transition: background 0.15s, color 0.15s;
-    line-height: 1;
-  }
-  .gift-code-copy:hover { background: rgba(201,168,76,0.3); color: var(--gold); }
-  .gift-code-copy.copied { color: var(--green-bright); }
-  .gift-code-expiry {
-    font-family: 'Crimson Pro', serif;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    padding-right: 8px;
-  }
-  .gift-code-expiry.expiring-soon { color: var(--orange); }
-  .gift-banner-toggle {
-    background: none;
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 4px;
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 0.65rem;
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.08em;
-    padding: 4px 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .gift-banner-toggle:hover { color: var(--gold); border-color: rgba(201,168,76,0.5); }
-  .gift-banner-edit {
-    display: none;
-    padding: 0 0 14px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    margin-top: 4px;
-  }
-  .gift-banner-edit.open { display: block; }
-  .gift-edit-title {
-    font-family: 'Cinzel', serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    color: var(--text-dim);
-    margin: 12px 0 10px;
-    text-transform: uppercase;
-  }
-  .gift-edit-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-  .gift-edit-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .gift-edit-input {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 4px;
-    color: var(--text);
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    padding: 6px 10px;
-    letter-spacing: 0.05em;
-    outline: none;
-    transition: border-color 0.2s;
-    -webkit-appearance: none;
-  }
-  .gift-edit-input:focus { border-color: var(--gold); }
-  .gift-edit-input.code-input { width: 180px; text-transform: uppercase; }
-  .gift-edit-input.date-input { width: 140px; }
-  .gift-edit-remove {
-    background: rgba(139,26,26,0.2);
-    border: 1px solid rgba(139,26,26,0.3);
-    border-radius: 4px;
-    color: #c05050;
-    cursor: pointer;
-    font-size: 0.8rem;
-    padding: 5px 9px;
-    transition: background 0.15s;
-    line-height: 1;
-  }
-  .gift-edit-remove:hover { background: rgba(139,26,26,0.4); }
-  .gift-edit-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-  .gift-edit-add {
-    background: rgba(74,140,63,0.15);
-    border: 1px solid rgba(109,194,95,0.3);
-    border-radius: 4px;
-    color: var(--green-bright);
-    cursor: pointer;
-    font-family: 'Cinzel', serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    padding: 6px 12px;
-    transition: background 0.15s;
-  }
-  .gift-edit-add:hover { background: rgba(74,140,63,0.3); }
-  .gift-edit-save {
-    background: rgba(201,168,76,0.15);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 4px;
-    color: var(--gold);
-    cursor: pointer;
-    font-family: 'Cinzel', serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    padding: 6px 14px;
-    transition: background 0.15s;
-  }
-  .gift-edit-save:hover { background: rgba(201,168,76,0.3); }
-  .gift-edit-hint {
-    font-family: 'Crimson Pro', serif;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 10px;
-    font-style: italic;
-  }
-  .gift-copy-toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(60px);
-    background: var(--dark3);
-    border: 1px solid rgba(201,168,76,0.4);
-    border-radius: 6px;
-    color: var(--gold);
-    font-family: 'Cinzel', serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    padding: 10px 20px;
-    z-index: 999;
-    opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    pointer-events: none;
-  }
-  .gift-copy-toast.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-  }
-
-  @media (max-width: 768px) {
-    .gift-codes-row { gap: 6px; }
-    .gift-edit-input.code-input { width: 150px; }
-    .gift-edit-input.date-input { width: 130px; }
-  }
-  @media (max-width: 480px) {
-    .gift-banner-label { font-size: 0.65rem; }
-    .gift-code-text { font-size: 0.65rem; padding: 4px 8px; }
-    .gift-edit-input.code-input { width: 100%; }
-    .gift-edit-input.date-input { width: 100%; }
-    .gift-edit-row { flex-direction: column; align-items: flex-start; }
-  }
-
   /* ── MAIN CONTENT ── */
   main { padding: 40px 0 60px; }
 
@@ -798,29 +565,6 @@
     <a href="#resources">&#x1F4DA; Resources</a>
   </div>
 </nav>
-
-<!-- GIFT CODES BANNER -->
-<div class="gift-banner" id="giftBanner">
-  <div class="gift-banner-inner">
-    <div class="gift-banner-header">
-      <div class="gift-banner-label"><span>🎁</span> Active Gift Codes</div>
-      <div class="gift-codes-row" id="giftCodesRow">
-        <!-- populated by JS -->
-      </div>
-      <button class="gift-banner-toggle" id="giftToggleBtn" onclick="toggleGiftEdit()">✎ Edit Codes</button>
-    </div>
-    <div class="gift-banner-edit" id="giftEditPanel">
-      <div class="gift-edit-title">Manage Active Codes — R4/R5 Only</div>
-      <div class="gift-edit-list" id="giftEditList"></div>
-      <div class="gift-edit-actions">
-        <button class="gift-edit-add" onclick="addGiftRow()">+ Add Code</button>
-        <button class="gift-edit-save" onclick="saveGiftCodes()">✔ Save &amp; Close</button>
-      </div>
-      <div class="gift-edit-hint">Codes are saved in this browser. After updating, share the new code list in Discord for members on other devices.</div>
-    </div>
-  </div>
-</div>
-<div class="gift-copy-toast" id="giftToast">Code copied!</div>
 
 <!-- AI CHAT HERO -->
 <div class="ai-hero" id="ask-ai">
@@ -1455,88 +1199,52 @@
 <script>
 const WORKER_URL = 'https://openai-3b56.burseer.workers.dev';
 
-const GUIDE_KNOWLEDGE = `
-=== DARKKNIGHT ALLIANCE GUIDE KNOWLEDGE ===
-
-CESARES FURY: Score points each phase by performing specific game actions. Key actions include: building upgrades, research completion, troop training, gear crafting. Align your planned upgrades to start at the beginning of each fury phase. F2P tip: save speed-ups for Cesares Fury to double the value of actions.
-
-SWORDLAND SHOWDOWN: Alliance vs Alliance territorial event. Coordinate rally timing with leadership. Prioritize resource tiles near alliance territory. Rally leaders should use Archer-heavy formation. Communication via Discord is critical during this event.
-
-ETERNITY'S REACH: Stage-based event awarding Charm Items. Hero recommendations: primary = Prince William or Amadeus, support = Chenko (Lethality aura), utility = Quinn (Archer Attack). Upgrade Charms in order: Attack > Lethality > HP > Defense. F2P can consistently clear stages 8-10 for steady Charm progress.
-
-BEAR HUNT: Never miss Bear Hunt - Forge Hammers have no other source. Formation: 1/10/89 (Infantry/Cavalry/Archer). Rally leader must be fully geared. Chenko secondary march boosts Lethality. R4/R5 joiner cap formula: (Rally Capacity - Leader Squad) divided by Expected Joiners.
-
-VIKING VENGEANCE: Biweekly alliance defense event - 20 waves over ~40 minutes. Waves 10 and 20 hit the Alliance HQ. Waves 7, 14, and 17 hit online members only. Shields do NOT work against Viking attacks. The three non-negotiables: (1) Empty your city before the event and send troops to reinforce others. (2) Do not heal mid-event unless you immediately send healed troops back out. (3) Do not extinguish fires mid-event. Save 3,000-6,000 stamina before event. Run continuous rally chains: Leader 1 engages, Leader 2 prepares, Leader 3 prepares next.
-
-ALLIANCE CHAMPIONSHIP: Weekly event - six alliances compete across five rounds. Members register into one of three lanes. Win condition: take 2 of 3 lanes each round. Strategy: deliberately build two strong lanes and one sacrifice lane. Only first 20 strongest members per lane count toward power score. Default troop formation: 50% Infantry / 20% Lancers / 30% Marksman. Assign a single lane planner for the whole event. Registration buff policy: pick ONE policy and stick to it - some guides say buff up before registering; others say buffing inflates matchmaking power into harder brackets.
-
-HALL OF GOVERNORS: Biweekly multi-stage scoring event, primarily in first and second generations of a kingdom. Later kingdoms may see Strongest Governor instead. Biggest score drivers: Hero Roulette spins (~90,000 points each - save all roulette tokens for Hero Development stage), high-tier troop training. Two alliance modes: Mode A = milestone-first (everyone clears milestones without draining stockpiles); Mode B = planned leaderboard push (1-3 designated pushers spike on troop day and roulette day while rest do milestones only). Stage-by-stage rule: only spend upgrade materials, roulette tokens, and shards during their corresponding stage windows.
-
-ALL OUT: Two-day PvP kill event every few weeks. Points scale by troop tier. Safe F2P scoring: attack resource gathering tiles instead of cities - tile hits generate points without risking permanent troop deaths. City attacks can permanently kill troops. Keep shield active when offline. Garrison troops in alliance structures when idle. Recovery after losses: batch heal in small increments so alliance help can reduce timers rather than burning speed-ups on large heal blocks. Always read and enforce server NAP/political rules before the event.
-
-MOONLIT PROMISE: Month-long Ramadan special event (NOT the same as Moonlit Celebration). Two components: Radiant Wishes (light lanterns with Crescent Seekers to earn Crescent Emblems with multipliers) and Crescent Bazaar (spend emblems on gear, Forge Hammers, charms, speed-ups). Ally blessings: after 30 lanterns, share 2 emblems with members, up to 20 blessing receives per day (resets daily). Shop priority: Forge Hammers first (best F2P value), then gear/charm items. End of event: unused currency converts to food - spend down before event ends. Alliance protocol: members post "Blessings open" in Discord after hitting 30-lantern threshold so others can claim daily blessings.
-
-HERO TIER LIST: S-Tier: Prince William (rally leader), Quinn (archer support), Chenko (lethality). A-Tier: Helga, Amadeus, Diana. B-Tier: Rosa, Jaeger. Focus resources on one primary hero first.
-
-F2P PRIORITY: VIP Level first, then Speed-ups during events, then Hero shards on William/Chenko/Quinn rotation. Never spend gems on resource packs or random chests.
-`;
-
-const SYSTEM_PROMPT = `You are the DarkKnights Alliance Strategy AI for the mobile game Kingshot. You have access to embedded alliance guide knowledge and can search for current event information.
-
-${GUIDE_KNOWLEDGE}
-
-When answering questions:
-1. First check if the embedded guide knowledge above answers the question
-2. For current events, search community sources like kingshotguides.com, kingshotmastery.com, kingshotdata.com
-3. Always be specific and actionable
-4. Format responses with clear sections using **bold** for key terms
-5. Keep responses focused - 3-5 bullet points or paragraphs max unless more is needed
-6. End each response with a source attribution note
-
-Today's date: ${new Date().toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'})}.`;
-
 let chatMessages = [];
 
+// ── Markdown → HTML renderer ─────────────────────────────────────────────────
 function formatMarkdown(text) {
   return text
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^# (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,  '<h3>$1</h3>')
+    .replace(/^# (.+)$/gm,   '<h3>$1</h3>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/\*(.+?)\*/g,     '<em>$1</em>')
     .replace(/^[-\u2022] (.+)$/gm, '<li>$1</li>')
-    .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
-    .replace(/(<li>[\s\S]*?<\/li>\n?)+/g, function(m){ return '<ul>' + m + '</ul>'; })
+    .replace(/^(\d+)\. (.+)$/gm,   '<li>$2</li>')
+    .replace(/(<li>[\s\S]*?<\/li>\n?)+/g, m => '<ul>' + m + '</ul>')
     .replace(/\n\n/g, '</p><p>')
     .replace(/^(?!<[hul])(.+)$/gm, '<p>$1</p>')
     .replace(/<p><\/p>/g, '');
 }
 
+// ── DOM helpers ───────────────────────────────────────────────────────────────
 function addBubble(role, html, isLoading) {
   const hist = document.getElementById('chatHistory');
-  const div = document.createElement('div');
+  const div  = document.createElement('div');
   div.className = 'chat-bubble ' + role + (isLoading ? ' loading' : '');
-  div.innerHTML = html;
+  div.innerHTML  = html;
   hist.appendChild(div);
   hist.scrollTop = hist.scrollHeight;
   return div;
 }
 
+// ── Main ask function (streaming) ─────────────────────────────────────────────
 async function askAI() {
-  const input = document.getElementById('aiInput');
-  const btn = document.getElementById('askBtn');
+  const input    = document.getElementById('aiInput');
+  const btn      = document.getElementById('askBtn');
   const question = input.value.trim();
   if (!question) return;
 
-  input.value = '';
-  btn.disabled = true;
+  input.value     = '';
+  btn.disabled    = true;
   btn.textContent = '...';
 
   addBubble('user', question, false);
   chatMessages.push({ role: 'user', content: question });
 
-  const hist = document.getElementById('chatHistory');
-  const responseBubble = addBubble('assistant', '&#x2694; Consulting the alliance archives\u2026', true);
+  // Show loading state
+  const bubble = addBubble('assistant', '&#x2694; Consulting the alliance archives\u2026', true);
+
   let fullText = '';
 
   try {
@@ -1551,174 +1259,73 @@ async function askAI() {
       throw new Error(err.error || 'Worker error ' + response.status);
     }
 
-    // Parse OpenAI SSE stream
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
+    // Switch bubble out of loading state as soon as stream starts
+    bubble.className = 'chat-bubble assistant';
+    bubble.innerHTML = '';
 
-    responseBubble.className = 'chat-bubble assistant';
-    responseBubble.innerHTML = '';
+    const reader  = response.body.getReader();
+    const decoder = new TextDecoder();
+    let   buffer  = '';
 
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
 
       buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop(); // keep incomplete trailing line
 
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const data = line.slice(6).trim();
-        if (data === '[DONE]') break;
-        try {
-          const json = JSON.parse(data);
-          const delta = json.choices?.[0]?.delta?.content;
-          if (delta) {
-            fullText += delta;
-            responseBubble.innerHTML = formatMarkdown(fullText);
-            hist.scrollTop = hist.scrollHeight;
+      // SSE events are separated by double newlines
+      const parts = buffer.split('\n\n');
+      buffer = parts.pop(); // keep any incomplete chunk
+
+      for (const part of parts) {
+        for (const line of part.split('\n')) {
+          if (!line.startsWith('data: ')) continue;
+          const raw = line.slice(6).trim();
+          if (raw === '[DONE]') break;
+
+          try {
+            const json  = JSON.parse(raw);
+            const delta = json.choices?.[0]?.delta?.content;
+            if (delta) {
+              fullText += delta;
+              // Re-render markdown on every chunk so formatting appears live
+              bubble.innerHTML = formatMarkdown(fullText);
+              // Keep scroll pinned to bottom while streaming
+              const hist = document.getElementById('chatHistory');
+              hist.scrollTop = hist.scrollHeight;
+            }
+          } catch {
+            // Malformed chunk — skip silently
           }
-        } catch(e) { /* incomplete chunk, skip */ }
+        }
       }
     }
 
-    if (fullText) {
-      responseBubble.innerHTML = formatMarkdown(fullText) +
-        '<div class="source-tag">&#x1F4D6; DarkKnights Guide + Community Knowledge</div>';
-      chatMessages.push({ role: 'assistant', content: fullText });
-    } else {
-      throw new Error('No response received from the AI.');
-    }
+    if (!fullText.trim()) throw new Error('Empty response from AI.');
+
+    // Append source tag after stream completes
+    bubble.innerHTML =
+      formatMarkdown(fullText) +
+      '<div class="source-tag">&#x1F916; DarkKnights AI &middot; Powered by GPT-4o</div>';
+
+    chatMessages.push({ role: 'assistant', content: fullText });
 
   } catch (err) {
-    responseBubble.className = 'chat-bubble assistant';
-    responseBubble.innerHTML = '<strong>Error:</strong> ' + err.message +
-      '<br><small>Check that your Cloudflare Worker URL is configured correctly.</small>';
+    bubble.className = 'chat-bubble assistant';
+    bubble.innerHTML =
+      '<strong>Error:</strong> ' + err.message +
+      '<br><small>Check that your Cloudflare Worker is deployed correctly.</small>';
   }
 
-  btn.disabled = false;
+  btn.disabled    = false;
   btn.textContent = 'ASK \u2192';
 }
 
-
-// ── GIFT CODES ──
-// Default codes shown on first load (empty = "No active codes" message)
-// Officers: click "Edit Codes" on the site to update. Changes save in browser localStorage.
-const DEFAULT_GIFT_CODES = [
-  { code: 'OFFICIALSTORE', expiry: '2026-03-26', note: 'Valid until Mar 26 00:00 UTC' },
-  { code: 'EIDMUB2026', expiry: '2026-03-23', note: 'Valid until Mar 23 23:59 UTC' },
-  { code: 'SYUNNBUN26JP', expiry: '', note: 'No expiry listed' },
-];
-
-function loadGiftCodes() {
-  try {
-    const stored = localStorage.getItem('dk_gift_codes');
-    return stored ? JSON.parse(stored) : DEFAULT_GIFT_CODES;
-  } catch(e) { return DEFAULT_GIFT_CODES; }
+// ── Quick-question buttons ────────────────────────────────────────────────────
+function quickAsk(q) {
+  document.getElementById('aiInput').value = q;
+  askAI();
 }
-
-function saveGiftCodeData(codes) {
-  try { localStorage.setItem('dk_gift_codes', JSON.stringify(codes)); } catch(e) {}
-}
-
-function daysUntil(dateStr) {
-  if (!dateStr) return null;
-  const exp = new Date(dateStr + 'T23:59:59');
-  const now = new Date();
-  return Math.ceil((exp - now) / 86400000);
-}
-
-function renderGiftCodes() {
-  const codes = loadGiftCodes();
-  const row = document.getElementById('giftCodesRow');
-  if (!codes.length) {
-    row.innerHTML = '<span class="gift-no-codes">No active codes right now — check back soon</span>';
-    return;
-  }
-  row.innerHTML = codes.map((c, i) => {
-    const days = daysUntil(c.expiry);
-    const expLabel = days === null ? '' :
-      days < 0 ? ' · <span style="color:#c05050">Expired</span>' :
-      days <= 3 ? ` · <span class="gift-code-expiry expiring-soon">Expires in ${days}d</span>` :
-      ` · <span class="gift-code-expiry">Exp ${c.expiry}</span>`;
-    return `<div class="gift-code-pill" title="${c.note || c.code}">
-      <span class="gift-code-text">${c.code}</span>
-      <button class="gift-code-copy" onclick="copyCode(this,'${c.code}')" title="Copy code">⧉</button>
-      ${expLabel}
-    </div>`;
-  }).join('');
-}
-
-function copyCode(btn, code) {
-  navigator.clipboard.writeText(code).then(() => {
-    btn.classList.add('copied');
-    btn.textContent = '✓';
-    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '⧉'; }, 1800);
-    const toast = document.getElementById('giftToast');
-    toast.textContent = `"${code}" copied!`;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2000);
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-  });
-}
-
-function toggleGiftEdit() {
-  const panel = document.getElementById('giftEditPanel');
-  const btn = document.getElementById('giftToggleBtn');
-  const isOpen = panel.classList.toggle('open');
-  btn.textContent = isOpen ? '✕ Close' : '✎ Edit Codes';
-  if (isOpen) renderGiftEditList();
-}
-
-function renderGiftEditList() {
-  const codes = loadGiftCodes();
-  const list = document.getElementById('giftEditList');
-  list.innerHTML = codes.length ? codes.map((c, i) => `
-    <div class="gift-edit-row" data-index="${i}">
-      <input class="gift-edit-input code-input" placeholder="CODE123" value="${c.code}"
-        oninput="this.value=this.value.toUpperCase()" />
-      <input class="gift-edit-input date-input" type="date" value="${c.expiry || ''}" title="Expiry date (optional)" />
-      <button class="gift-edit-remove" onclick="removeGiftRow(this)" title="Remove">✕</button>
-    </div>`).join('') :
-    '<div style="color:var(--text-muted);font-size:0.85rem;font-style:italic;">No codes yet — click Add Code below.</div>';
-}
-
-function addGiftRow() {
-  const codes = readGiftEditRows();
-  codes.push({ code: '', expiry: '' });
-  saveGiftCodeData(codes);
-  renderGiftEditList();
-  // focus new input
-  const rows = document.querySelectorAll('#giftEditList .gift-edit-row');
-  if (rows.length) rows[rows.length-1].querySelector('.code-input').focus();
-}
-
-function removeGiftRow(btn) {
-  btn.closest('.gift-edit-row').remove();
-}
-
-function readGiftEditRows() {
-  const rows = document.querySelectorAll('#giftEditList .gift-edit-row');
-  return Array.from(rows).map(row => ({
-    code: row.querySelector('.code-input').value.trim().toUpperCase(),
-    expiry: row.querySelector('.date-input').value || ''
-  })).filter(c => c.code);
-}
-
-function saveGiftCodes() {
-  const codes = readGiftEditRows();
-  saveGiftCodeData(codes);
-  renderGiftCodes();
-  toggleGiftEdit();
-}
-
-// Init on load
-document.addEventListener('DOMContentLoaded', renderGiftCodes);
 </script>
 
 </body>
