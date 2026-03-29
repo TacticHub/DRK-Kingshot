@@ -1165,23 +1165,16 @@
       <button class="ai-ask-btn" id="askBtn" onclick="askAI()">ASK &rarr;</button>
     </div>
     <div class="ai-quick-label">&#x1F4AC; Type your own question above, or tap one below to get started:</div>
-      <button class="ai-ask-btn" id="askBtn" onclick="askAI()">ASK &rarr;</button>
-    </div>
     <div class="ai-quick-questions">
       <button class="ai-quick-btn" onclick="quickAsk('Help me set up my Viking Vengeance event — what should my alliance do before, during, and after?')">&#x1F6E1; Help me with Viking Vengeance setup</button>
-      <button class="ai-quick-btn" onclick="quickAsk('Which heroes should I use for All Out, and what formation gives me the best score without losing too many troops?')">&#x2694;&#xFE0F; Which heroes for All Out?</button>
       <button class="ai-quick-btn" onclick="quickAsk('Give me your best F2P tips to help me level up faster in Kingshot without spending money')">&#x1F4B0; F2P tips to help me level up</button>
       <button class="ai-quick-btn" onclick="quickAsk('How do I set up the perfect Bear Hunt rally as a leader, and what formation should my members join with?')">&#x1F43B; How do I run a perfect Bear Hunt rally?</button>
       <button class="ai-quick-btn" onclick="quickAsk('What is the best hero team and strategy for Alliance Championship, and how should we organize our lanes?')">&#x1F3C6; Best strategy for Alliance Championship</button>
       <button class="ai-quick-btn" onclick="quickAsk('Walk me through Hall of Governors stage by stage — what should I save and when should I spend?')">&#x1F451; Walk me through Hall of Governors</button>
-      <button class="ai-quick-btn" onclick="quickAsk('Which heroes should I invest in first and how do I level them up efficiently?')">&#x2694;&#xFE0F; Which heroes should I invest in first?</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What should I prioritize building and researching at my stage of the game?')">&#x1F3F0; What should I build and research next?</button>
-      <button class="ai-quick-btn" onclick="quickAsk('How does Eternity\'s Reach work and how do I progress through the stages as an F2P player?')">&#x2728; How do I progress in Eternity\'s Reach?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How does Eternity's Reach work and how do I progress through the stages as an F2P player?')">&#x2728; How do I progress in Eternity's Reach?</button>
       <button class="ai-quick-btn" onclick="quickAsk('What pets should I unlock first and how do I use them effectively in Bear Hunt and KvK?')">&#x1F43E; Which pets matter most and how do I use them?</button>
       <button class="ai-quick-btn" onclick="quickAsk('How does Moonlit Promise work, what should I buy from the shop first, and how does our alliance coordinate?')">&#x1F319; How do I maximize Moonlit Promise?</button>
       <button class="ai-quick-btn" onclick="quickAsk('How do we survive and score well in KvK — what should our alliance do before and during the event?')">&#x1F30E; How do we prepare for KvK?</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What are the active gift codes for Kingshot right now and how do I redeem them?')">&#x1F381; What are the active gift codes?</button>
-      <button class="ai-quick-btn" onclick="quickAsk('Should our alliance consider a Kingdom Transfer, and what do we need to know before doing it?')">&#x1F30D; Should we do a Kingdom Transfer?</button>
     </div>
     <div class="ai-chat-history" id="chatHistory"></div>
   </div>
@@ -2358,6 +2351,15 @@ async function askAI() {
 
   btn.disabled = false;
   btn.textContent = 'ASK \u2192';
+}
+
+function quickAsk(question) {
+  const input = document.getElementById('aiInput');
+  input.value = question;
+  // Scroll the AI section into view so the user sees it fire
+  document.getElementById('ask-ai').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Small delay to let scroll settle before the response appears
+  setTimeout(askAI, 200);
 }
 
 
