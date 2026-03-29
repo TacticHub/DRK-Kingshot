@@ -1060,9 +1060,13 @@
 
     <div class="sidebar-divider">Strategy</div>
     <a href="#kvk"><span class="nav-icon">&#x2694;</span>KvK</a>
+    <a href="#pets"><span class="nav-icon">&#x1F43E;</span>Pets</a>
+    <a href="#transfer"><span class="nav-icon">&#x1F30D;</span>Kingdom Transfer</a>
     <a href="#f2p"><span class="nav-icon">&#x1F4B0;</span>F2P Strategy</a>
 
     <div class="sidebar-divider">Resources</div>
+    <a href="#gift-codes"><span class="nav-icon">&#x1F381;</span>Gift Codes</a>
+    <a href="#tools"><span class="nav-icon">&#x1F9EE;</span>Tools &amp; Calculators</a>
     <a href="#resources"><span class="nav-icon">&#x1F4DA;</span>Community Links</a>
   </div>
 
@@ -1156,6 +1160,9 @@
       <button class="ai-quick-btn" onclick="quickAsk('What is the best Hall of Governors strategy for our alliance?')">&#x1F451; Hall of Governors</button>
       <button class="ai-quick-btn" onclick="quickAsk('How do I score in All Out without losing my troops?')">&#x2694; All Out tips</button>
       <button class="ai-quick-btn" onclick="quickAsk('How does Moonlit Promise work and what should I buy in the shop?')">&#x1F319; Moonlit Promise</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What pets should I unlock first and how do pets work in Kingshot?')">&#x1F43E; Pet strategy</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How does the Kingdom Transfer event work and should DarkKnights consider transferring?')">&#x1F30D; Kingdom Transfer</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Are there any active gift codes for Kingshot right now?')">&#x1F381; Gift codes</button>
     </div>
     <div class="ai-chat-history" id="chatHistory"></div>
   </div>
@@ -1856,6 +1863,261 @@
 
 <div class="divider">&#x2756; &#x2756; &#x2756;</div>
 
+<!-- PETS -->
+<section id="pets">
+  <div class="section-header">
+    <span class="section-icon">&#x1F43E;</span>
+    <h2>Pets</h2>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-label">&#x2139; Overview</span>
+    Pets unlock progressively as your kingdom ages. Each has an active ability with a cooldown that can meaningfully affect combat, gathering, or construction. Pet abilities must be <strong>manually activated</strong> — build the habit before every Bear Hunt and KvK push.
+  </div>
+  <h3>Pet Unlock Timeline (Kingdom Age)</h3>
+  <div class="card card-gold">
+    <p><strong>Day 55+</strong> — Gray Wolf (Construction Speed +15%, 5 min / 23h CD), Lynx (restore 60 Stamina / 23h CD), Bison (instant gather / 15h CD)</p>
+    <p style="margin-top:8px;"><strong>Day 80+</strong> — Cheetah (locate 500 pet food / 23h CD), Moose (enemy Squad HP -5% for 2h / 20h CD)</p>
+    <p style="margin-top:8px;"><strong>Day 110+</strong> — Lion (recover Badlands loot), Grizzly Bear (March Speed +30%, enemy Lethality -5% for 2h / 20h CD)</p>
+    <p style="margin-top:8px;"><strong>Day 190+</strong> — Mighty Bison (Squad Capacity +15,000 for 2h), Giant Rhino (all Squads Attack +10% for 2h)</p>
+    <p style="margin-top:8px;"><strong>Day 270+</strong> — Alpha Black Panther (Troop Lethality +10% for 2h), Great Moose (Rally Capacity +150,000 for 2h)</p>
+  </div>
+  <h3>Pet Priority by Playstyle</h3>
+  <div class="priority-grid">
+    <div class="priority-item p1">
+      <div class="priority-label">Bear Hunt Priority</div>
+      <div class="priority-title">Alpha Black Panther</div>
+      <div class="priority-desc">+10% Troop Lethality for 2h. Single biggest pet buff for Bear Hunt damage. Gen 5, day 270.</div>
+    </div>
+    <div class="priority-item p1">
+      <div class="priority-label">Rally Leaders</div>
+      <div class="priority-title">Great Moose</div>
+      <div class="priority-desc">+150,000 Rally Capacity for 2h. Stack with March Capacity research for maximum rally sizes. Gen 5, day 270.</div>
+    </div>
+    <div class="priority-item p2">
+      <div class="priority-label">Mid-Game Combat</div>
+      <div class="priority-title">Giant Rhino</div>
+      <div class="priority-desc">+10% all Squads Attack for 2h. Best universal combat pet while waiting for Gen 5. Day 190.</div>
+    </div>
+    <div class="priority-item p2">
+      <div class="priority-label">KvK / PvP</div>
+      <div class="priority-title">Grizzly Bear</div>
+      <div class="priority-desc">+30% March Speed and -5% enemy Lethality for 2h. Excellent for aggressive KvK play. Gen 3, day 110.</div>
+    </div>
+    <div class="priority-item p3">
+      <div class="priority-label">F2P Stamina</div>
+      <div class="priority-title">Lynx</div>
+      <div class="priority-desc">Instantly restore 60 Stamina. 23h cooldown. High value for F2P players who rely on world monster hunts.</div>
+    </div>
+    <div class="priority-item p3">
+      <div class="priority-label">Construction Rush</div>
+      <div class="priority-title">Gray Wolf</div>
+      <div class="priority-desc">+15% Construction Speed for 5 min. Use on your longest upgrades to shave real time off. Gen 1.</div>
+    </div>
+  </div>
+  <h3>Pet Tips</h3>
+  <ul class="tips">
+    <li>Use <strong>Cheetah</strong> every 23h to generate 500 pet food passively — this is the primary food source</li>
+    <li>Use <strong>Bison</strong> every 15h to instant-complete gathering trips — excellent during gather events</li>
+    <li>Activate Alpha Black Panther or Giant Rhino immediately before each Bear Hunt rally fires</li>
+    <li>Activate Great Moose before setting the rally to benefit from the full 2h window</li>
+    <li>Full pet database (stats, abilities, unlock requirements): <a href="https://v2.kingshot.net/database/pets" target="_blank" style="color:var(--gold);">v2.kingshot.net/database/pets</a></li>
+  </ul>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- KINGDOM TRANSFER -->
+<section id="transfer">
+  <div class="section-header">
+    <span class="section-icon">&#x1F30D;</span>
+    <h2>Kingdom Transfer Event</h2>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-label">&#x2139; Overview</span>
+    Every <strong>40–60 days</strong> a transfer window opens, allowing players to move their entire account to a different kingdom. Troops, resources, heroes, and items all transfer — your map position resets. Alliance membership does <strong>not</strong> auto-transfer.
+  </div>
+  <h3>Why Transfer?</h3>
+  <ul class="tips">
+    <li><strong>Alliance consolidation:</strong> Reunite with allies or move to a kingdom where DarkKnights already has strong footing</li>
+    <li><strong>Escape a dominated kingdom:</strong> If your server has no realistic path to competition against entrenched alliances</li>
+    <li><strong>KvK bracket optimization:</strong> Younger kingdoms are matched against similarly-aged kingdoms — transferring can reset your bracket to a fairer matchup</li>
+    <li>Use the <strong>Transfer Planner</strong> to coordinate large group moves: <a href="https://v2.kingshot.net/transfer-planner" target="_blank" style="color:var(--gold);">v2.kingshot.net/transfer-planner</a></li>
+  </ul>
+  <h3>Transfer Rules &amp; Restrictions</h3>
+  <div class="card card-blue">
+    <ul class="tips" style="margin:0;">
+      <li>Target kingdom must be within an eligible <strong>age bracket</strong> relative to your own kingdom</li>
+      <li>Your <strong>TC level</strong> may impose minimum or maximum kingdom age requirements for the destination</li>
+      <li>Clear all active <strong>building, research, and training timers</strong> before transferring if possible</li>
+      <li>Coordinate with your destination alliance leadership to receive an invite <em>immediately</em> on arrival</li>
+      <li>Check kingdom ages at <a href="https://v2.kingshot.net/kingdom-age-tracker" target="_blank" style="color:var(--gold);">v2.kingshot.net/kingdom-age-tracker</a> — 426+ kingdoms in the database</li>
+    </ul>
+  </div>
+  <h3>DarkKnights Transfer Protocol (K#1640)</h3>
+  <div class="callout callout-warn">
+    <span class="callout-label">&#x26A0; R4/R5 Approval Required</span>
+    Any transfer must be communicated to R4/R5 <em>before</em> initiating. Uncoordinated transfers weaken alliance power scores and can hurt Hall of Governors and Championship seeding. R5 maintains the official approved-destination list for each transfer window.
+  </div>
+  <ul class="tips">
+    <li>Assign a scout to the destination kingdom <strong>48 hours early</strong> to assess the political landscape (dominant alliances, existing NAPs, activity level)</li>
+    <li>Coordinate timing so the bulk of transferring members arrive within the same day</li>
+    <li>Use the <a href="https://v2.kingshot.net/transfer-planner" target="_blank" style="color:var(--gold);">Transfer Planner</a> to organize member groups and arrival order</li>
+    <li>Post arrival confirmation in Discord so leadership can send alliance invites immediately</li>
+  </ul>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- GIFT CODES SECTION -->
+<section id="gift-codes">
+  <div class="section-header">
+    <span class="section-icon">&#x1F381;</span>
+    <h2>Gift Codes</h2>
+  </div>
+  <div class="callout callout-tip">
+    <span class="callout-label">&#x2714; Live Codes at the Top</span>
+    Active codes are tracked in the <strong>Gift Codes banner</strong> just below the page header. Click <em>&#x270E; Edit Codes</em> to add or remove codes — changes are saved in your browser. Click any code pill to copy it instantly.
+  </div>
+  <h3>How to Redeem</h3>
+  <div class="card card-gold">
+    <p><strong>Option 1 — Web:</strong> <a href="https://v2.kingshot.net/gift-codes/redeem" target="_blank" style="color:var(--gold-light);">v2.kingshot.net/gift-codes/redeem</a> — enter your Player ID and paste the code. Rewards arrive in in-game mail.</p>
+    <p style="margin-top:8px;"><strong>Option 2 — Auto Redeem:</strong> <a href="https://v2.kingshot.net/auto-redeem" target="_blank" style="color:var(--gold-light);">v2.kingshot.net/auto-redeem</a> — applies all currently known active codes in bulk.</p>
+    <p style="margin-top:8px;"><strong>Option 3 — In-game:</strong> Settings → Gift Code → enter code directly.</p>
+  </div>
+  <h3>Where to Find New Codes</h3>
+  <ul class="tips">
+    <li>Official Kingshot Discord (announcements channel)</li>
+    <li>Kingshot social media — Facebook, Twitter/X, YouTube livestreams</li>
+    <li><a href="https://v2.kingshot.net/gift-codes" target="_blank" style="color:var(--gold);">v2.kingshot.net/gift-codes</a> — community list, updated within hours of any new release</li>
+    <li>DarkKnights Discord <strong>#resources</strong> channel — R4/R5 post new codes as soon as they drop; update the banner above so all members see them</li>
+  </ul>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- TOOLS & CALCULATORS -->
+<section id="tools">
+  <div class="section-header">
+    <span class="section-icon">&#x1F9EE;</span>
+    <h2>Tools &amp; Calculators</h2>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-label">&#x2139; Kingshot.net (v2)</span>
+    The community site <strong>v2.kingshot.net</strong> — DarkKnights' recommended external tool hub — provides interactive calculators, live event tracking, KvK match data for K#1640, and planning utilities. All links open in a new tab.
+  </div>
+  <h3>Calculators</h3>
+  <div class="resource-links">
+    <a class="link-card" href="https://v2.kingshot.net/hero-shard-calculator" target="_blank">
+      <div class="link-card-title">&#x1F9B8; Hero Shard Calculator</div>
+      <div class="link-card-desc">Calculate exactly how many shards you need to reach your next star level. Plan roulette spending before Hall of Governors.</div>
+      <div class="link-card-url">v2.kingshot.net/hero-shard-calculator</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/troop-training-calculator" target="_blank">
+      <div class="link-card-title">&#x1FA96; Troop Training Calculator</div>
+      <div class="link-card-desc">Calculate training costs, resources needed, and duration for any troop type. Essential for HoG train-day planning.</div>
+      <div class="link-card-url">v2.kingshot.net/troop-training-calculator</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/building-calculator" target="_blank">
+      <div class="link-card-title">&#x1F3F0; Building Calculator</div>
+      <div class="link-card-desc">Resource and time requirements for every building upgrade level. Know exactly what you need before starting.</div>
+      <div class="link-card-url">v2.kingshot.net/building-calculator</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/forgehammer-calculator" target="_blank">
+      <div class="link-card-title">&#x1F528; Forgehammer Calculator</div>
+      <div class="link-card-desc">Calculate Forge Hammers needed for each gear mastery level. Plan Bear Hunt participation to hit your gear targets.</div>
+      <div class="link-card-url">v2.kingshot.net/forgehammer-calculator</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/governor-gear-calculator" target="_blank">
+      <div class="link-card-title">&#x1F451; Governor Gear Calculator</div>
+      <div class="link-card-desc">Calculate satin, threads, and vision requirements for Governor Gear upgrades.</div>
+      <div class="link-card-url">v2.kingshot.net/governor-gear-calculator</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/vip-calculator" target="_blank">
+      <div class="link-card-title">&#x1F48E; VIP Calculator</div>
+      <div class="link-card-desc">Calculate XP and gem cost to reach your next VIP level. Helps F2P players prioritize gem spending efficiently.</div>
+      <div class="link-card-url">v2.kingshot.net/vip-calculator</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/truegold-simulator" target="_blank">
+      <div class="link-card-title">&#x2728; Truegold Simulator</div>
+      <div class="link-card-desc">Simulate Truegold upgrade outcomes before spending. Know your odds and expected results in advance.</div>
+      <div class="link-card-url">v2.kingshot.net/truegold-simulator</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/truegold-planner" target="_blank">
+      <div class="link-card-title">&#x1F4CB; Truegold Planner</div>
+      <div class="link-card-desc">Plan your Truegold upgrade path across multiple items to optimize resource allocation.</div>
+      <div class="link-card-url">v2.kingshot.net/truegold-planner</div>
+    </a>
+  </div>
+  <h3>Planning &amp; Tracking Tools</h3>
+  <div class="resource-links">
+    <a class="link-card" href="https://v2.kingshot.net/war-academy" target="_blank">
+      <div class="link-card-title">&#x1F52C; War Academy Tech Tree</div>
+      <div class="link-card-desc">Interactive research tech tree with planning calculator. Enter your research speed and current resources to get time and cost for any upgrade path.</div>
+      <div class="link-card-url">v2.kingshot.net/war-academy</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/calendar" target="_blank">
+      <div class="link-card-title">&#x1F4C5; Event Calendar</div>
+      <div class="link-card-desc">Community event calendar. Track upcoming events to align your speed-up and resource spending windows.</div>
+      <div class="link-card-url">v2.kingshot.net/calendar</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/appointment-planner" target="_blank">
+      <div class="link-card-title">&#x1F4CB; Appointment Planner</div>
+      <div class="link-card-desc">Plan ministry rotations for events like Hall of Governors. R4/R5 tool for scheduling leadership role assignments.</div>
+      <div class="link-card-url">v2.kingshot.net/appointment-planner</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/transfer-planner" target="_blank">
+      <div class="link-card-title">&#x1F30D; Transfer Planner</div>
+      <div class="link-card-desc">Organize player groups for kingdom transfers. Coordinate who moves when to keep the alliance together.</div>
+      <div class="link-card-url">v2.kingshot.net/transfer-planner</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/matches" target="_blank">
+      <div class="link-card-title">&#x2694; KvK Match Tracker</div>
+      <div class="link-card-desc">Track KvK match results and statistics. Submit K#1640 results to help the community database.</div>
+      <div class="link-card-url">v2.kingshot.net/matches</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/kingdom-age-tracker" target="_blank">
+      <div class="link-card-title">&#x1F5FA; Kingdom Age Tracker</div>
+      <div class="link-card-desc">Look up when any kingdom was created — 426+ kingdoms in the database. Critical for evaluating transfer destinations.</div>
+      <div class="link-card-url">v2.kingshot.net/kingdom-age-tracker</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/game-map" target="_blank">
+      <div class="link-card-title">&#x1F5FA; Interactive Game Map</div>
+      <div class="link-card-desc">Interactive Kingshot world map. Useful for KvK territory planning and understanding game geography.</div>
+      <div class="link-card-url">v2.kingshot.net/game-map</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/message-templates" target="_blank">
+      <div class="link-card-title">&#x1F4E8; Message Templates</div>
+      <div class="link-card-desc">Pre-built message templates for alliance communication. R4/R5 use for event announcements and rally calls.</div>
+      <div class="link-card-url">v2.kingshot.net/message-templates</div>
+    </a>
+  </div>
+  <h3>Database</h3>
+  <div class="resource-links">
+    <a class="link-card" href="https://v2.kingshot.net/database/buildings" target="_blank">
+      <div class="link-card-title">&#x1F3F0; Buildings Database</div>
+      <div class="link-card-desc">All building levels, upgrade requirements, and unlock conditions in one searchable database.</div>
+      <div class="link-card-url">v2.kingshot.net/database/buildings</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/database/pets" target="_blank">
+      <div class="link-card-title">&#x1F43E; Pets Database</div>
+      <div class="link-card-desc">Complete pet collection with stats, abilities, cooldowns, and unlock day requirements.</div>
+      <div class="link-card-url">v2.kingshot.net/database/pets</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/database/war-academy" target="_blank">
+      <div class="link-card-title">&#x1F4D6; War Academy Database</div>
+      <div class="link-card-desc">All squad technologies and upgrade data in searchable form.</div>
+      <div class="link-card-url">v2.kingshot.net/database/war-academy</div>
+    </a>
+    <a class="link-card" href="https://v2.kingshot.net/hero-stat-comparison" target="_blank">
+      <div class="link-card-title">&#x2694; Hero Stat Comparison</div>
+      <div class="link-card-desc">Side-by-side hero stat comparison. Useful for deciding which hero to invest in next.</div>
+      <div class="link-card-url">v2.kingshot.net/hero-stat-comparison</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
 <!-- RESOURCES -->
 <section id="resources">
   <div class="section-header">
@@ -1863,6 +2125,11 @@
     <h2>Community Resources</h2>
   </div>
   <div class="resource-links">
+    <a class="link-card card-gold" href="https://v2.kingshot.net" target="_blank">
+      <div class="link-card-title">&#x1F9EE; Kingshot.net (v2) &#x2605; Recommended</div>
+      <div class="link-card-desc">DarkKnights' recommended tool hub — calculators, KvK tracker, gift codes, event calendar, pet/building databases, War Academy tree, and transfer planner. K#1640 data tracked.</div>
+      <div class="link-card-url">v2.kingshot.net</div>
+    </a>
     <a class="link-card" href="https://kingshotguides.com" target="_blank">
       <div class="link-card-title">&#x1F4D6; KingshotGuides.com</div>
       <div class="link-card-desc">Community guides with Bear Hunt, events calendar, hero tier lists, and gear upgrade guides.</div>
@@ -1944,9 +2211,17 @@ MOONLIT PROMISE: Month-long Ramadan special event (NOT the same as Moonlit Celeb
 HERO TIER LIST: S-Tier: Prince William (rally leader), Quinn (archer support), Chenko (lethality). A-Tier: Helga, Amadeus, Diana. B-Tier: Rosa, Jaeger. Focus resources on one primary hero first.
 
 F2P PRIORITY: VIP Level first, then Speed-ups during events, then Hero shards on William/Chenko/Quinn rotation. Never spend gems on resource packs or random chests.
+
+PETS: Pets unlock based on kingdom age. Priority pets by use: Alpha Black Panther (Gen 5, day 270, +10% Troop Lethality 2h) — best for Bear Hunt. Great Moose (Gen 5, day 270, +150,000 Rally Capacity 2h) — best for rally leaders. Giant Rhino (Gen 4, day 190, +10% all Squads Attack 2h) — best mid-game combat. Grizzly Bear (Gen 3, day 110, March Speed +30%, enemy Lethality -5% 2h) — best for KvK. Lynx (Gen 2, day 55, restores 60 Stamina) — best for F2P stamina. Bison (Gen 2, day 55, instant gather / 15h CD) — best for gather events. Cheetah (Gen 2, day 80, locate 500 pet food / 23h CD) — use daily for food. CRITICAL: Pet abilities must be MANUALLY ACTIVATED before every Bear Hunt rally and KvK push. Full database: v2.kingshot.net/database/pets.
+
+KINGDOM TRANSFER: Every 40-60 days a transfer window opens. Players can move their entire account to a different kingdom. Troops, resources, heroes, and items transfer with you — map position resets — alliance membership does NOT auto-transfer. Reasons to transfer: escape dominated kingdom, reunite with allies, optimize KvK bracket. Restrictions: target kingdom must be within eligible age bracket, TC level may impose requirements, clear active timers before transfer. DarkKnights K#1640 protocol: ALL transfers require R4/R5 approval first — uncoordinated transfers hurt alliance power scores for HoG and Championship. Coordinate group timing so bulk of members arrive same day. Assign a scout 48h early to assess the destination kingdom's political situation. Tools: Transfer Planner at v2.kingshot.net/transfer-planner, Kingdom Age Tracker at v2.kingshot.net/kingdom-age-tracker.
+
+GIFT CODES: Gift codes provide free gems, speed-ups, and resources. Currently active: FIREFRIDAY (expires Mar 30 2026). Redeem at v2.kingshot.net/gift-codes/redeem (enter Player ID then paste code). Auto Redeem all codes at once: v2.kingshot.net/auto-redeem. Full active code list: v2.kingshot.net/gift-codes. New codes appear on official Kingshot Discord, social media, and kingshot.net. R4/R5 should post new codes in DarkKnights Discord #resources immediately when they drop.
+
+KINGSHOT.NET TOOLS (v2.kingshot.net): Calculators — Hero Shard Calculator (plan roulette for HoG), Troop Training Calculator (HoG train day planning), Building Calculator (upgrade costs/time), Forgehammer Calculator (gear mastery planning from Bear Hunt), Governor Gear Calculator, VIP Calculator, Truegold Simulator, Truegold Planner. Planning tools — War Academy interactive tech tree with research cost calculator, Event Calendar, Appointment Planner (ministry rotations for R4/R5), Transfer Planner, KvK Match Tracker (K#1640 data included), Kingdom Age Tracker (426+ kingdoms), Interactive Game Map, Message Templates. Databases — Buildings Database, Pets Database, War Academy Database, Hero Stat Comparison tool. Gift Codes — live list with auto-redeem at v2.kingshot.net/auto-redeem.
 `;
 
-const SYSTEM_PROMPT = `You are the DarkKnights Alliance Strategy AI for the mobile game Kingshot. You have access to embedded alliance guide knowledge and can search for current event information.
+const SYSTEM_PROMPT = `You are the DarkKnights Alliance Strategy AI for the mobile game Kingshot. You have access to embedded alliance guide knowledge and can search for current event information. Our alliance plays in Kingdom #1640.
 
 ${GUIDE_KNOWLEDGE}
 
@@ -2071,8 +2346,7 @@ async function askAI() {
 // Default codes shown on first load (empty = "No active codes" message)
 // Officers: click "Edit Codes" on the site to update. Changes save in browser localStorage.
 const DEFAULT_GIFT_CODES = [
-  { code: 'FIREFRIDAY', expiry: '2026-03-31', note: 'Valid until Mar 31 2026' },
-  { code: 'VIP777', expiry: '2026-12-30', note: 'Valid until Dec 30 2026' },
+  { code: 'FIREFRIDAY', expiry: '2026-03-30', note: 'Expires Mar 30 2026' },
 ];
 
 function loadGiftCodes() {
