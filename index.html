@@ -303,6 +303,14 @@
   }
   .ai-ask-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
   .ai-ask-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .ai-quick-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
   .ai-quick-questions {
     display: flex;
     flex-wrap: wrap;
@@ -310,20 +318,28 @@
     margin-bottom: 16px;
   }
   .ai-quick-btn {
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.22);
     border-radius: 20px;
-    color: var(--gold);
+    color: var(--text-dim);
     cursor: pointer;
-    font-family: 'Cinzel', serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.05em;
-    padding: 6px 14px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    padding: 6px 16px;
     transition: all 0.2s;
     text-align: left;
     -webkit-appearance: none;
+    line-height: 1.4;
   }
-  .ai-quick-btn:hover { background: rgba(201,168,76,0.2); border-color: var(--gold); }
+  .ai-quick-btn:hover {
+    background: rgba(201,168,76,0.18);
+    border-color: var(--gold);
+    color: var(--gold-light);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(201,168,76,0.12);
+  }
   .ai-chat-history {
     display: flex;
     flex-direction: column;
@@ -955,7 +971,7 @@
     .ai-ask-btn { width: 100%; padding: 13px; text-align: center; font-size: 0.8rem; }
 
     .ai-quick-questions { gap: 6px; }
-    .ai-quick-btn { font-size: 0.6rem; padding: 5px 10px; }
+    .ai-quick-btn { font-size: 0.8rem; padding: 5px 12px; }
 
     .ai-chat-history { max-height: 280px; }
     .chat-bubble { padding: 11px 14px; font-size: 0.92rem; }
@@ -1144,25 +1160,28 @@
     <div class="ai-hero-sub">Powered by embedded alliance guides + live community knowledge</div>
     <div class="ai-input-row">
       <input class="ai-input" id="aiInput" type="text"
-        placeholder="Ask about events, heroes, gear, Bear Hunt..."
+        placeholder="e.g. How do I build the best Bear Hunt rally?"
         onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askAI();}" />
       <button class="ai-ask-btn" id="askBtn" onclick="askAI()">ASK &rarr;</button>
     </div>
+    <div class="ai-quick-label">&#x1F4AC; Type your own question above, or tap one below to get started:</div>
+      <button class="ai-ask-btn" id="askBtn" onclick="askAI()">ASK &rarr;</button>
+    </div>
     <div class="ai-quick-questions">
-      <button class="ai-quick-btn" onclick="quickAsk('What are the current active events in Kingshot?')">&#x1F5D3; This week's events</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What is the best strategy for the current Kingshot event?')">&#x1F3C6; Best strategy now</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What heroes should I use for the current Kingshot event?')">&#x1F9B8; Hero picks</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What rewards can I earn in the current Kingshot events?')">&#x1F381; Event rewards</button>
-      <button class="ai-quick-btn" onclick="quickAsk('Any tips for F2P players in Kingshot right now?')">&#x1F4B0; F2P tips</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What is the optimal Bear Hunt rally formation in Kingshot?')">&#x1F43B; Bear Hunt setup</button>
-      <button class="ai-quick-btn" onclick="quickAsk('How does Viking Vengeance work and what should my alliance do?')">&#x1F6E1; Viking Vengeance</button>
-      <button class="ai-quick-btn" onclick="quickAsk('How do we win Alliance Championship in Kingshot?')">&#x1F3C6; Alliance Champ</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What is the best Hall of Governors strategy for our alliance?')">&#x1F451; Hall of Governors</button>
-      <button class="ai-quick-btn" onclick="quickAsk('How do I score in All Out without losing my troops?')">&#x2694; All Out tips</button>
-      <button class="ai-quick-btn" onclick="quickAsk('How does Moonlit Promise work and what should I buy in the shop?')">&#x1F319; Moonlit Promise</button>
-      <button class="ai-quick-btn" onclick="quickAsk('What pets should I unlock first and how do pets work in Kingshot?')">&#x1F43E; Pet strategy</button>
-      <button class="ai-quick-btn" onclick="quickAsk('How does the Kingdom Transfer event work and should DarkKnights consider transferring?')">&#x1F30D; Kingdom Transfer</button>
-      <button class="ai-quick-btn" onclick="quickAsk('Are there any active gift codes for Kingshot right now?')">&#x1F381; Gift codes</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Help me set up my Viking Vengeance event — what should my alliance do before, during, and after?')">&#x1F6E1; Help me with Viking Vengeance setup</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Which heroes should I use for All Out, and what formation gives me the best score without losing too many troops?')">&#x2694;&#xFE0F; Which heroes for All Out?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Give me your best F2P tips to help me level up faster in Kingshot without spending money')">&#x1F4B0; F2P tips to help me level up</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How do I set up the perfect Bear Hunt rally as a leader, and what formation should my members join with?')">&#x1F43B; How do I run a perfect Bear Hunt rally?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What is the best hero team and strategy for Alliance Championship, and how should we organize our lanes?')">&#x1F3C6; Best strategy for Alliance Championship</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Walk me through Hall of Governors stage by stage — what should I save and when should I spend?')">&#x1F451; Walk me through Hall of Governors</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Which heroes should I invest in first and how do I level them up efficiently?')">&#x2694;&#xFE0F; Which heroes should I invest in first?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What should I prioritize building and researching at my stage of the game?')">&#x1F3F0; What should I build and research next?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How does Eternity\'s Reach work and how do I progress through the stages as an F2P player?')">&#x2728; How do I progress in Eternity\'s Reach?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What pets should I unlock first and how do I use them effectively in Bear Hunt and KvK?')">&#x1F43E; Which pets matter most and how do I use them?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How does Moonlit Promise work, what should I buy from the shop first, and how does our alliance coordinate?')">&#x1F319; How do I maximize Moonlit Promise?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('How do we survive and score well in KvK — what should our alliance do before and during the event?')">&#x1F30E; How do we prepare for KvK?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What are the active gift codes for Kingshot right now and how do I redeem them?')">&#x1F381; What are the active gift codes?</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Should our alliance consider a Kingdom Transfer, and what do we need to know before doing it?')">&#x1F30D; Should we do a Kingdom Transfer?</button>
     </div>
     <div class="ai-chat-history" id="chatHistory"></div>
   </div>
