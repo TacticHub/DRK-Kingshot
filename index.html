@@ -596,6 +596,15 @@
     .gift-edit-input.date-input { width: 130px; }
   }
   @media (max-width: 480px) {
+    /* Gift banner — stack label, codes, and edit button vertically */
+    .gift-banner-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 0 10px;
+    }
+    .gift-codes-row { width: 100%; }
+    .gift-banner-toggle { width: 100%; text-align: center; }
     .gift-banner-label { font-size: 0.65rem; }
     .gift-code-text { font-size: 0.65rem; padding: 4px 8px; }
     .gift-edit-input.code-input { width: 100%; }
@@ -603,6 +612,102 @@
     .gift-edit-row { flex-direction: column; align-items: flex-start; }
   }
 
+  /* ── ISLAND TABLE ── */
+  .it-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+  .it-filter-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.63rem;
+    letter-spacing: 0.06em;
+    padding: 5px 13px;
+    transition: all 0.18s;
+    -webkit-appearance: none;
+  }
+  .it-filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .it-filter-btn.active { background: rgba(201,168,76,0.2); border-color: var(--gold); color: var(--gold); }
+  .it-filter-btn.f-archer.active   { background: rgba(240,128,128,0.18); border-color: #f08080; color: #f08080; }
+  .it-filter-btn.f-infantry.active { background: rgba(95,160,216,0.18);  border-color: var(--blue-bright); color: var(--blue-bright); }
+  .it-filter-btn.f-cavalry.active  { background: rgba(109,194,95,0.18);  border-color: var(--green-bright); color: var(--green-bright); }
+  .it-filter-btn.f-all-troops.active { background: rgba(192,104,32,0.18); border-color: var(--orange); color: var(--orange); }
+  .it-filter-btn.f-develop.active  { background: rgba(58,104,153,0.22);  border-color: var(--blue-bright); color: var(--blue-bright); }
+  .it-filter-btn.f-capacity.active { background: rgba(201,168,76,0.22);  border-color: var(--gold); color: var(--gold-light); }
+  .it-filter-btn.f-economy.active  { background: rgba(74,140,63,0.22);   border-color: var(--green-bright); color: var(--green-bright); }
+  .it-filter-btn.f-event.active    { background: rgba(122,74,154,0.22);  border-color: var(--purple-bright); color: var(--purple-bright); }
+  .it-filter-btn.f-core.active     { background: rgba(201,168,76,0.15);  border-color: var(--gold); color: var(--gold); }
+  .island-table-wrap { overflow-x: auto; margin: 4px 0 16px; border-radius: 8px; }
+  .island-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    font-family: 'Crimson Pro', serif;
+    min-width: 600px;
+  }
+  .island-table thead tr { background: rgba(201,168,76,0.15); border-bottom: 2px solid rgba(201,168,76,0.4); }
+  .island-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.67rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 12px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .island-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .island-table tbody tr { transition: background 0.15s; }
+  .island-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+  .island-table tbody tr.it-hidden { display: none; }
+  .it-cat {
+    font-family: 'Cinzel', serif;
+    font-size: 0.63rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    display: inline-block;
+    margin-bottom: 2px;
+  }
+  .it-combat  { background: rgba(139,26,26,0.3);   color: #f08080;             border: 1px solid rgba(240,128,128,0.3); }
+  .it-develop { background: rgba(58,104,153,0.25); color: var(--blue-bright);  border: 1px solid rgba(95,160,216,0.3); }
+  .it-economy { background: rgba(74,140,63,0.25);  color: var(--green-bright); border: 1px solid rgba(109,194,95,0.3); }
+  .it-capacity{ background: rgba(201,168,76,0.2);  color: var(--gold);         border: 1px solid rgba(201,168,76,0.35); }
+  .it-event   { background: rgba(122,74,154,0.25); color: var(--purple-bright);border: 1px solid rgba(160,106,200,0.3); }
+  .it-prosper { background: rgba(50,58,82,0.5);    color: var(--text-dim);     border: 1px solid rgba(255,255,255,0.1); }
+  .it-troop {
+    font-size: 0.6rem;
+    padding: 2px 7px;
+    border-radius: 8px;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 1px 2px 1px 0;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.04em;
+  }
+  .tt-archer   { background: rgba(240,128,128,0.15); color: #f08080;             border: 1px solid rgba(240,128,128,0.25); }
+  .tt-infantry { background: rgba(95,160,216,0.15);  color: var(--blue-bright);  border: 1px solid rgba(95,160,216,0.25); }
+  .tt-cavalry  { background: rgba(109,194,95,0.15);  color: var(--green-bright); border: 1px solid rgba(109,194,95,0.25); }
+  .tt-all      { background: rgba(192,104,32,0.15);  color: var(--orange);       border: 1px solid rgba(192,104,32,0.25); }
+  .tt-none     { background: rgba(50,58,82,0.4);     color: var(--text-muted);   border: 1px solid rgba(255,255,255,0.08); }
+  .it-pri-high { color: var(--gold);            font-weight: 600; }
+  .it-pri-med  { color: var(--blue-bright); }
+  .it-pri-low  { color: var(--text-muted); }
+  .it-pri-role { color: var(--purple-bright);   font-style: italic; }
+  .it-no-results { text-align: center; color: var(--text-muted); font-style: italic; padding: 20px; display: none; }
   /* ── MAIN CONTENT ── */
   main { padding: 40px 0 60px; }
 
@@ -1179,25 +1284,228 @@
 <section id="island">
   <div class="section-header">
     <span class="section-icon">&#x1F3DD;</span>
-    <h2>Island Building</h2>
+    <h2>Oasis Island</h2>
   </div>
   <div class="callout callout-info">
     <span class="callout-label">&#x2139; Overview</span>
-    Your Island provides powerful passive combat buffs that operate separately from your main city. It has its own building system and resource economy.
+    Oasis Island unlocks at <strong>Town Center Level 19</strong>. It runs on two resources: <strong>Water Essence</strong> (used to upgrade the Fountain of Life and Reservoirs) and <strong>Prosperity</strong> (a permanent milestone metric increased by placing decorations and buildings). Higher Fountain levels unlock new building types and compound your essence generation over time.
   </div>
-  <h3>Top Island Buildings to Prioritize</h3>
+
+  <h3>How the Resource Loop Works</h3>
   <ul class="tips">
-    <li><strong>Archer Tower / Ballista:</strong> Primary Archer Attack and Lethality &mdash; highest Bear Hunt value</li>
-    <li><strong>Command Hall:</strong> Increases march capacity &mdash; more troops means more damage</li>
-    <li><strong>Garrison Hall:</strong> Defense and HP buffs &mdash; important for KvK</li>
-    <li><strong>Resource Depots:</strong> Passive resource generation to fund other upgrades</li>
-    <li><strong>Expedition Outpost:</strong> Speeds up hero expeditions and generates hero XP</li>
+    <li><strong>Fountain of Life:</strong> Core structure — upgrade it first and always. Higher levels unlock new building categories and boost passive essence generation.</li>
+    <li><strong>Reservoirs:</strong> Actively clear cacti to harvest hidden Water Essence chests. Upgrade to Level 4 ASAP to unlock a second worker and double clearing speed.</li>
+    <li><strong>Prosperity:</strong> Increased permanently by placing any decoration or building. Each decoration type has a cap — placing duplicates past the limit grants zero extra prosperity.</li>
+    <li><strong>Essence sources:</strong> Passive generation (Fountain + Reservoirs), treasure chests hidden in cacti, island quest rewards, and alliance member assistance bonuses.</li>
   </ul>
+
+  <h3>Building Categories &amp; Capability Table</h3>
+  <div class="callout callout-tip">
+    <span class="callout-label">&#x2714; How to Use This Table</span>
+    Filter by troop type or playstyle to see only relevant buildings. <strong>Troop Focus</strong> shows which troop types each building benefits. Use <em>All</em> to reset. Most buildings also add Prosperity.
+  </div>
+
+  <!-- FILTER BUTTONS -->
+  <div class="it-filters" id="islandFilters">
+    <span style="font-family:'Cinzel',serif;font-size:0.65rem;color:var(--text-muted);letter-spacing:0.06em;padding:5px 4px;align-self:center;">FILTER:</span>
+    <button class="it-filter-btn active" data-filter="all">All Buildings</button>
+    <button class="it-filter-btn f-archer"     data-filter="archer">&#x1F3F9; Archer</button>
+    <button class="it-filter-btn f-infantry"   data-filter="infantry">&#x1FA96; Infantry</button>
+    <button class="it-filter-btn f-cavalry"    data-filter="cavalry">&#x1F40E; Cavalry</button>
+    <button class="it-filter-btn f-all-troops" data-filter="all-troops">&#x2694; All Troops</button>
+    <button class="it-filter-btn f-capacity"   data-filter="capacity">&#x1F4AA; Capacity</button>
+    <button class="it-filter-btn f-develop"    data-filter="develop">&#x1F52C; Development</button>
+    <button class="it-filter-btn f-economy"    data-filter="economy">&#x1F33E; Economy</button>
+    <button class="it-filter-btn f-event"      data-filter="event">&#x2728; Event</button>
+    <button class="it-filter-btn f-core"       data-filter="core">&#x26F2; Core</button>
+  </div>
+
+  <div class="island-table-wrap">
+    <table class="island-table" id="islandTable">
+      <thead>
+        <tr>
+          <th>Building</th>
+          <th>Category</th>
+          <th>Troop Focus</th>
+          <th>Buff / Effect</th>
+          <th>Priority</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-tags="all core">
+          <td><strong>Fountain of Life</strong></td>
+          <td><span class="it-cat it-capacity">Core</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Unlocks building types &bull; Boosts passive essence generation</td>
+          <td class="it-pri-high">&#x2605; Must First</td>
+          <td>Upgrade before anything else — gates all other content</td>
+        </tr>
+        <tr data-tags="all core">
+          <td><strong>Reservoir</strong></td>
+          <td><span class="it-cat it-capacity">Core</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Workers clear cacti to harvest Water Essence chests</td>
+          <td class="it-pri-high">&#x2605; Must First</td>
+          <td>Rush to Lv.4 for 2nd worker &mdash; doubles clearing speed</td>
+        </tr>
+        <tr data-tags="all archer combat">
+          <td><strong>Archer Tower / Ballista</strong></td>
+          <td><span class="it-cat it-combat">Combat</span></td>
+          <td><span class="it-troop tt-archer">Archer</span></td>
+          <td>Archer Attack &bull; Archer Lethality</td>
+          <td class="it-pri-high">&#x2605; High</td>
+          <td>Top Bear Hunt priority &mdash; directly boosts rally damage</td>
+        </tr>
+        <tr data-tags="all all-troops archer infantry cavalry combat">
+          <td><strong>Garrison Hall</strong></td>
+          <td><span class="it-cat it-combat">Combat</span></td>
+          <td><span class="it-troop tt-all">All Troops</span></td>
+          <td>Troop Defense &bull; Troop HP</td>
+          <td class="it-pri-med">&#x25C6; Medium</td>
+          <td>KvK and defensive play; less impactful for Bear Hunt</td>
+        </tr>
+        <tr data-tags="all infantry cavalry combat">
+          <td><strong>Barracks / War Camp</strong></td>
+          <td><span class="it-cat it-combat">Combat</span></td>
+          <td><span class="it-troop tt-infantry">Infantry</span> <span class="it-troop tt-cavalry">Cavalry</span></td>
+          <td>Infantry &amp; Cavalry Attack or HP buffs</td>
+          <td class="it-pri-med">&#x25C6; Medium</td>
+          <td>Valuable for PvP formations; lower priority for Archer-focused accounts</td>
+        </tr>
+        <tr data-tags="all all-troops archer infantry cavalry combat">
+          <td><strong>Watchtower / Scout Post</strong></td>
+          <td><span class="it-cat it-combat">Combat</span></td>
+          <td><span class="it-troop tt-all">All Troops</span></td>
+          <td>March Speed &bull; Scout capacity</td>
+          <td class="it-pri-med">&#x25C6; Medium</td>
+          <td>March speed matters in KvK and rally coordination</td>
+        </tr>
+        <tr data-tags="all all-troops archer infantry cavalry capacity">
+          <td><strong>Command Hall</strong></td>
+          <td><span class="it-cat it-capacity">Capacity</span></td>
+          <td><span class="it-troop tt-all">All Troops</span></td>
+          <td>Squad Capacity &bull; Rally Capacity</td>
+          <td class="it-pri-high">&#x2605; High</td>
+          <td>More troops = more damage; critical for rally leaders</td>
+        </tr>
+        <tr data-tags="all develop">
+          <td><strong>Library / Scholar's Hall</strong></td>
+          <td><span class="it-cat it-develop">Development</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Research Speed</td>
+          <td class="it-pri-high">&#x2605; High</td>
+          <td>Compounds daily &mdash; highest long-term F2P value per essence spent</td>
+        </tr>
+        <tr data-tags="all develop">
+          <td><strong>Workshop / Forge</strong></td>
+          <td><span class="it-cat it-develop">Development</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Construction Speed</td>
+          <td class="it-pri-high">&#x2605; High</td>
+          <td>Every building upgrade benefits; excellent for mid-game acceleration</td>
+        </tr>
+        <tr data-tags="all all-troops archer infantry cavalry develop">
+          <td><strong>Training Ground</strong></td>
+          <td><span class="it-cat it-develop">Development</span></td>
+          <td><span class="it-troop tt-all">All Troops</span></td>
+          <td>Troop Training Speed</td>
+          <td class="it-pri-med">&#x25C6; Medium</td>
+          <td>Strong during Hall of Governors Train Troops stage</td>
+        </tr>
+        <tr data-tags="all develop">
+          <td><strong>Expedition Outpost</strong></td>
+          <td><span class="it-cat it-develop">Development</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Hero Expedition Speed &bull; Hero XP generation</td>
+          <td class="it-pri-med">&#x25C6; Medium</td>
+          <td>Passive hero leveling; good for accounts still climbing hero tiers</td>
+        </tr>
+        <tr data-tags="all all-troops archer infantry cavalry develop">
+          <td><strong>Infirmary / Healing Tent</strong></td>
+          <td><span class="it-cat it-develop">Development</span></td>
+          <td><span class="it-troop tt-all">All Troops</span></td>
+          <td>Healing Speed &bull; Hospital Capacity</td>
+          <td class="it-pri-med">&#x25C6; Medium</td>
+          <td>Reduces troop loss risk after All Out or KvK engagements</td>
+        </tr>
+        <tr data-tags="all economy">
+          <td><strong>Resource Depot / Storehouse</strong></td>
+          <td><span class="it-cat it-economy">Economy</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Passive Food / Wood / Stone / Iron generation</td>
+          <td class="it-pri-low">&#x25B8; Lower</td>
+          <td>Helpful early; deprioritize once combat buildings are unlocked</td>
+        </tr>
+        <tr data-tags="all economy">
+          <td><strong>Gathering Post</strong></td>
+          <td><span class="it-cat it-economy">Economy</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Gathering Speed &bull; Gathering Capacity</td>
+          <td class="it-pri-low">&#x25B8; Lower</td>
+          <td>Mainly useful for dedicated farm accounts</td>
+        </tr>
+        <tr data-tags="all all-troops archer infantry cavalry event">
+          <td><strong>Golden Sunset Lighthouse</strong></td>
+          <td><span class="it-cat it-event">Event-Exclusive</span></td>
+          <td><span class="it-troop tt-all">All Troops</span></td>
+          <td>Troop HP &bull; Lethality</td>
+          <td class="it-pri-role">&#x25C6; Role-Dependent</td>
+          <td>Powerful &mdash; critical for rally leaders; lower priority for joiners</td>
+        </tr>
+        <tr data-tags="all all-troops archer infantry cavalry event">
+          <td><strong>Other Event Buildings</strong></td>
+          <td><span class="it-cat it-event">Event-Exclusive</span></td>
+          <td><span class="it-troop tt-all">All Troops</span></td>
+          <td>Varies by event (combat stats, capacity, or speed buffs)</td>
+          <td class="it-pri-role">&#x25C6; Role-Dependent</td>
+          <td>Evaluate each by your playstyle &mdash; not always worth the essence cost</td>
+        </tr>
+        <tr data-tags="all economy">
+          <td><strong>Decorations (Aesthetic)</strong></td>
+          <td><span class="it-cat it-prosper">Prosperity Only</span></td>
+          <td><span class="it-troop tt-none">None</span></td>
+          <td>Prosperity metric increase only &mdash; no stat buffs</td>
+          <td class="it-pri-low">&#x25B8; Situational</td>
+          <td>Buy cheap ones early to complete quest lines for bonus essence rewards; avoid over-spending</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="it-no-results" id="islandNoResults">No buildings match this filter.</div>
+  </div>
+
+  <script>
+  (function() {
+    var activeFilter = 'all';
+    document.getElementById('islandFilters').addEventListener('click', function(e) {
+      var btn = e.target.closest('.it-filter-btn');
+      if (!btn) return;
+      activeFilter = btn.getAttribute('data-filter');
+      document.querySelectorAll('.it-filter-btn').forEach(function(b) {
+        b.classList.toggle('active', b === btn);
+      });
+      var rows = document.querySelectorAll('#islandTable tbody tr');
+      var visible = 0;
+      rows.forEach(function(row) {
+        var tags = row.getAttribute('data-tags') || '';
+        var show = activeFilter === 'all' || tags.split(' ').indexOf(activeFilter) !== -1;
+        row.classList.toggle('it-hidden', !show);
+        if (show) visible++;
+      });
+      document.getElementById('islandNoResults').style.display = visible === 0 ? 'block' : 'none';
+    });
+  })();
+  </script>
+
   <h3>Island Tips</h3>
   <ul class="tips">
-    <li>Upgrade Island buildings during events that award Island upgrade rewards</li>
-    <li>Prioritize combat stat buildings over resource buildings mid-to-late game</li>
-    <li>Coordinate alliance Island building events for collective bonuses</li>
+    <li>Each decoration has a <strong>Type Limit</strong> — placing more than the cap gives zero extra prosperity or buffs. Check before buying duplicates.</li>
+    <li>Clearing cacti from the <strong>left side first</strong> yields the highest density of treasure chests and essence early — community-verified optimal path.</li>
+    <li>Place Reservoirs near dense cactus clusters; use cosmetic decorations to redirect worker pathing toward priority cacti.</li>
+    <li>Recycling unwanted decorations returns <strong>50% of their essence cost</strong> — useful for pivoting to better buildings without a full loss.</li>
+    <li>Prioritize <strong>Development buildings</strong> (Research Speed, Construction Speed) before Combat buildings for most F2P accounts — the compounding effect outpaces direct stat gains early.</li>
+    <li>Combat buildings (Archer Tower, Command Hall) become the priority once Development buildings are maxed or near-maxed.</li>
+    <li>Coordinate alliance Island building events for collective bonuses, and upgrade during events that award Island-specific rewards.</li>
   </ul>
 </section>
 
