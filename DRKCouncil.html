@@ -1331,6 +1331,194 @@
     .mt-add-btn { width: 100%; text-align: center; }
     .mt-modal { padding: 22px 18px; }
   }
+
+
+  /* ══════════════════════════════════
+     UTC FLOATING WIDGET
+  ══════════════════════════════════ */
+  .utc-float-btn {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 310;
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 8px;
+    color: var(--gold);
+    cursor: pointer;
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 14px 0 11px;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    -webkit-appearance: none;
+  }
+  .utc-float-btn:hover {
+    background: var(--dark3);
+    border-color: var(--gold);
+    box-shadow: 0 2px 18px rgba(201,168,76,0.15);
+  }
+  .utc-float-icon { font-size: 1rem; flex-shrink: 0; }
+  .utc-float-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .utc-float-mintime {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Floating panel */
+  .utc-panel {
+    position: fixed;
+    top: 70px;
+    right: 18px;
+    z-index: 305;
+    width: 310px;
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(-8px) scale(0.97);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .utc-panel.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+  .utc-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    background: rgba(201,168,76,0.06);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    flex-shrink: 0;
+  }
+  .utc-panel-clocks {
+    display: flex;
+    gap: 16px;
+  }
+  .utc-clock-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .utc-clock-tz {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .utc-clock-time {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .utc-clock-time.is-utc   { color: var(--gold); }
+  .utc-clock-time.is-local { color: var(--blue-bright); }
+  .utc-panel-tz {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: right;
+  }
+
+  /* Table */
+  .utc-table-wrap {
+    max-height: 340px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--stone) transparent;
+  }
+  .utc-table-wrap::-webkit-scrollbar { width: 4px; }
+  .utc-table-wrap::-webkit-scrollbar-thumb { background: var(--stone); border-radius: 2px; }
+  .utc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .utc-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--dark3);
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    z-index: 2;
+  }
+  .utc-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .utc-table tbody tr:last-child { border-bottom: none; }
+  .utc-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+  .utc-table tbody tr.utc-current-row {
+    background: rgba(201,168,76,0.1);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .utc-table td {
+    padding: 8px 14px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .utc-td-local {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: var(--blue-bright);
+    letter-spacing: 0.02em;
+  }
+  .utc-td-utc {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .utc-current-row .utc-td-local,
+  .utc-current-row .utc-td-utc { color: var(--gold-light); }
+  .utc-now-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.07em;
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 6px;
+    padding: 1px 5px;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
+
+  @media (max-width: 480px) {
+    .utc-float-btn { top: 14px; right: 14px; height: 38px; padding: 0 12px 0 10px; }
+    .utc-panel { right: 14px; width: calc(100vw - 28px); top: 64px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1377,6 +1565,164 @@
   </div>
   <div class="sidebar-footer">&#x1F451; DarkKnights Alliance 2026</div>
 </nav>
+
+<!-- UTC FLOATING WIDGET -->
+<button class="utc-float-btn" id="utcFloatBtn" aria-label="UTC Time Reference" aria-expanded="false">
+  <span class="utc-float-icon">&#x1F552;</span>
+  <span class="utc-float-label">UTC</span>
+  <span class="utc-float-mintime" id="utcMiniClock">--:--</span>
+</button>
+
+<div class="utc-panel" id="utcPanel">
+  <div class="utc-panel-header">
+    <div class="utc-panel-clocks">
+      <div class="utc-clock-item">
+        <div class="utc-clock-tz">Your Local</div>
+        <div class="utc-clock-time is-local" id="utcLocalClock">--:--:--</div>
+      </div>
+      <div class="utc-clock-item">
+        <div class="utc-clock-tz">UTC</div>
+        <div class="utc-clock-time is-utc" id="utcUtcClock">--:--:--</div>
+      </div>
+    </div>
+    <div class="utc-panel-tz" id="utcTzName">&#x2026;</div>
+  </div>
+  <div class="utc-table-wrap">
+    <table class="utc-table">
+      <thead>
+        <tr>
+          <th>Your Local Time</th>
+          <th>UTC</th>
+        </tr>
+      </thead>
+      <tbody id="utcTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var btn        = document.getElementById('utcFloatBtn');
+  var panel      = document.getElementById('utcPanel');
+  var tbody      = document.getElementById('utcTableBody');
+  var utcClock   = document.getElementById('utcUtcClock');
+  var localClock = document.getElementById('utcLocalClock');
+  var miniClock  = document.getElementById('utcMiniClock');
+  var tzName     = document.getElementById('utcTzName');
+
+  var isOpen = false;
+
+  /* Detect timezone */
+  var localTz = 'Local';
+  try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local'; } catch(e) {}
+  var tzShort = localTz.split('/').pop().replace(/_/g, ' ');
+  if (tzName) tzName.textContent = localTz;
+
+  /* Toggle open/close */
+  btn.addEventListener('click', function() {
+    isOpen = !isOpen;
+    panel.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (isOpen) scrollToCurrentRow();
+  });
+
+  /* Close on outside click */
+  document.addEventListener('click', function(e) {
+    if (isOpen && !panel.contains(e.target) && !btn.contains(e.target)) {
+      isOpen = false;
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* Close on Escape */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && isOpen) {
+      isOpen = false;
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  /* Build 24 rows — Local on left, UTC on right */
+  function buildRows() {
+    var now    = new Date();
+    var offset = now.getTimezoneOffset(); /* minutes behind UTC */
+    var rows   = '';
+    for (var h = 0; h < 24; h++) {
+      var localTotalMins = h * 60 - offset;
+      var localH = ((Math.floor(localTotalMins / 60) % 24) + 24) % 24;
+      var localM = ((localTotalMins % 60) + 60) % 60;
+      var ampm     = localH < 12 ? 'AM' : 'PM';
+      var localH12 = localH % 12 || 12;
+      var localStr = pad(localH) + ':' + pad(localM) + ' (' + localH12 + ':' + pad(localM) + ' ' + ampm + ')';
+      var utcStr   = pad(h) + ':00';
+      rows += '<tr id="utcrow-' + h + '">'
+        + '<td class="utc-td-local">' + localStr + '</td>'
+        + '<td class="utc-td-utc" id="utcrowutc-' + h + '">' + utcStr + '</td>'
+        + '</tr>';
+    }
+    tbody.innerHTML = rows;
+  }
+
+  var lastHour = -1;
+
+  function highlightCurrentRow() {
+    var now  = new Date();
+    var hour = now.getUTCHours();
+    if (hour === lastHour) return;
+
+    /* Remove old */
+    if (lastHour >= 0) {
+      var prev = document.getElementById('utcrow-' + lastHour);
+      var prevUtc = document.getElementById('utcrowutc-' + lastHour);
+      if (prev) prev.classList.remove('utc-current-row');
+      if (prevUtc) prevUtc.innerHTML = pad(lastHour) + ':00';
+    }
+
+    /* Add new */
+    var row = document.getElementById('utcrow-' + hour);
+    var rowUtc = document.getElementById('utcrowutc-' + hour);
+    if (row) row.classList.add('utc-current-row');
+    if (rowUtc && rowUtc.innerHTML.indexOf('utc-now-badge') === -1) {
+      rowUtc.innerHTML = pad(hour) + ':00 <span class="utc-now-badge">NOW</span>';
+    }
+
+    lastHour = hour;
+  }
+
+  function scrollToCurrentRow() {
+    var now  = new Date();
+    var row  = document.getElementById('utcrow-' + now.getUTCHours());
+    if (row) row.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+
+  function tick() {
+    var now = new Date();
+    var utcH = pad(now.getUTCHours());
+    var utcM = pad(now.getUTCMinutes());
+    var utcS = pad(now.getUTCSeconds());
+    var locH = pad(now.getHours());
+    var locM = pad(now.getMinutes());
+    var locS = pad(now.getSeconds());
+
+    if (utcClock)   utcClock.textContent   = utcH + ':' + utcM + ':' + utcS;
+    if (localClock) localClock.textContent = locH + ':' + locM + ':' + locS;
+    if (miniClock)  miniClock.textContent  = utcH + ':' + utcM;
+
+    highlightCurrentRow();
+  }
+
+  buildRows();
+  tick();
+  setInterval(tick, 1000);
+
+})();
+</script>
 
 <script>
 (function() {
@@ -2062,6 +2408,8 @@
 </script>
 
 <div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+
 
 <section id="back">
   <div class="callout callout-info">
