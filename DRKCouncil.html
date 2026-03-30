@@ -1003,6 +1003,332 @@
     .hero-grid { grid-template-columns: repeat(2, 1fr); }
     nav a { padding: 11px 9px; font-size: 0.6rem; }
   }
+
+  /* ══════════════════════════════════
+     MESSAGE TEMPLATES
+  ══════════════════════════════════ */
+  .mt-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .mt-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    flex: 1;
+  }
+  .mt-filter-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.63rem;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    transition: all 0.18s;
+    white-space: nowrap;
+    -webkit-appearance: none;
+  }
+  .mt-filter-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+  .mt-filter-btn.active { background: rgba(201,168,76,0.18); border-color: var(--gold); color: var(--gold); font-weight: 700; }
+  .mt-filter-btn.active-all { background: rgba(201,168,76,0.25); border-color: var(--gold); color: var(--gold); font-weight: 700; }
+
+  .mt-add-btn {
+    background: var(--gold);
+    border: none;
+    border-radius: 8px;
+    color: var(--dark);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 8px 18px;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    -webkit-appearance: none;
+  }
+  .mt-add-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .mt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 14px;
+  }
+  .mt-card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s, transform 0.15s;
+    position: relative;
+  }
+  .mt-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-1px); }
+  .mt-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .mt-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+  }
+  .mt-card-subject {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: var(--text);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mt-card-byline {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .mt-cat-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.07em;
+    padding: 3px 9px;
+    border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  /* Category color map — JS will assign classes */
+  .mt-cat-welcome  { background: rgba(109,194,95,0.15);  color: var(--green-bright); border: 1px solid rgba(109,194,95,0.3); }
+  .mt-cat-rallies  { background: rgba(201,168,76,0.15);  color: var(--gold);         border: 1px solid rgba(201,168,76,0.3); }
+  .mt-cat-event    { background: rgba(95,160,216,0.15);  color: var(--blue-bright);  border: 1px solid rgba(95,160,216,0.3); }
+  .mt-cat-nap      { background: rgba(160,106,200,0.15); color: var(--purple-bright);border: 1px solid rgba(160,106,200,0.3); }
+  .mt-cat-other    { background: rgba(50,58,82,0.4);     color: var(--text-muted);   border: 1px solid rgba(255,255,255,0.1); }
+
+  .mt-preview {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 10px 13px;
+    font-size: 0.93rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 90px;
+    overflow: hidden;
+    position: relative;
+    flex: 1;
+  }
+  .mt-preview.expanded { max-height: none; }
+  .mt-preview-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 36px;
+    background: linear-gradient(transparent, var(--dark3));
+    pointer-events: none;
+    border-radius: 0 0 6px 6px;
+  }
+  .mt-preview.expanded + .mt-preview-fade,
+  .mt-preview.expanded ~ .mt-preview-fade { display: none; }
+  .mt-char-count {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: right;
+  }
+  .mt-char-count.over { color: #e05555; }
+  .mt-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .mt-copy-btn {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    color: var(--gold);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    transition: all 0.18s;
+    -webkit-appearance: none;
+    flex: 1;
+  }
+  .mt-copy-btn:hover { background: rgba(201,168,76,0.22); border-color: var(--gold); }
+  .mt-copy-btn.copied { background: rgba(109,194,95,0.18); border-color: var(--green-bright); color: var(--green-bright); }
+  .mt-expand-btn, .mt-delete-btn, .mt-edit-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    transition: all 0.18s;
+    -webkit-appearance: none;
+  }
+  .mt-expand-btn:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+  .mt-edit-btn:hover   { border-color: var(--gold); color: var(--gold); }
+  .mt-delete-btn:hover { border-color: #e05555; color: #e05555; }
+
+  .mt-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.95rem;
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 10px;
+  }
+
+  /* Modal */
+  .mt-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s;
+  }
+  .mt-modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .mt-modal {
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 28px 26px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(12px);
+    transition: transform 0.22s;
+  }
+  .mt-modal-overlay.open .mt-modal { transform: translateY(0); }
+  .mt-modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+  .mt-field { margin-bottom: 16px; }
+  .mt-field label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .mt-field input, .mt-field select, .mt-field textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .mt-field input:focus, .mt-field select:focus, .mt-field textarea:focus { border-color: var(--gold); }
+  .mt-field textarea { resize: vertical; min-height: 110px; line-height: 1.55; }
+  .mt-field select { cursor: pointer; }
+  .mt-modal-char {
+    font-size: 0.75rem;
+    text-align: right;
+    margin-top: 4px;
+    color: var(--text-muted);
+  }
+  .mt-modal-char.over { color: #e05555; }
+  .mt-new-cat-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .mt-new-cat-row input { flex: 1; }
+  .mt-new-cat-btn {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    color: var(--gold);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    padding: 8px 14px;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    transition: background 0.18s;
+  }
+  .mt-new-cat-btn:hover { background: rgba(201,168,76,0.22); }
+  .mt-modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    justify-content: flex-end;
+  }
+  .mt-modal-save {
+    background: var(--gold);
+    border: none;
+    border-radius: 6px;
+    color: var(--dark);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    padding: 10px 24px;
+    transition: background 0.2s;
+    -webkit-appearance: none;
+  }
+  .mt-modal-save:hover { background: var(--gold-light); }
+  .mt-modal-cancel {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    padding: 10px 20px;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .mt-modal-cancel:hover { border-color: var(--text-dim); }
+
+  @media (max-width: 768px) {
+    .mt-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .mt-toolbar { gap: 8px; }
+    .mt-add-btn { width: 100%; text-align: center; }
+    .mt-modal { padding: 22px 18px; }
+  }
 </style>
 </head>
 <body>
@@ -1042,6 +1368,8 @@
     <a href="#hog-leader"><span class="nav-icon">&#x1F451;</span>Hall of Governors</a>
     <a href="#allout-leader"><span class="nav-icon">&#x2694;</span>All Out</a>
     <a href="#kvk-leader"><span class="nav-icon">&#x1FA96;</span>KvK Command</a>
+    <div class="sidebar-divider">Tools</div>
+    <a href="#msg-templates"><span class="nav-icon">&#x1F4AC;</span>Message Templates</a>
     <div class="sidebar-divider">Resources</div>
     <a href="https://tactichub.github.io/DRK-Kingshot" target="_blank"><span class="nav-icon">&#x1F4DA;</span>Member Guide &rarr;</a>
   </div>
@@ -1309,6 +1637,427 @@
     </div>
   </div>
 </section>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- ═══════════════════════════════════════
+     MESSAGE TEMPLATES
+═══════════════════════════════════════ -->
+<section id="msg-templates">
+  <div class="section-header">
+    <span class="section-icon">&#x1F4AC;</span>
+    <h2>Message Templates</h2>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-label">&#x2139; How to Use</span>
+    Templates are saved locally for this device. Add your in-game message templates here for quick access &mdash; click <strong>Copy</strong> to grab any message instantly. All messages are limited to <strong>512 characters</strong> to match in-game limits. Emoji compatible ✅
+  </div>
+
+  <!-- Toolbar: filters + add button -->
+  <div class="mt-toolbar">
+    <div class="mt-filter-group" id="mtFilterGroup">
+      <!-- Filter buttons injected by JS -->
+    </div>
+    <button class="mt-add-btn" onclick="mtOpenModal()">+ Add Template</button>
+  </div>
+
+  <!-- Template cards grid -->
+  <div class="mt-grid" id="mtGrid">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- Add / Edit Modal -->
+<div class="mt-modal-overlay" id="mtModalOverlay">
+  <div class="mt-modal">
+    <div class="mt-modal-title" id="mtModalTitle">&#x2795; New Message Template</div>
+
+    <div class="mt-field">
+      <label>Subject / Title</label>
+      <input type="text" id="mtSubject" placeholder="e.g. Bear Hunt Starting in 10 min" maxlength="80" />
+    </div>
+
+    <div class="mt-field">
+      <label>Submitted By</label>
+      <input type="text" id="mtAuthor" placeholder="Your in-game name or rank" maxlength="40" />
+    </div>
+
+    <div class="mt-field">
+      <label>Category</label>
+      <select id="mtCategory">
+        <!-- Options populated by JS -->
+      </select>
+    </div>
+
+    <!-- Add new category inline -->
+    <div class="mt-new-cat-row">
+      <input type="text" id="mtNewCatInput" placeholder="+ New category name" maxlength="40" />
+      <button class="mt-new-cat-btn" onclick="mtAddCategory()">Add</button>
+    </div>
+
+    <div class="mt-field" style="margin-top:16px;">
+      <label>Message <span style="font-family:'Crimson Pro',serif;font-weight:300;text-transform:none;letter-spacing:0">(512 char max · emoji supported)</span></label>
+      <textarea id="mtMessage" placeholder="Type your in-game message here..." maxlength="512" oninput="mtUpdateCharCount()"></textarea>
+      <div class="mt-modal-char" id="mtModalChar">0 / 512</div>
+    </div>
+
+    <div class="mt-modal-actions">
+      <button class="mt-modal-cancel" onclick="mtCloseModal()">Cancel</button>
+      <button class="mt-modal-save" onclick="mtSaveTemplate()">Save Template</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ─────────────────────────────────────
+     CONFIG — update if Worker URL changes
+  ───────────────────────────────────── */
+  var WORKER_URL = 'https://openai-3b56.burseer.workers.dev';
+
+  /* ── Default categories (fallback only) ── */
+  var DEFAULT_CATS = ['Welcome Messages', 'Rallies', 'Event Messages', 'NAP Messages'];
+
+  /* ── State ── */
+  var templates  = [];
+  var categories = DEFAULT_CATS.slice();
+  var activeFilter = 'All';
+  var editingId    = null;
+  var saving       = false;
+
+  /* ─────────────────────────────────────
+     API HELPERS
+  ───────────────────────────────────── */
+  function apiFetch(path, options) {
+    return fetch(WORKER_URL + path, options)
+      .then(function(r) {
+        if (!r.ok) return r.json().then(function(e) { throw new Error(e.error || ('HTTP ' + r.status)); });
+        return r.json();
+      });
+  }
+
+  function apiGet(path)          { return apiFetch(path, { method: 'GET' }); }
+  function apiPost(path, body)   { return apiFetch(path, { method: 'POST',   headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); }
+  function apiDelete(path)       { return apiFetch(path, { method: 'DELETE' }); }
+
+  /* ─────────────────────────────────────
+     LOAD (called on page init)
+  ───────────────────────────────────── */
+  function load() {
+    setGridLoading(true);
+    Promise.all([
+      apiGet('/templates'),
+      apiGet('/categories')
+    ]).then(function(results) {
+      templates  = results[0].templates || [];
+      categories = results[1].categories || DEFAULT_CATS.slice();
+      ensureDefaultCats();
+      render();
+    }).catch(function(err) {
+      showGridError('Could not load templates: ' + err.message);
+    }).finally(function() {
+      setGridLoading(false);
+    });
+  }
+
+  function ensureDefaultCats() {
+    DEFAULT_CATS.forEach(function(dc) {
+      if (categories.indexOf(dc) === -1) categories.unshift(dc);
+    });
+  }
+
+  function setGridLoading(on) {
+    var grid = document.getElementById('mtGrid');
+    if (!grid) return;
+    if (on) grid.innerHTML = '<div class="mt-empty" style="opacity:0.6">⏳ Loading templates from alliance storage…</div>';
+  }
+
+  function showGridError(msg) {
+    var grid = document.getElementById('mtGrid');
+    if (grid) grid.innerHTML = '<div class="mt-empty" style="color:#e05555;">⚠️ ' + escHtml(msg) + '</div>';
+  }
+
+  /* ─────────────────────────────────────
+     CATEGORY → CSS CLASS
+  ───────────────────────────────────── */
+  function catClass(cat) {
+    var map = {
+      'Welcome Messages': 'mt-cat-welcome',
+      'Rallies':          'mt-cat-rallies',
+      'Event Messages':   'mt-cat-event',
+      'NAP Messages':     'mt-cat-nap'
+    };
+    return map[cat] || 'mt-cat-other';
+  }
+
+  /* ─────────────────────────────────────
+     RENDER
+  ───────────────────────────────────── */
+  function renderFilters() {
+    var fg = document.getElementById('mtFilterGroup');
+    if (!fg) return;
+    var allCats = ['All'].concat(categories);
+    fg.innerHTML = allCats.map(function(cat) {
+      var isActive = cat === activeFilter;
+      var cls = isActive ? (cat === 'All' ? 'mt-filter-btn active-all' : 'mt-filter-btn active') : 'mt-filter-btn';
+      return '<button class="' + cls + '" onclick="window._mtFilter(\'' + escJs(cat) + '\')">' + escHtml(cat) + '</button>';
+    }).join('');
+  }
+
+  function renderGrid() {
+    var grid = document.getElementById('mtGrid');
+    if (!grid) return;
+    var filtered = activeFilter === 'All'
+      ? templates
+      : templates.filter(function(t) { return t.category === activeFilter; });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="mt-empty">No templates yet'
+        + (activeFilter !== 'All' ? ' in this category' : '')
+        + '. Click <strong>+ Add Template</strong> to create one.</div>';
+      return;
+    }
+    grid.innerHTML = filtered.map(function(tmpl) {
+      var chars   = tmpl.message.length;
+      var charCls = chars > 512 ? 'mt-char-count over' : 'mt-char-count';
+      return [
+        '<div class="mt-card" id="mtcard-' + tmpl.id + '">',
+          '<div class="mt-card-header">',
+            '<div class="mt-card-meta">',
+              '<div class="mt-card-subject">' + escHtml(tmpl.subject) + '</div>',
+              '<div class="mt-card-byline">by ' + escHtml(tmpl.author) + ' &middot; ' + escHtml(tmpl.date) + '</div>',
+            '</div>',
+            '<span class="mt-cat-badge ' + catClass(tmpl.category) + '">' + escHtml(tmpl.category) + '</span>',
+          '</div>',
+          '<div class="mt-preview" id="mtprev-' + tmpl.id + '">' + escHtml(tmpl.message) + '<div class="mt-preview-fade"></div></div>',
+          '<div class="' + charCls + '">' + chars + ' / 512 chars</div>',
+          '<div class="mt-card-actions">',
+            '<button class="mt-copy-btn" id="mtcopy-' + tmpl.id + '" onclick="window._mtCopy(\'' + tmpl.id + '\')">&#x1F4CB; Copy</button>',
+            '<button class="mt-expand-btn" onclick="window._mtExpand(\'' + tmpl.id + '\')">&#x1F50D; Preview</button>',
+            '<button class="mt-edit-btn" onclick="window._mtEdit(\'' + tmpl.id + '\')">&#x270F;&#xFE0F; Edit</button>',
+            '<button class="mt-delete-btn" onclick="window._mtDelete(\'' + tmpl.id + '\')">&#x1F5D1;</button>',
+          '</div>',
+        '</div>'
+      ].join('');
+    }).join('');
+  }
+
+  function render() {
+    renderFilters();
+    renderGrid();
+  }
+
+  /* ─────────────────────────────────────
+     COPY
+  ───────────────────────────────────── */
+  window._mtCopy = function(id) {
+    var tmpl = templates.find(function(t) { return t.id === id; });
+    if (!tmpl) return;
+    var btn = document.getElementById('mtcopy-' + id);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(tmpl.message).then(function() { flashCopied(btn); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = tmpl.message;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(ta);
+      flashCopied(btn);
+    }
+  };
+
+  function flashCopied(btn) {
+    if (!btn) return;
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.innerHTML = '&#x1F4CB; Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  }
+
+  /* ─────────────────────────────────────
+     EXPAND / COLLAPSE
+  ───────────────────────────────────── */
+  window._mtExpand = function(id) {
+    var prev = document.getElementById('mtprev-' + id);
+    if (!prev) return;
+    var isExp = prev.classList.contains('expanded');
+    prev.classList.toggle('expanded');
+    var btn = prev.parentElement.querySelector('.mt-expand-btn');
+    if (btn) btn.textContent = isExp ? '🔍 Preview' : '🔼 Collapse';
+  };
+
+  /* ─────────────────────────────────────
+     FILTER
+  ───────────────────────────────────── */
+  window._mtFilter = function(cat) {
+    activeFilter = cat;
+    render();
+  };
+
+  /* ─────────────────────────────────────
+     DELETE
+  ───────────────────────────────────── */
+  window._mtDelete = function(id) {
+    if (!confirm('Delete this template? This cannot be undone.')) return;
+    apiDelete('/templates?id=' + encodeURIComponent(id))
+      .then(function() {
+        templates = templates.filter(function(t) { return t.id !== id; });
+        render();
+      })
+      .catch(function(err) { alert('Delete failed: ' + err.message); });
+  };
+
+  /* ─────────────────────────────────────
+     EDIT
+  ───────────────────────────────────── */
+  window._mtEdit = function(id) {
+    var tmpl = templates.find(function(t) { return t.id === id; });
+    if (!tmpl) return;
+    editingId = id;
+    mtOpenModal(tmpl);
+  };
+
+  /* ─────────────────────────────────────
+     MODAL
+  ───────────────────────────────────── */
+  window.mtOpenModal = function(tmpl) {
+    editingId = tmpl ? tmpl.id : null;
+    document.getElementById('mtModalTitle').textContent = tmpl ? '✏️ Edit Template' : '➕ New Message Template';
+    document.getElementById('mtSubject').value = tmpl ? tmpl.subject : '';
+    document.getElementById('mtAuthor').value  = tmpl ? tmpl.author  : '';
+    document.getElementById('mtMessage').value = tmpl ? tmpl.message : '';
+    populateCatSelect(tmpl ? tmpl.category : null);
+    mtUpdateCharCount();
+    setSaveState(false);
+    document.getElementById('mtModalOverlay').classList.add('open');
+    document.getElementById('mtSubject').focus();
+  };
+
+  window.mtCloseModal = function() {
+    document.getElementById('mtModalOverlay').classList.remove('open');
+    editingId = null;
+  };
+
+  function populateCatSelect(selected) {
+    var sel = document.getElementById('mtCategory');
+    sel.innerHTML = categories.map(function(c) {
+      return '<option value="' + escHtml(c) + '"' + (c === selected ? ' selected' : '') + '>' + escHtml(c) + '</option>';
+    }).join('');
+  }
+
+  /* ─────────────────────────────────────
+     ADD CATEGORY (saves to KV)
+  ───────────────────────────────────── */
+  window.mtAddCategory = function() {
+    var inp = document.getElementById('mtNewCatInput');
+    var val = inp.value.trim();
+    if (!val) return;
+    if (categories.indexOf(val) !== -1) { inp.value = ''; return; }
+    categories.push(val);
+    inp.value = '';
+    /* Persist to KV — fire and forget, UI updates immediately */
+    apiPost('/categories', { categories: categories }).catch(function(err) {
+      console.warn('Category save failed:', err.message);
+    });
+    populateCatSelect(val);
+    document.getElementById('mtCategory').value = val;
+    render();
+  };
+
+  /* ─────────────────────────────────────
+     CHAR COUNT
+  ───────────────────────────────────── */
+  window.mtUpdateCharCount = function() {
+    var msg     = document.getElementById('mtMessage');
+    var counter = document.getElementById('mtModalChar');
+    if (!msg || !counter) return;
+    var len = msg.value.length;
+    counter.textContent = len + ' / 512';
+    counter.className   = len > 512 ? 'mt-modal-char over' : 'mt-modal-char';
+  };
+
+  /* ─────────────────────────────────────
+     SAVE TEMPLATE (POST to KV via Worker)
+  ───────────────────────────────────── */
+  function setSaveState(isSaving) {
+    saving = isSaving;
+    var btn = document.querySelector('.mt-modal-save');
+    if (!btn) return;
+    btn.textContent = isSaving ? 'Saving…' : 'Save Template';
+    btn.disabled    = isSaving;
+  }
+
+  window.mtSaveTemplate = function() {
+    if (saving) return;
+    var subject = document.getElementById('mtSubject').value.trim();
+    var author  = document.getElementById('mtAuthor').value.trim();
+    var cat     = document.getElementById('mtCategory').value;
+    var message = document.getElementById('mtMessage').value;
+
+    if (!subject)        { alert('Please add a subject/title.'); return; }
+    if (!author)         { alert('Please add your name.'); return; }
+    if (!message.trim()) { alert('Message cannot be empty.'); return; }
+    if (message.length > 512) { alert('Message exceeds 512 characters. Please shorten it.'); return; }
+
+    var now     = new Date();
+    var dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    var id      = editingId || ('mt_' + Date.now());
+
+    var tmpl = { id: id, subject: subject, author: author, category: cat, message: message, date: dateStr };
+
+    setSaveState(true);
+    apiPost('/templates', tmpl)
+      .then(function() {
+        if (editingId) {
+          templates = templates.map(function(t) { return t.id === editingId ? tmpl : t; });
+        } else {
+          templates.push(tmpl);
+        }
+        mtCloseModal();
+        render();
+      })
+      .catch(function(err) {
+        alert('Save failed: ' + err.message);
+      })
+      .finally(function() {
+        setSaveState(false);
+      });
+  };
+
+  /* ── Close modal on overlay click ── */
+  document.getElementById('mtModalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) mtCloseModal();
+  });
+
+  /* ── Escape closes modal ── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') mtCloseModal();
+  });
+
+  /* ─────────────────────────────────────
+     UTILS
+  ───────────────────────────────────── */
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  function escJs(s) { return String(s).replace(/'/g,"\\'"); }
+
+  /* ─────────────────────────────────────
+     INIT
+  ───────────────────────────────────── */
+  load();
+
+})();
+</script>
 
 <div class="divider">&#x2756; &#x2756; &#x2756;</div>
 
