@@ -1019,6 +1019,160 @@
     .hero-grid { grid-template-columns: repeat(2, 1fr); }
     nav a { padding: 11px 9px; font-size: 0.6rem; }
   }
+
+  /* ══════════════════════════════════
+     UTC FLOATING WIDGET
+  ══════════════════════════════════ */
+  .utc-float-btn {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 310;
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 8px;
+    color: var(--gold);
+    cursor: pointer;
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 14px 0 11px;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    -webkit-appearance: none;
+  }
+  .utc-float-btn:hover {
+    background: var(--dark3);
+    border-color: var(--gold);
+    box-shadow: 0 2px 18px rgba(201,168,76,0.15);
+  }
+  .utc-float-icon { font-size: 1rem; flex-shrink: 0; }
+  .utc-float-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .utc-float-mintime {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .utc-panel {
+    position: fixed;
+    top: 70px;
+    right: 18px;
+    z-index: 305;
+    width: 310px;
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(-8px) scale(0.97);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .utc-panel.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+  .utc-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    background: rgba(201,168,76,0.06);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    flex-shrink: 0;
+  }
+  .utc-panel-clocks { display: flex; gap: 16px; }
+  .utc-clock-item { display: flex; flex-direction: column; gap: 1px; }
+  .utc-clock-tz {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .utc-clock-time {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .utc-clock-time.is-utc   { color: var(--gold); }
+  .utc-clock-time.is-local { color: var(--blue-bright); }
+  .utc-panel-tz {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: right;
+  }
+  .utc-table-wrap {
+    max-height: 340px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--stone) transparent;
+  }
+  .utc-table-wrap::-webkit-scrollbar { width: 4px; }
+  .utc-table-wrap::-webkit-scrollbar-thumb { background: var(--stone); border-radius: 2px; }
+  .utc-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .utc-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--dark3);
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    z-index: 2;
+  }
+  .utc-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .utc-table tbody tr:last-child { border-bottom: none; }
+  .utc-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+  .utc-table tbody tr.utc-current-row {
+    background: rgba(201,168,76,0.1);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .utc-table td { padding: 8px 14px; vertical-align: middle; white-space: nowrap; }
+  .utc-td-local { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--blue-bright); letter-spacing: 0.02em; }
+  .utc-td-utc   { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--gold); letter-spacing: 0.02em; }
+  .utc-current-row .utc-td-local,
+  .utc-current-row .utc-td-utc { color: var(--gold-light); }
+  .utc-now-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.07em;
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 6px;
+    padding: 1px 5px;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
+  @media (max-width: 480px) {
+    .utc-float-btn { top: 14px; right: 14px; height: 38px; padding: 0 12px 0 10px; }
+    .utc-panel { right: 14px; width: calc(100vw - 28px); top: 64px; }
+  }
 </style>
 </head>
 <body>
@@ -1132,6 +1286,35 @@
 </script>
 
 <!-- GIFT CODES BANNER -->
+<button class="utc-float-btn" id="utcFloatBtn" aria-label="UTC Time Reference" aria-expanded="false">
+  <span class="utc-float-icon">&#x1F552;</span>
+  <span class="utc-float-label">UTC</span>
+  <span class="utc-float-mintime" id="utcMiniClock">--:--</span>
+</button>
+
+<div class="utc-panel" id="utcPanel">
+  <div class="utc-panel-header">
+    <div class="utc-panel-clocks">
+      <div class="utc-clock-item">
+        <div class="utc-clock-tz">Your Local</div>
+        <div class="utc-clock-time is-local" id="utcLocalClock">--:--:--</div>
+      </div>
+      <div class="utc-clock-item">
+        <div class="utc-clock-tz">UTC</div>
+        <div class="utc-clock-time is-utc" id="utcUtcClock">--:--:--</div>
+      </div>
+    </div>
+    <div class="utc-panel-tz" id="utcTzName">&#x2026;</div>
+  </div>
+  <div class="utc-table-wrap">
+    <table class="utc-table">
+      <thead><tr><th>Your Local Time</th><th>UTC</th></tr></thead>
+      <tbody id="utcTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- GIFT CODES BANNER -->
 <div class="gift-banner" id="giftBanner">
   <div class="gift-banner-inner">
     <div class="gift-banner-header">
@@ -1146,9 +1329,9 @@
       <div class="gift-edit-list" id="giftEditList"></div>
       <div class="gift-edit-actions">
         <button class="gift-edit-add" onclick="addGiftRow()">+ Add Code</button>
-        <button class="gift-edit-save" onclick="saveGiftCodes()">✔ Save &amp; Close</button>
+        <button class="gift-edit-save" id="giftSaveBtn" onclick="saveGiftCodes()">&#x1F4BE; Save &amp; Publish</button>
       </div>
-      <div class="gift-edit-hint">Codes are saved in this browser. After updating, share the new code list in Discord for members on other devices.</div>
+      <div class="gift-edit-hint">Codes are saved to the alliance server and visible to all members instantly — no need to share manually.</div>
     </div>
   </div>
 </div>
@@ -2508,45 +2691,125 @@ function quickAsk(question) {
 }
 
 
-// ── GIFT CODES ──
-// Default codes shown on first load (empty = "No active codes" message)
-// Officers: click "Edit Codes" on the site to update. Changes save in browser localStorage.
-const DEFAULT_GIFT_CODES = [
-  { code: 'FIREFRIDAY', expiry: '2026-03-30', note: 'Expires Mar 30 2026' },
-];
+// ── UTC WIDGET ──
+(function() {
+  'use strict';
+  var btn        = document.getElementById('utcFloatBtn');
+  var panel      = document.getElementById('utcPanel');
+  var tbody      = document.getElementById('utcTableBody');
+  var utcClock   = document.getElementById('utcUtcClock');
+  var localClock = document.getElementById('utcLocalClock');
+  var miniClock  = document.getElementById('utcMiniClock');
+  var tzName     = document.getElementById('utcTzName');
+  var isOpen     = false;
+  var localTz    = 'Local';
+  try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local'; } catch(e) {}
+  if (tzName) tzName.textContent = localTz;
 
-function loadGiftCodes() {
-  try {
-    const stored = localStorage.getItem('dk_gift_codes');
-    return stored ? JSON.parse(stored) : DEFAULT_GIFT_CODES;
-  } catch(e) { return DEFAULT_GIFT_CODES; }
+  btn.addEventListener('click', function() {
+    isOpen = !isOpen;
+    panel.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+    if (isOpen) scrollToNow();
+  });
+  document.addEventListener('click', function(e) {
+    if (isOpen && !panel.contains(e.target) && !btn.contains(e.target)) {
+      isOpen = false; panel.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && isOpen) {
+      isOpen = false; panel.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function buildRows() {
+    var offset = new Date().getTimezoneOffset();
+    var rows = '';
+    for (var h = 0; h < 24; h++) {
+      var lm = h * 60 - offset;
+      var lh = ((Math.floor(lm / 60) % 24) + 24) % 24;
+      var lmin = ((lm % 60) + 60) % 60;
+      var ampm = lh < 12 ? 'AM' : 'PM';
+      var lh12 = lh % 12 || 12;
+      rows += '<tr id="utcrow-' + h + '"><td class="utc-td-local">'
+        + pad(lh) + ':' + pad(lmin) + ' (' + lh12 + ':' + pad(lmin) + ' ' + ampm + ')'
+        + '</td><td class="utc-td-utc" id="utcrowutc-' + h + '">' + pad(h) + ':00</td></tr>';
+    }
+    tbody.innerHTML = rows;
+  }
+
+  var lastHour = -1;
+  function highlightRow() {
+    var hour = new Date().getUTCHours();
+    if (hour === lastHour) return;
+    if (lastHour >= 0) {
+      var p = document.getElementById('utcrow-' + lastHour);
+      var pu = document.getElementById('utcrowutc-' + lastHour);
+      if (p)  p.classList.remove('utc-current-row');
+      if (pu) pu.innerHTML = pad(lastHour) + ':00';
+    }
+    var r = document.getElementById('utcrow-' + hour);
+    var ru = document.getElementById('utcrowutc-' + hour);
+    if (r)  r.classList.add('utc-current-row');
+    if (ru && ru.innerHTML.indexOf('utc-now-badge') === -1)
+      ru.innerHTML = pad(hour) + ':00 <span class="utc-now-badge">NOW</span>';
+    lastHour = hour;
+  }
+  function scrollToNow() {
+    var r = document.getElementById('utcrow-' + new Date().getUTCHours());
+    if (r) r.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+  function tick() {
+    var n = new Date();
+    var uh = pad(n.getUTCHours()), um = pad(n.getUTCMinutes()), us = pad(n.getUTCSeconds());
+    var lh = pad(n.getHours()),    lm = pad(n.getMinutes()),    ls = pad(n.getSeconds());
+    if (utcClock)   utcClock.textContent   = uh + ':' + um + ':' + us;
+    if (localClock) localClock.textContent = lh + ':' + lm + ':' + ls;
+    if (miniClock)  miniClock.textContent  = uh + ':' + um;
+    highlightRow();
+  }
+  buildRows(); tick(); setInterval(tick, 1000);
+})();
+
+// ── GIFT CODES (KV-backed via Cloudflare Worker) ──
+const GIFT_WORKER_URL = 'https://openai-3b56.burseer.workers.dev';
+let _giftCodes = [];
+
+function _giftFetch(path, options) {
+  return fetch(GIFT_WORKER_URL + path, options)
+    .then(function(r) {
+      if (!r.ok) return r.json().then(function(e) { throw new Error(e.error || 'HTTP ' + r.status); });
+      return r.json();
+    });
 }
 
-function saveGiftCodeData(codes) {
-  try { localStorage.setItem('dk_gift_codes', JSON.stringify(codes)); } catch(e) {}
+function _loadGiftCodes() {
+  _giftFetch('/gift-codes')
+    .then(function(data) { _giftCodes = Array.isArray(data) ? data : []; renderGiftCodes(); })
+    .catch(function()    { _giftCodes = []; renderGiftCodes(); });
 }
 
 function daysUntil(dateStr) {
   if (!dateStr) return null;
-  const exp = new Date(dateStr + 'T23:59:59');
-  const now = new Date();
-  return Math.ceil((exp - now) / 86400000);
+  return Math.ceil((new Date(dateStr + 'T23:59:59') - new Date()) / 86400000);
 }
 
 function renderGiftCodes() {
-  const codes = loadGiftCodes();
   const row = document.getElementById('giftCodesRow');
-  if (!codes.length) {
+  if (!_giftCodes.length) {
     row.innerHTML = '<span class="gift-no-codes">No active codes right now — check back soon</span>';
     return;
   }
-  row.innerHTML = codes.map((c, i) => {
+  row.innerHTML = _giftCodes.map((c, i) => {
     const days = daysUntil(c.expiry);
     const expLabel = days === null ? '' :
-      days < 0 ? ' · <span style="color:#c05050">Expired</span>' :
+      days < 0  ? ' · <span style="color:#c05050">Expired</span>' :
       days <= 3 ? ` · <span class="gift-code-expiry expiring-soon">Expires in ${days}d</span>` :
-      ` · <span class="gift-code-expiry">Exp ${c.expiry}</span>`;
-    return `<div class="gift-code-pill" title="${c.note || c.code}">
+                  ` · <span class="gift-code-expiry">Exp ${c.expiry}</span>`;
+    return `<div class="gift-code-pill">
       <span class="gift-code-text">${c.code}</span>
       <button class="gift-code-copy" onclick="copyCode(this,'${c.code}')" title="Copy code">⧉</button>
       ${expLabel}
@@ -2555,34 +2818,28 @@ function renderGiftCodes() {
 }
 
 function copyCode(btn, code) {
-  navigator.clipboard.writeText(code).then(() => {
-    btn.classList.add('copied');
-    btn.textContent = '✓';
+  const doToast = () => {
+    btn.classList.add('copied'); btn.textContent = '✓';
     setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '⧉'; }, 1800);
     const toast = document.getElementById('giftToast');
     toast.textContent = `"${code}" copied!`;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-  });
+  };
+  navigator.clipboard ? navigator.clipboard.writeText(code).then(doToast).catch(doToast) : doToast();
 }
 
 function toggleGiftEdit() {
   const panel = document.getElementById('giftEditPanel');
-  const btn = document.getElementById('giftToggleBtn');
+  const btn   = document.getElementById('giftToggleBtn');
   const isOpen = panel.classList.toggle('open');
   btn.textContent = isOpen ? '✕ Close' : '✎ Edit Codes';
   if (isOpen) renderGiftEditList();
 }
 
 function renderGiftEditList() {
-  const codes = loadGiftCodes();
   const list = document.getElementById('giftEditList');
-  list.innerHTML = codes.length ? codes.map((c, i) => `
+  list.innerHTML = _giftCodes.length ? _giftCodes.map((c, i) => `
     <div class="gift-edit-row" data-index="${i}">
       <input class="gift-edit-input code-input" placeholder="CODE123" value="${c.code}"
         oninput="this.value=this.value.toUpperCase()" />
@@ -2593,13 +2850,10 @@ function renderGiftEditList() {
 }
 
 function addGiftRow() {
-  const codes = readGiftEditRows();
-  codes.push({ code: '', expiry: '' });
-  saveGiftCodeData(codes);
+  _giftCodes.push({ code: '', expiry: '' });
   renderGiftEditList();
-  // focus new input
   const rows = document.querySelectorAll('#giftEditList .gift-edit-row');
-  if (rows.length) rows[rows.length-1].querySelector('.code-input').focus();
+  if (rows.length) rows[rows.length - 1].querySelector('.code-input').focus();
 }
 
 function removeGiftRow(btn) {
@@ -2607,22 +2861,33 @@ function removeGiftRow(btn) {
 }
 
 function readGiftEditRows() {
-  const rows = document.querySelectorAll('#giftEditList .gift-edit-row');
-  return Array.from(rows).map(row => ({
-    code: row.querySelector('.code-input').value.trim().toUpperCase(),
+  return Array.from(document.querySelectorAll('#giftEditList .gift-edit-row')).map(row => ({
+    code:   row.querySelector('.code-input').value.trim().toUpperCase(),
     expiry: row.querySelector('.date-input').value || ''
   })).filter(c => c.code);
 }
 
 function saveGiftCodes() {
   const codes = readGiftEditRows();
-  saveGiftCodeData(codes);
-  renderGiftCodes();
-  toggleGiftEdit();
+  const saveBtn = document.getElementById('giftSaveBtn');
+  saveBtn.textContent = 'Saving…'; saveBtn.disabled = true;
+  _giftFetch('/gift-codes', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(codes)
+  }).then(function() {
+    _giftCodes = codes;
+    renderGiftCodes();
+    toggleGiftEdit();
+    saveBtn.innerHTML = '&#x1F4BE; Save &amp; Publish'; saveBtn.disabled = false;
+  }).catch(function(err) {
+    alert('Save failed: ' + err.message);
+    saveBtn.innerHTML = '&#x1F4BE; Save &amp; Publish'; saveBtn.disabled = false;
+  });
 }
 
 // Init on load
-document.addEventListener('DOMContentLoaded', renderGiftCodes);
+document.addEventListener('DOMContentLoaded', _loadGiftCodes);
 </script>
 
 </body>
