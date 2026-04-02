@@ -1005,6 +1005,231 @@
   }
 
   /* ══════════════════════════════════
+     BANNED LIST
+  ══════════════════════════════════ */
+  .bl-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .bl-search-input {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(139,26,26,0.4);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .bl-search-input:focus { border-color: #e05555; }
+  .bl-search-input::placeholder { color: var(--text-muted); }
+  .bl-add-btn {
+    background: #8b1a1a;
+    border: 1px solid rgba(224,85,85,0.4);
+    border-radius: 8px;
+    color: #ffd0d0;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 9px 18px;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .bl-add-btn:hover { background: #a82020; transform: translateY(-1px); }
+
+  .bl-count-bar {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .bl-count-bar span { color: #e05555; font-weight: 700; }
+
+  .bl-table-wrap {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(139,26,26,0.3);
+  }
+  .bl-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    font-family: 'Crimson Pro', serif;
+    min-width: 500px;
+  }
+  .bl-table thead tr {
+    background: rgba(139,26,26,0.25);
+    border-bottom: 2px solid rgba(224,85,85,0.3);
+  }
+  .bl-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e08080;
+    padding: 10px 14px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .bl-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(139,26,26,0.15);
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+  .bl-table tbody tr { transition: background 0.15s; }
+  .bl-table tbody tr:hover { background: rgba(139,26,26,0.08); }
+  .bl-table tbody tr:last-child td { border-bottom: none; }
+  .bl-table tbody tr.bl-hidden { display: none; }
+
+  .bl-player-id {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: #f08080;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .bl-reason { color: var(--text-dim); font-size: 0.88rem; }
+  .bl-added-by { color: var(--text-muted); font-size: 0.82rem; }
+  .bl-date { color: var(--text-muted); font-size: 0.8rem; white-space: nowrap; }
+  .bl-delete-btn {
+    background: rgba(139,26,26,0.2);
+    border: 1px solid rgba(224,85,85,0.25);
+    border-radius: 5px;
+    color: #e08080;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    transition: background 0.15s;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .bl-delete-btn:hover { background: rgba(139,26,26,0.45); color: #ffaaaa; }
+
+  .bl-empty {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  /* Modal */
+  .bl-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .bl-modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .bl-modal {
+    background: var(--dark2);
+    border: 1px solid rgba(224,85,85,0.35);
+    border-radius: 12px;
+    padding: 28px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    transform: translateY(12px);
+    transition: transform 0.2s;
+  }
+  .bl-modal-overlay.open .bl-modal { transform: translateY(0); }
+  .bl-modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: #e08080;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+  .bl-modal-field { margin-bottom: 16px; }
+  .bl-modal-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .bl-modal-input, .bl-modal-textarea, .bl-modal-select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(224,85,85,0.25);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    padding: 10px 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .bl-modal-input:focus, .bl-modal-textarea:focus, .bl-modal-select:focus { border-color: #e05555; }
+  .bl-modal-textarea { resize: vertical; min-height: 80px; }
+  .bl-modal-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 30px; }
+  .bl-modal-select option { background: #1d2333; color: var(--text); }
+  .bl-modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; }
+  .bl-modal-cancel {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 9px 18px;
+    transition: background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .bl-modal-cancel:hover { background: rgba(255,255,255,0.1); }
+  .bl-modal-save {
+    background: #8b1a1a;
+    border: 1px solid rgba(224,85,85,0.4);
+    border-radius: 6px;
+    color: #ffd0d0;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 9px 22px;
+    transition: background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .bl-modal-save:hover { background: #a82020; }
+  .bl-modal-save:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  @media (max-width: 480px) {
+    .bl-search-input { min-width: 120px; }
+    .bl-table { min-width: 420px; }
+    .bl-modal { padding: 20px; }
+  }
+
+  /* ══════════════════════════════════
      MESSAGE TEMPLATES
   ══════════════════════════════════ */
   .mt-toolbar {
@@ -1560,6 +1785,7 @@
     <a href="#kvk-leader"><span class="nav-icon">&#x1FA96;</span>KvK Command</a>
     <div class="sidebar-divider">Tools</div>
     <a href="#msg-templates"><span class="nav-icon">&#x1F4AC;</span>Message Templates</a>
+    <a href="#banned-list"><span class="nav-icon">&#x1F6AB;</span>Banned List</a>
     <div class="sidebar-divider">Resources</div>
     <a href="https://tactichub.github.io/DRK-Kingshot" target="_blank"><span class="nav-icon">&#x1F4DA;</span>Member Guide &rarr;</a>
   </div>
@@ -2410,6 +2636,289 @@
 <div class="divider">&#x2756; &#x2756; &#x2756;</div>
 
 
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
+
+<!-- ═══════════════════════════════════════
+     BANNED LIST
+═══════════════════════════════════════ -->
+<section id="banned-list">
+  <div class="section-header">
+    <span class="section-icon">&#x1F6AB;</span>
+    <h2>Banned List</h2>
+  </div>
+  <div class="callout callout-warn">
+    <span class="callout-label">&#x26A0; Check Before Approving</span>
+    Always search this list before approving a new member application. Any R4/R5 can add or remove entries. Data is stored in alliance cloud storage and updates in real time across all devices.
+  </div>
+
+  <div class="callout callout-info">
+    <span class="callout-label">&#x1F4CB; Entry Template — Use This Format</span>
+    When adding a player, fill in all fields using the following standard:<br><br>
+    <code style="display:block;background:rgba(0,0,0,0.25);border-radius:5px;padding:10px 14px;font-family:monospace;font-size:0.88rem;line-height:1.9;color:var(--text);">
+      <strong style="color:var(--gold);">Template Name:</strong> [The name used at time of ban]<br>
+      <strong style="color:var(--gold);">Player ID:</strong> [In-game ID or #number]<br>
+      <strong style="color:var(--gold);">Banned Date:</strong> [Date ban was issued]<br>
+      <strong style="color:var(--gold);">Reason:</strong> [Clear description of the offense]<br>
+      <strong style="color:var(--gold);">Note:</strong> [Any additional context]
+    </code>
+    <span style="display:block;margin-top:10px;color:var(--orange);font-size:0.92rem;">&#x26A0; <strong>If a player changes their name:</strong> do not delete the original entry. Copy and paste the original ban record into the Notes field and append <code style="background:rgba(0,0,0,0.2);padding:1px 6px;border-radius:3px;">&gt;(new name)</code> to indicate the name change.</span>
+  </div>
+
+  <div class="bl-toolbar">
+    <input class="bl-search-input" id="blSearch" type="text" placeholder="&#x1F50D; Search by player ID, reason, or name&hellip;" oninput="window._blFilter()" />
+    <button class="bl-add-btn" onclick="window.blOpenModal()">&#x2795; Add to Banned List</button>
+  </div>
+
+  <div class="bl-count-bar" id="blCountBar">Loading&hellip;</div>
+
+  <div class="bl-table-wrap">
+    <table class="bl-table">
+      <thead>
+        <tr>
+          <th>Player ID / Name</th>
+          <th>Reason</th>
+          <th>Severity</th>
+          <th>Added By</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="blTableBody">
+        <tr><td colspan="6" class="bl-empty">&#x23F3; Loading banned list&hellip;</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- BANNED LIST MODAL -->
+<div class="bl-modal-overlay" id="blModalOverlay">
+  <div class="bl-modal">
+    <div class="bl-modal-title" id="blModalTitle">&#x1F6AB; Add to Banned List</div>
+
+    <div style="background:rgba(0,0,0,0.2);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:10px 13px;margin-bottom:18px;font-size:0.82rem;line-height:1.8;color:var(--text-dim);font-family:monospace;">
+      <span style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:6px;">&#x1F4CB; Standard Format</span>
+      <strong style="color:var(--gold);">Template Name:</strong> [name at time of ban]<br>
+      <strong style="color:var(--gold);">Player ID:</strong> [ID or #number]<br>
+      <strong style="color:var(--gold);">Banned Date:</strong> [date]<br>
+      <strong style="color:var(--gold);">Reason:</strong> [offense]<br>
+      <strong style="color:var(--gold);">Note:</strong> [context]<br>
+      <span style="color:var(--orange);font-family:'Crimson Pro',serif;font-size:0.82rem;">Name changed? Paste original entry in Notes &rarr; add <code style="background:rgba(0,0,0,0.25);padding:1px 5px;border-radius:3px;">&gt;(new name)</code></span>
+    </div>
+
+    <div class="bl-modal-field">
+      <label class="bl-modal-label" for="blPlayerId">Player ID / In-Game Name *</label>
+      <input class="bl-modal-input" id="blPlayerId" type="text" placeholder="e.g. KnightSlayer99 or Player #123456" />
+    </div>
+
+    <div class="bl-modal-field">
+      <label class="bl-modal-label" for="blReason">Reason for Ban *</label>
+      <textarea class="bl-modal-textarea" id="blReason" placeholder="Describe the behavior or incident that led to the ban&hellip;"></textarea>
+    </div>
+
+    <div class="bl-modal-field">
+      <label class="bl-modal-label" for="blSeverity">Severity</label>
+      <select class="bl-modal-select" id="blSeverity">
+        <option value="Watch">&#x26A0; Watch — Flagged, monitor if they apply</option>
+        <option value="Banned" selected>&#x1F6AB; Banned — Do not admit under any circumstances</option>
+        <option value="Hostile">&#x1F534; Hostile — Enemy player, known attacker</option>
+      </select>
+    </div>
+
+    <div class="bl-modal-field">
+      <label class="bl-modal-label" for="blAddedBy">Your R4/R5 Name *</label>
+      <input class="bl-modal-input" id="blAddedBy" type="text" placeholder="Your name so others know who flagged this" />
+    </div>
+
+    <div class="bl-modal-field">
+      <label class="bl-modal-label" for="blNotes">Additional Notes (optional)</label>
+      <input class="bl-modal-input" id="blNotes" type="text" placeholder="e.g. Previous alliance: ShadowBlades, alt account of&hellip;" />
+    </div>
+
+    <div class="bl-modal-actions">
+      <button class="bl-modal-cancel" onclick="window.blCloseModal()">Cancel</button>
+      <button class="bl-modal-save" id="blSaveBtn" onclick="window.blSaveEntry()">Add to List</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var WORKER_URL = 'https://openai-3b56.burseer.workers.dev';
+
+  var banList = [];
+  var filterText = '';
+
+  /* ── API helpers ── */
+  function apiFetch(path, opts) {
+    return fetch(WORKER_URL + path, opts)
+      .then(function(r) {
+        if (!r.ok) return r.json().then(function(e) { throw new Error(e.error || ('HTTP ' + r.status)); });
+        return r.json();
+      });
+  }
+  function apiGet(path)        { return apiFetch(path, { method: 'GET' }); }
+  function apiPost(path, body) { return apiFetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); }
+  function apiDel(path)        { return apiFetch(path, { method: 'DELETE' }); }
+
+  /* ── Load ── */
+  function load() {
+    apiGet('/banlist')
+      .then(function(data) {
+        banList = data.entries || [];
+        render();
+      })
+      .catch(function(err) {
+        document.getElementById('blTableBody').innerHTML =
+          '<tr><td colspan="6" class="bl-empty" style="color:#e05555;">&#x26A0; Could not load list: ' + escHtml(err.message) + '</td></tr>';
+        document.getElementById('blCountBar').textContent = 'Error loading data.';
+      });
+  }
+
+  /* ── Render ── */
+  function render() {
+    var tbody = document.getElementById('blTableBody');
+    var bar   = document.getElementById('blCountBar');
+    var q = filterText.toLowerCase();
+
+    var filtered = banList.filter(function(e) {
+      if (!q) return true;
+      return (e.playerId + ' ' + e.reason + ' ' + (e.addedBy||'') + ' ' + (e.notes||'')).toLowerCase().indexOf(q) !== -1;
+    });
+
+    if (banList.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="bl-empty">&#x2705; No entries yet. The list is clear.</td></tr>';
+      bar.innerHTML = 'No banned players on record.';
+      return;
+    }
+
+    bar.innerHTML = '<span>' + banList.length + '</span> player' + (banList.length === 1 ? '' : 's') + ' on the banned list' +
+      (q ? ' &mdash; showing ' + filtered.length + ' match' + (filtered.length === 1 ? '' : 'es') : '');
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="bl-empty">No entries match your search.</td></tr>';
+      return;
+    }
+
+    /* Sort newest first */
+    var sorted = filtered.slice().sort(function(a, b) { return (b.ts || 0) - (a.ts || 0); });
+
+    tbody.innerHTML = sorted.map(function(e) {
+      var sevColor = e.severity === 'Hostile' ? '#ff6060' : e.severity === 'Watch' ? 'var(--orange)' : '#e08080';
+      var sevIcon  = e.severity === 'Hostile' ? '&#x1F534;' : e.severity === 'Watch' ? '&#x26A0;' : '&#x1F6AB;';
+      return [
+        '<tr>',
+          '<td><div class="bl-player-id">' + escHtml(e.playerId) + '</div>',
+            e.notes ? '<div style="font-size:0.78rem;color:var(--text-muted);margin-top:3px;">' + escHtml(e.notes) + '</div>' : '',
+          '</td>',
+          '<td class="bl-reason">' + escHtml(e.reason) + '</td>',
+          '<td style="color:' + sevColor + ';font-family:\'Cinzel\',serif;font-size:0.72rem;white-space:nowrap;">' + sevIcon + ' ' + escHtml(e.severity || 'Banned') + '</td>',
+          '<td class="bl-added-by">' + escHtml(e.addedBy || '—') + '</td>',
+          '<td class="bl-date">' + escHtml(e.date || '') + '</td>',
+          '<td><button class="bl-delete-btn" onclick="window._blDelete(\'' + escJs(e.id) + '\')">&#x1F5D1; Remove</button></td>',
+        '</tr>'
+      ].join('');
+    }).join('');
+  }
+
+  /* ── Filter ── */
+  window._blFilter = function() {
+    filterText = (document.getElementById('blSearch').value || '').trim();
+    render();
+  };
+
+  /* ── Delete ── */
+  window._blDelete = function(id) {
+    var entry = banList.find(function(e) { return e.id === id; });
+    var label = entry ? entry.playerId : 'this entry';
+    if (!confirm('Remove "' + label + '" from the banned list?')) return;
+    apiDel('/banlist?id=' + encodeURIComponent(id))
+      .then(function() {
+        banList = banList.filter(function(e) { return e.id !== id; });
+        render();
+      })
+      .catch(function(err) { alert('Delete failed: ' + err.message); });
+  };
+
+  /* ── Modal ── */
+  window.blOpenModal = function() {
+    document.getElementById('blPlayerId').value  = '';
+    document.getElementById('blReason').value    = '';
+    document.getElementById('blSeverity').value  = 'Banned';
+    document.getElementById('blAddedBy').value   = '';
+    document.getElementById('blNotes').value     = '';
+    document.getElementById('blSaveBtn').disabled = false;
+    document.getElementById('blSaveBtn').textContent = 'Add to List';
+    document.getElementById('blModalOverlay').classList.add('open');
+    document.getElementById('blPlayerId').focus();
+  };
+
+  window.blCloseModal = function() {
+    document.getElementById('blModalOverlay').classList.remove('open');
+  };
+
+  window.blSaveEntry = function() {
+    var playerId  = document.getElementById('blPlayerId').value.trim();
+    var reason    = document.getElementById('blReason').value.trim();
+    var severity  = document.getElementById('blSeverity').value;
+    var addedBy   = document.getElementById('blAddedBy').value.trim();
+    var notes     = document.getElementById('blNotes').value.trim();
+
+    if (!playerId) { alert('Player ID / name is required.'); return; }
+    if (!reason)   { alert('Please provide a reason for the ban.'); return; }
+    if (!addedBy)  { alert('Please enter your name so others know who flagged this.'); return; }
+
+    var now     = new Date();
+    var dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    var entry   = {
+      id: 'bl_' + Date.now(),
+      playerId: playerId,
+      reason: reason,
+      severity: severity,
+      addedBy: addedBy,
+      notes: notes,
+      date: dateStr,
+      ts: Date.now()
+    };
+
+    var btn = document.getElementById('blSaveBtn');
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+
+    apiPost('/banlist', entry)
+      .then(function() {
+        banList.push(entry);
+        blCloseModal();
+        render();
+      })
+      .catch(function(err) {
+        alert('Save failed: ' + err.message);
+        btn.disabled = false;
+        btn.textContent = 'Add to List';
+      });
+  };
+
+  /* Close modal on overlay click or Escape */
+  document.getElementById('blModalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) window.blCloseModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') window.blCloseModal();
+  });
+
+  /* ── Utils ── */
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  function escJs(s) { return String(s).replace(/'/g,"\\'"); }
+
+  load();
+})();
+</script>
+
+<div class="divider">&#x2756; &#x2756; &#x2756;</div>
 
 <section id="back">
   <div class="callout callout-info">
