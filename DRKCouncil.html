@@ -1120,6 +1120,21 @@
   }
   .bl-delete-btn:hover { background: rgba(139,26,26,0.45); color: #ffaaaa; }
 
+  .bl-edit-btn {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 5px;
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    transition: background 0.15s;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .bl-edit-btn:hover { background: rgba(201,168,76,0.25); color: var(--gold-light); }
+
   .bl-empty {
     text-align: center;
     padding: 36px 20px;
@@ -2804,7 +2819,7 @@
           '<td style="color:' + sevColor + ';font-family:\'Cinzel\',serif;font-size:0.72rem;white-space:nowrap;">' + sevIcon + ' ' + escHtml(e.severity || 'Banned') + '</td>',
           '<td class="bl-added-by">' + escHtml(e.addedBy || '—') + '</td>',
           '<td class="bl-date">' + escHtml(e.date || '') + '</td>',
-          '<td><button class="bl-delete-btn" onclick="window._blDelete(\'' + escJs(e.id) + '\')">&#x1F5D1; Remove</button></td>',
+          '<td style="white-space:nowrap;"><button class="bl-edit-btn" onclick="window._blEdit(\'' + escJs(e.id) + '\')" style="margin-right:6px;">&#x270E; Edit</button><button class="bl-delete-btn" onclick="window._blDelete(\'' + escJs(e.id) + '\')">&#x1F5D1; Remove</button></td>',
         '</tr>'
       ].join('');
     }).join('');
@@ -2830,7 +2845,11 @@
   };
 
   /* ── Modal ── */
+  var editingId = null; /* null = add mode, string = edit mode */
+
   window.blOpenModal = function() {
+    editingId = null;
+    document.getElementById('blModalTitle').textContent = '🚫 Add to Banned List';
     document.getElementById('blPlayerId').value  = '';
     document.getElementById('blReason').value    = '';
     document.getElementById('blSeverity').value  = 'Banned';
@@ -2842,8 +2861,25 @@
     document.getElementById('blPlayerId').focus();
   };
 
+  window._blEdit = function(id) {
+    var entry = banList.find(function(e) { return e.id === id; });
+    if (!entry) { alert('Entry not found.'); return; }
+    editingId = id;
+    document.getElementById('blModalTitle').textContent = '✏️ Edit Entry';
+    document.getElementById('blPlayerId').value  = entry.playerId || '';
+    document.getElementById('blReason').value    = entry.reason   || '';
+    document.getElementById('blSeverity').value  = entry.severity || 'Banned';
+    document.getElementById('blAddedBy').value   = entry.addedBy  || '';
+    document.getElementById('blNotes').value     = entry.notes    || '';
+    document.getElementById('blSaveBtn').disabled = false;
+    document.getElementById('blSaveBtn').textContent = 'Save Changes';
+    document.getElementById('blModalOverlay').classList.add('open');
+    document.getElementById('blPlayerId').focus();
+  };
+
   window.blCloseModal = function() {
     document.getElementById('blModalOverlay').classList.remove('open');
+    editingId = null;
   };
 
   window.blSaveEntry = function() {
@@ -2857,34 +2893,65 @@
     if (!reason)   { alert('Please provide a reason for the ban.'); return; }
     if (!addedBy)  { alert('Please enter your name so others know who flagged this.'); return; }
 
-    var now     = new Date();
-    var dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    var entry   = {
-      id: 'bl_' + Date.now(),
-      playerId: playerId,
-      reason: reason,
-      severity: severity,
-      addedBy: addedBy,
-      notes: notes,
-      date: dateStr,
-      ts: Date.now()
-    };
-
     var btn = document.getElementById('blSaveBtn');
     btn.disabled = true;
-    btn.textContent = 'Saving…';
 
-    apiPost('/banlist', entry)
-      .then(function() {
-        banList.push(entry);
-        blCloseModal();
-        render();
-      })
-      .catch(function(err) {
-        alert('Save failed: ' + err.message);
-        btn.disabled = false;
-        btn.textContent = 'Add to List';
-      });
+    if (editingId) {
+      /* ── Edit existing entry ── */
+      var existing = banList.find(function(e) { return e.id === editingId; });
+      if (!existing) { alert('Entry not found.'); btn.disabled = false; return; }
+      btn.textContent = 'Saving…';
+      var updated = {
+        id:       existing.id,
+        playerId: playerId,
+        reason:   reason,
+        severity: severity,
+        addedBy:  addedBy,
+        notes:    notes,
+        date:     existing.date, /* preserve original date */
+        ts:       existing.ts
+      };
+      /* Delete then re-post to update in KV */
+      apiDel('/banlist?id=' + encodeURIComponent(existing.id))
+        .then(function() { return apiPost('/banlist', updated); })
+        .then(function() {
+          var idx = banList.findIndex(function(e) { return e.id === updated.id; });
+          if (idx !== -1) banList[idx] = updated; else banList.push(updated);
+          blCloseModal();
+          render();
+        })
+        .catch(function(err) {
+          alert('Update failed: ' + err.message);
+          btn.disabled = false;
+          btn.textContent = 'Save Changes';
+        });
+    } else {
+      /* ── Add new entry ── */
+      btn.textContent = 'Saving…';
+      var now     = new Date();
+      var dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      var entry   = {
+        id: 'bl_' + Date.now(),
+        playerId: playerId,
+        reason: reason,
+        severity: severity,
+        addedBy: addedBy,
+        notes: notes,
+        date: dateStr,
+        ts: Date.now()
+      };
+      apiPost('/banlist', entry)
+        .then(function() {
+          banList.push(entry);
+          blCloseModal();
+          render();
+        })
+        .catch(function(err) {
+          alert('Save failed: ' + err.message);
+          btn.disabled = false;
+          btn.textContent = 'Add to List';
+        });
+    }
   };
 
   /* Close modal on overlay click or Escape */
